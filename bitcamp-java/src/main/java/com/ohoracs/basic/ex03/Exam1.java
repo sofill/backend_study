@@ -8,7 +8,7 @@ public class Exam1 {
     
     // 정수 리터럴
     System.out.println(78); // 10진수 표기법
-    // 78이 정수 리터럴이다. 
+      // 78이 정수 리터럴이다. 
 
     System.out.println(+78); // 10진수 표기법
     System.out.println(-78); // 10진수 표기법
@@ -24,9 +24,21 @@ public class Exam1 {
     // => println은 무조건 10진수로 변환하여 출력한다. ★
 
     // 부동소수점 리터럴     
+    System.out.println(3.14); //고정소수점
+    System.out.println(0.314e1); //이게 바로 진정한 부동소수점
+    System.out.println(31.4e-1); // 부동소수점
+
     // 논리 리터럴
+    System.out.println(true);
+    System.out.println(false);
+      
+    // 한 문자 리터럴
+    System.out.println('가');
+    System.out.println('A');
     
-    // 문자 리터럴
+    // 문자열 리터럴
+    System.out.println("안녕하세요. 비트캠프!");
+    
 
   }
 }
