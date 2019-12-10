@@ -1,4 +1,4 @@
-package com.ohoracs.basic.ex01;
+package com.eomcs.basic.ex01;
 
 
 // 클래스블록 : 명령어가 들어 있는 블록
