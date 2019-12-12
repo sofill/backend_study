@@ -14,7 +14,7 @@ public class App2 {
     
     System.out.print("이름: ");
     String name = keyboard.nextLine();
-
+    
     System.out.print("이메일: ");
     String email = keyboard.nextLine();
     

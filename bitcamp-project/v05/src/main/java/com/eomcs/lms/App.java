@@ -16,10 +16,10 @@ public class App {
     // 오른쪽 keyboard.nextLine();이 리턴한 결과값을 no에 저장한다는 의미
 
     keyboard.nextLine(); // nextInt() 후에 남아있는 줄바꿈 기호를 제거하는 용도로..
-
+    
     System.out.print("수업명: ");
     String title = keyboard.nextLine();
-     
+      
     System.out.print("설명: " );
     String explain = keyboard.nextLine(); // nextLine을 쓸 때 조심해야 함.
     
