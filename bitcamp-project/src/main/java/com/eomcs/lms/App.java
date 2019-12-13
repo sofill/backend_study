@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class App {
   public static void main(String[] args) {
    
-    Scanner keyboard = new java.util.Scanner(System.in);
+    Scanner keyboard = new Scanner(System.in);
     // Scanner : 키보드에서 사용자가 입력한 값을 읽어 
     // 문자열이나 정수, 부동소수점 등으로 리턴하는 역할
 
