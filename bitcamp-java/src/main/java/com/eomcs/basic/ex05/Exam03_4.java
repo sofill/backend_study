@@ -21,9 +21,10 @@ public class Exam03_4 {
         // 계산 순서 :
         // r = a | (b = true)
         // r = true | (b = true)
-        //   => |왼쪽 값으로 결과를 확정할 수 있더라도 무조건 오른쪽 문장을 시작한다.
-        // 
-        적다가 말았음. 나중에 채워넣기 
-        System.out.printf("a=%b, b=%b, r=%b\n", a, b, r); // a=true, b=true, r=true
+        // => | 왼쪽 값으로 결과를 확정할 수 있더라도 무조건 오른쪽 문장을 실행한다.
+        // r = true | (b 변수에 true를 저장)
+        // r = true | true
+        // r = true
+        System.out.printf("a=%b, b=%b, r=%b\n", a, b, r);
+      }
     }
-}
