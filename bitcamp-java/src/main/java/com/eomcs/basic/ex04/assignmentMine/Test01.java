@@ -5,7 +5,7 @@
 // 연산자(+,-,*,/)? +
 // => 10 + 20 = 30 
 //
-package com.eomcs.basic.ex04.assignment;
+package com.eomcs.basic.ex04.assignmentMine;
 // 내가 하다가 만거 ㅠㅠ
 import java.util.Scanner;
 
