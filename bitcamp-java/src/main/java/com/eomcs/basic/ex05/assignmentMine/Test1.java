@@ -2,7 +2,7 @@ package com.eomcs.basic.ex05.assignmentMine;
 
 import java.util.Scanner;
 
-public class Test01 {
+public class Test1 {
   public static void main(String[] args) {
     // 변수 선언하기
     int sum = 0;
@@ -15,7 +15,7 @@ public class Test01 {
     int num2 = keyboard.nextInt();
 
     for (int i = num1; i <= num2; i++) {
-      sum = sum + i;
+      sum += sum + 1;
       System.out.printf("숫자 %d부터 %d까지 더한 값은 %d입니다.", num1, num2, sum);
     }
 
