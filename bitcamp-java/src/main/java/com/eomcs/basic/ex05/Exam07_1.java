@@ -1,6 +1,7 @@
 package com.eomcs.basic.ex05;
 
-// 할당 연산자  : +=  -=  *=  /=  %=  &=  |=  ^=  <<=  >>=  >>>=
+//# 할당 연산자  : +=  -=  *=  /=  %=  &=  |=  ^=  <<=  >>=  >>>=
+
 public class Exam07_1 {
     public static void main(String[] args) {
         int i = 2;
@@ -12,5 +13,8 @@ public class Exam07_1 {
         i = 2;
         i *= 5;
         System.out.println(i);
+        
+        boolean b = true;
+        //b != true; (컴파일오류!!) 이건 ==의 반대 != 이다.
     }
 }

@@ -1,12 +1,13 @@
 package com.eomcs.basic.ex05;
 
-// 조건 연산자 => ? :
+//# 조건 연산자 => ? :     //조건문이랑 다르다
+
 public class Exam05_1 {
     public static void main(String[] args) {
         // 조건연산자
-        // 조건 ? 표현식1 : 표현식2
+        // => 조건 ? 표현식1 : 표현식2 // 값을 리턴하는 문장
         // => 조건이 참이면 표현식1을 실행하고,
-        //    조건이 거짓이면 표현식2를 실행한다.
+        //      조건이 거짓이면 표현식2를 실행한다.
         int age = 20;
         /*
         (age > 18) ? System.out.println("성인이다.") : 
@@ -22,12 +23,12 @@ public class Exam05_1 {
     }
 }
 
-// 표현식(expression)?
-// - 작업을 수행한 후 결과를 리턴하는 명령이다.
+// 표현식(expression)? 
+// - 작업을 수행한 후 결과를 리턴하는 명령이다. ★중요
 //
 // 문장(statement)?
-// - 작업을 수행시키는 명령어이다.
+// - 작업을 수행시키는 명령어이다. ★중요
 //
 // 문장과 표현식의 관계
-// - statement 중에서 결과를 리턴하는 statement를 expression이라 부른다.
+// - statement 중에서 결과를 리턴하는 statement를 expression이라 부른다. ★중요
 //
