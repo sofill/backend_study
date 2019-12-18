@@ -1,9 +1,9 @@
-package com.eomcs.basic.ex06.assignment;
+package com.eomcs.basic.ex06.assignmentTeacher;
 
 import java.util.Scanner;
 
 // 현재 과제와 유사한 결과를 내는 기존 소스를 가져온다.
-public class Test02 {
+public class Test02_01 {
 
   public static void main(String[] args) {
     Scanner keyScan = new Scanner(System.in);

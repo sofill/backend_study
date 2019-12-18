@@ -1,8 +1,8 @@
-package com.eomcs.basic.ex06.assignment;
+package com.eomcs.basic.ex06.assignmentTeacher;
 
 import java.util.Scanner;
 
-public class Test03 {
+public class Test03_04 {
 
   public static void main(String[] args) {
     int width = inputInt();

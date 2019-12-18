@@ -1,4 +1,4 @@
-package com.eomcs.basic.ex06.assignment;
+package com.eomcs.basic.ex06.assignmentTeacher;
 
 // 너비, 높이를 입력 받아 사각형을 그려라!
 public class Test05 {

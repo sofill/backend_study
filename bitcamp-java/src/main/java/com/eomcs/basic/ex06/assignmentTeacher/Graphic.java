@@ -1,4 +1,4 @@
-package com.eomcs.basic.ex06.assignmentTeacher
+package com.eomcs.basic.ex06.assignmentTeacher;
 
 public class Graphic {
   

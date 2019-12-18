@@ -1,6 +1,6 @@
-package com.eomcs.basic.ex06.assignment;
+package com.eomcs.basic.ex06.assignmentTeacher;
 
-public class Test03 {
+public class Test03_Last {
 
   public static void main(String[] args) {
     
