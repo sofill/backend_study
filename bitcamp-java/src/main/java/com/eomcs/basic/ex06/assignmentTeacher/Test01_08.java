@@ -14,7 +14,7 @@ public class Test01_08 {
     }
   }
   
-  static int inputInt() {
+  static int inputInt() { // 입력받는 애
     Scanner keyScan = new Scanner(System.in);
     System.out.print("밑변 길이? ");
     int width = keyScan.nextInt();
@@ -22,7 +22,7 @@ public class Test01_08 {
     return width;
   }
   
-  static void drawLine(int length) {
+  static void drawLine(int length) { // 별 찍는 애
     int x = 0;
     while (x++ < length) {
       System.out.print("*");

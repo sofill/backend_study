@@ -5,7 +5,7 @@ public class Test03_06 {
   public static void main(String[] args) {
     
     int width = Console.inputInt();
-    
+
     if (width % 2 == 0)
       width--;
     
