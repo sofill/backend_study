@@ -9,14 +9,15 @@ public class App {
 
     Scanner keyboard = new Scanner(System.in);
     
-    // 강의 정보를 담을 메모리의 설계도를 만든다.
-    // 클래스?
-    // - 애플리케이션에서 다룰 특정 데이터(수업정보, 학생정보, 게시물, 제품정보 등)의
-    //   메모리 구조를 설계하는 문법이다.
-    // - 이렇게 개발자가 새롭게 정의한 데이터 타입을
-    //   "사용자 정의 데이터 타입"이라 부른다. 
-    // - 즉 '클래스'는 '사용자 정의 데이터 타입'을 만들 때 사용하는 문법이다. 
-    //
+    String command;
+    do {
+    System.out.print("명령> ");
+    command = keyboard.nextLine();
+    } while (!command.equalsIgnoreCase("quit"));
+    
+    System.out.println("안녕!!");
+    
+    /*
     class Lesson { 
       int no;
       String title;
@@ -29,13 +30,7 @@ public class App {
 
     final int SIZE = 100;
 
-    // Lesson 인스턴스 주소를 담을 레퍼런스 배열을 만든다. 
     Lesson[] lessons = new Lesson[SIZE];
-
-//    // Lesson 인스턴스를 미리 준비한다. 
-//    for (int i = 0; i < SIZE; i++) {
-//      lessons[i] = new Lesson();
-//    }   => 인스턴스는 필요할 때 그때그때 만들어서 쓴다. 미리 준비 하지 말자. 
     
     int count = 0;    
 
@@ -90,7 +85,7 @@ public class App {
           lesson.endDate, lesson.totalHours, 
           lesson.dayHours);      
     }
-
+*/
     keyboard.close();
   }
 }
