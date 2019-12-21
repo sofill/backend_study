@@ -19,15 +19,14 @@ public class Test04 {
     m1 = new Member();
     m1.no = 100;
 
-    System.out.println(m1); // @ 뒤는 고유번호, 
-    // 인스턴스에 부여된 고유번호와 클래스명이 출력된다. 
-    System.out.println(m1.no); 
+    System.out.println(m1); // @ 뒤는 고유번호,
+    // 인스턴스에 부여된 고유번호와 클래스명이 출력된다.
+    System.out.println(m1.no);
 
     // 레퍼런스의 주소를 없애는 방법
-    m1 = null; // 주소가 없다는 의미로, 실제 메모리에 0으로 설정된다. 
-    System.out.println(m1);  
-    System.out.println(m1.no); // 주소가 없어졌는데 값을 어떻게 꺼내냐고 에러 뜸.
-
+    // m1 = null; // 주소가 없다는 의미로, 실제 메모리에 0으로 설정된다. ★
+    System.out.println(m1);
+    System.out.println(m1.no); // 주소가 없어졌는데 값을 어떻게 꺼내?? 하고 에러 뜸.
 
 
 
