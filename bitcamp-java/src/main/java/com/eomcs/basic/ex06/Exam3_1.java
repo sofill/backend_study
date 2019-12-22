@@ -15,7 +15,7 @@ public class Exam3_1 {
 
     System.out.println("---------------------------");
 
-    // while (조건) {}
+    // while (조건) { }
     // => 여러 개의 문장을 반복 실행하려면 블록으로 묶어라!
     count = 0;
     while (count < 5) {

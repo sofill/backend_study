@@ -11,15 +11,15 @@ public class Test21 {
     float height;
     float weight;
     boolean personalTraining;
-    // <=여러 메소드가 사용할 클래스는 main 밖으로 꺼내고 static을 붙인다.
+    // <=여러 메서드가 사용할 클래스는 main 밖으로 꺼내고 static을 붙인다.
   }
 
   public static void main(String[] agrs) {
 
     // 1. 인스턴스 주소 주고 받기
     // 1) 인스턴스 주소 받기
-    Member m1;
-    m1 = createMember();
+    Member m1; // 레퍼런스 선언
+    m1 = createMember(); // 인스턴스 생성
 
     // 2) 인스턴스의 주소 넘기기 (????)
     setMemberValues(m1);
@@ -27,14 +27,15 @@ public class Test21 {
   }
 
   static Member createMember() { // void -> Member로
-    Member m = new Member();
-    return m;
+    Member m = new Member(); // 인스턴스 생성(객체 생성)
+    return m; // 주소를 넘긴 것임.
+    // Call by reference 에서 넘기고 받는 것은 "주소"다.
   }
 
   static void setMemberValues(Member m) { // ()에 2)의 주소 넣음
     m.no = 100;
     m.name = "홍길동";
-    m.birthYear = 2000;
+    m.birthYear = 2000;ㅗ
   }
 
   static void printMember(Member m) { // ()에 2)의 주소 넣음

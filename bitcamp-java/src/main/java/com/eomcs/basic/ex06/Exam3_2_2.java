@@ -28,7 +28,7 @@ public class Exam3_2_2 {
     }
     System.out.printf("count=%d, sum=%d\n", count, sum);
 
-    System.out.println("------------------------");
+    System.out.println("--------------------------");
 
     // break 사용 후 
     // 0부터 99까지의 카운트를 하는데 단 합은 50까지만 계산한다.

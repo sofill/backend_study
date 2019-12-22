@@ -24,7 +24,7 @@ public class Exam0230 {
   public static void main(String[] args) {
 
     // hello() 메서드를 실행하고, 그 리턴 값을 변수에 담는다.
-    String r = hello();
+    String r = hello(); //String r = "안녕하세요!"
     System.out.println(r);
 
     // 메서드가 값을 리턴한다고 해서 반드시 그 값을 변수에 받아야 하는 것은 아니다.

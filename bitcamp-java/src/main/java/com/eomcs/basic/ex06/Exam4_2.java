@@ -5,7 +5,7 @@ package com.eomcs.basic.ex06;
 public class Exam4_2 {
   public static void main(String[] args) {
     // for 문 안에 선언된 변수는 for 문을 나가는 순간 제거된다.
-    for (int i = 1; i <= 5; i++) 
+    for (int i = 1; i <= 5; i++)   // i는 지역변수이기 때문에...
       System.out.println(i);
 
     // 그래서 다음과 같이 i 변수의 값을 조회하려 하면 

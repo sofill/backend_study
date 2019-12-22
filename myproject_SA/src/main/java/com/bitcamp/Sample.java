@@ -1,4 +1,4 @@
-package com.bitcamp.words;
+package com.bitcamp;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

@@ -8,23 +8,22 @@ public class Exam3_2_1 {
     int sum = 0;
 
     // 1부터 100까지의 합은?
-    while (count < 100) {
+    while (count < 100) { //0
 //      count++;
 //      sum += count;
         sum += ++count;
     }
     System.out.printf("count=%d, sum=%d\n", count, sum);
-
     System.out.println("------------------------");
 
     // continue 사용 전
     // 1부터 100까지의 짝수의 합은?
     count = 0;
     sum = 0;
-    while (count < 100) {
-      count++;
+    while (count < 100) { 
+      count++; 
       if (count % 2 == 0) {
-        sum += count;
+        sum += count; 
       }
     }
     System.out.printf("count=%d, sum=%d\n", count, sum);

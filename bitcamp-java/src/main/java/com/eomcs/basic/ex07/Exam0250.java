@@ -22,7 +22,7 @@ public class Exam0250 {
     System.out.println("-------------------");
 
     hello("홍길동"); // 이 경우 names 배열의 개수는 1이다.
-    System.out.println("-------------------" + "12313123" + "!231232"); 
+    System.out.println("-------------------"); 
 
     hello("홍길동", "임꺽정", "유관순"); // 이 경우 names 배열의 개수는 3이다.
     System.out.println("-------------------"); 
