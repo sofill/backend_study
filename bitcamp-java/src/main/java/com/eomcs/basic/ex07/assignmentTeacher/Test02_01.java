@@ -1,6 +1,6 @@
-package com.eomcs.basic.ex07.assignment;
+package com.eomcs.basic.ex07.assignmentTeacher;
 
-public class Test02 {
+public class Test02_01 {
   public static void main(String[] args) {
     int[] values = {34, 4, -3, 78, 12, 22, 45, 0, -22};
     
@@ -14,6 +14,11 @@ public class Test02 {
     // -22, -3, 0, 4, 12, 22, 34, 45, 78
   }
   
-  
-  
+  static void sort(int[] values) {
+    
+  }
 }
+
+
+
+

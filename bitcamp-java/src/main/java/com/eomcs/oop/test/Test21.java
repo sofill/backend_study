@@ -35,7 +35,7 @@ public class Test21 {
   static void setMemberValues(Member m) { // ()에 2)의 주소 넣음
     m.no = 100;
     m.name = "홍길동";
-    m.birthYear = 2000;ㅗ
+    m.birthYear = 2000;
   }
 
   static void printMember(Member m) { // ()에 2)의 주소 넣음

@@ -1,4 +1,4 @@
-package com.eomcs.basic.ex07.assignment;
+package com.eomcs.basic.ex07.assignmentTeacher;
 
 public class Test03 {
   public static void main(String[] args) {
