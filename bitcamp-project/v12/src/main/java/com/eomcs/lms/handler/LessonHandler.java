@@ -5,18 +5,15 @@ import java.util.Scanner;
 import com.eomcs.lms.domain.Lesson;
 
 public class LessonHandler {
-
-  // 인스턴스 필드 = 논스태틱 필드
-  // 각 수업 목록을 개별적으로 관리
-  Lesson[] lessons = new Lesson[LESSON_SIZE];
-  int lessonCount = 0;
-
-  // 클래스 필드 = 스태틱 필드
-  // => 공유할 변수
+  
   static final int LESSON_SIZE = 100;
+  static Lesson[] lessons = new Lesson[LESSON_SIZE];
+  static int lessonCount = 0;
+  
+  // 다른 패키지에 있는 클래스에서도 이 변수를 사용하게 하려면 공개해야 한다. 
   public static Scanner keyboard;
 
-  public static void addLesson(LessonHandler lessonHandler) {
+  public static void addLesson() {
 
     Lesson lesson = new Lesson();
     //  (레퍼런스)
@@ -47,15 +44,15 @@ public class LessonHandler {
 
     // 수업 정보를 담고 있는 인스턴스의 주소를 나중에 사용할 수 있도록
     // 레퍼런스 배열에 보관해 둔다.
-    lessonHandler.lessons[lessonHandler.lessonCount++] = lesson;
+    lessons[lessonCount++] = lesson;
     System.out.println("저장하였습니다.");
   }
+  
 
+  public static void listLesson() {
 
-  public static void listLesson(LessonHandler lessonHandler) {
-
-    for (int i = 0; i < lessonHandler.lessonCount; i++) {
-      Lesson l = lessonHandler.lessons[i];
+    for (int i = 0; i < lessonCount; i++) {
+      Lesson l = lessons[i];
       System.out.printf("%d. %s / %s / %s ~ %s / %d / %d\n", 
           l.no, l.title, 
           l.description, l.startDate, 
@@ -64,3 +61,4 @@ public class LessonHandler {
     }
   }
 }
+  

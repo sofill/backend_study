@@ -6,25 +6,16 @@ import com.eomcs.lms.domain.Board;
 
 public class BoardHandler {
 
-    // 인스턴스 필드
-    // => new 명령을 실행해야만 생성되는 변수이다. 
-    // => 개별적으로 관리되어야 하는 값일 경우 인스턴스 필드로 선언한다. 
-    //
-  Board[] boards = new Board[BOARD_SIZE]; // Board 인스턴스의 주소를 담을 레퍼런스 배열을 준비한다. 
-  int boardCount = 0;   
-  
-    // 클래스 필드
-    // => Method Area에 클래스 코드가 로딩될 때 자동 생성된다. 
-    // => 공통으로 사용할 값일 경우 클래스 필드로 선언한다. 
-    //
+
   static final int BOARD_SIZE = 100;
+  // Board 인스턴스의 주소를 담을 레퍼런스 배열을 준비한다. 
+  static Board[] boards = new Board[BOARD_SIZE];
+  static int boardCount = 0;  
+
+  // 다른 패키지에 있는 클래스에서도 이 변수를 사용하게 하려면 공개해야 한다. 
   public static Scanner keyboard;
 
-    // 클래스 메서드
-    // => 인스턴스 없이 호출하는 메서드이다. 
-    // => 인스턴스를 사용하려면 파라미터를 통해 호출할 때 외부에서 받아야 한다. 
-    //
-  public static void addBoard(BoardHandler boardHandler) {
+  public static void addBoard() {
 
     Board board = new Board();
 
@@ -39,26 +30,26 @@ public class BoardHandler {
     board.viewCount = 0;
 
     // 게시물 데이터가 보관된 Board 인스턴스의 주소를 레퍼런스 배열에 저장한다. 
-    boardHandler.boards[boardHandler.boardCount++] = board; 
+    boards[boardCount++] = board; 
     System.out.println("저장하였습니다.");
   }
 
-  public static void listBoard(BoardHandler boardHandler) {
-    for (int i = 0; i < boardHandler.boardCount; i++) {
-      Board b = boardHandler.boards[i];
+  public static void listBoard() {
+    for (int i = 0; i < boardCount; i++) {
+      Board b = boards[i];
       System.out.printf("%d. %s, %s, %d\n", 
           b.no, b.title, b.date, b.viewCount);
     }
   }
-  public static void detailBoard(BoardHandler boardHandler) {
+  public static void detailBoard() {
     System.out.print("게시물 번호? ");
     int no = keyboard.nextInt();
     keyboard.nextLine(); // 숫자 뒤에 남은 공백 제거
     
     Board board = null; // 게시물 인덱스번호 말고 게시물 번호로 출력할 수 있도록 바꾸는 것
-    for (int i = 0; i < boardHandler.boardCount; i++) {
-      if (boardHandler.boards[i].no == no) {
-        board = boardHandler.boards[i];
+    for (int i = 0; i < boardCount; i++) {
+      if (boards[i].no == no) {
+        board = boards[i];
         break;
       }
     }
