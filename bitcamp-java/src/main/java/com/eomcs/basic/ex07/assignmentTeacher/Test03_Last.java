@@ -1,6 +1,6 @@
 package com.eomcs.basic.ex07.assignmentTeacher;
 
-public class Test03_Dev {
+public class Test03_Last {
   public static void main(String[] args) {
     int[] values = {34, 4, -3, 78, 12, 22, 45, 0, -22};
 
@@ -15,11 +15,10 @@ public class Test03_Dev {
   static void reverse(int[] values) {
     int count = values.length >> 1;
     int temp = 0;
-    int endPos = values.length - 1;
-    for (int i = 0; i < count; i++) {
+    for (int i = 0, j = values.length - 1; i < count; i++, j--) {
       temp = values[i];
-      values[i] = values[endPos - i];
-      values[endPos - i] = temp;
+      values[i] = values[j];
+      values[j] = temp;
     }
   }
   

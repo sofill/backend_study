@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.util.Scanner;
 import com.eomcs.lms.domain.Board;
 
-public class BoardHandler {
+public class BoardHandler3 {
 
 
   static final int BOARD_SIZE = 100;
@@ -65,4 +65,4 @@ public class BoardHandler {
       System.out.printf("조회수: %d\n", board.viewCount);
 
     }
-  }
+}

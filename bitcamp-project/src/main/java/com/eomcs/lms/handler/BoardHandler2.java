@@ -4,17 +4,17 @@ import java.sql.Date;
 import java.util.Scanner;
 import com.eomcs.lms.domain.Board;
 
-public class BoardHandler {
+public class BoardHandler2 {
 
 
   static final int BOARD_SIZE = 100;
   // Board 인스턴스의 주소를 담을 레퍼런스 배열을 준비한다. 
   static Board[] boards = new Board[BOARD_SIZE];
   static int boardCount = 0;  
-
+  
   // 다른 패키지에 있는 클래스에서도 이 변수를 사용하게 하려면 공개해야 한다. 
   public static Scanner keyboard;
-
+  
   public static void addBoard() {
 
     Board board = new Board();
@@ -40,6 +40,7 @@ public class BoardHandler {
       System.out.printf("%d. %s, %s, %d\n", 
           b.no, b.title, b.date, b.viewCount);
     }
+    
   }
   public static void detailBoard() {
     System.out.print("게시물 번호? ");
@@ -65,4 +66,4 @@ public class BoardHandler {
       System.out.printf("조회수: %d\n", board.viewCount);
 
     }
-  }
+}

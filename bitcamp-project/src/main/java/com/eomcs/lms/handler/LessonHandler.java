@@ -2,19 +2,9 @@ package com.eomcs.lms.handler;
 
 import java.sql.Date;
 import java.util.Scanner;
+import com.eomcs.lms.domain.Lesson;
 
 public class LessonHandler {
-
-  static class Lesson { 
-    int no;
-    String title;
-    String description;
-    Date startDate;
-    Date endDate;
-    int totalHours;
-    int dayHours;      
-  }
-  
   
   static final int LESSON_SIZE = 100;
   static Lesson[] lessons = new Lesson[LESSON_SIZE];
@@ -22,7 +12,6 @@ public class LessonHandler {
   
   // 다른 패키지에 있는 클래스에서도 이 변수를 사용하게 하려면 공개해야 한다. 
   public static Scanner keyboard;
-
 
   public static void addLesson() {
 
