@@ -1,4 +1,4 @@
-package com.eomcs.lms;
+package com.eomcs.lms.handler;
 
 import java.sql.Date;
 import java.util.Scanner;
@@ -15,9 +15,11 @@ public class BoardHandler {
   // Board 인스턴스의 주소를 담을 레퍼런스 배열을 준비한다. 
   static Board[] boards = new Board[BOARD_SIZE];
   static int boardCount = 0;  
-  static Scanner keyboard;
   
-  static void addBoard() {
+  // 다른 패키지에 있는 클래스에서도 이 변수를 사용하게 하려면 공개해야 한다. 
+  public static Scanner keyboard;
+  
+  public static void addBoard() {
 
     Board board = new Board();
 
@@ -36,7 +38,7 @@ public class BoardHandler {
     System.out.println("저장하였습니다.");
   }
 
-  static void listBoard() {
+  public static void listBoard() {
     for (int i = 0; i < boardCount; i++) {
       Board b = boards[i];
       System.out.printf("%d, %s, %s, %d\n", 

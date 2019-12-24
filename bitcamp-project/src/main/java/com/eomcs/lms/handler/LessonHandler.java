@@ -1,4 +1,4 @@
-package com.eomcs.lms;
+package com.eomcs.lms.handler;
 
 import java.sql.Date;
 import java.util.Scanner;
@@ -19,11 +19,12 @@ public class LessonHandler {
   static final int LESSON_SIZE = 100;
   static Lesson[] lessons = new Lesson[LESSON_SIZE];
   static int lessonCount = 0;
-  static Scanner keyboard; // 객체 지향에서는 크로스 참조는 절대 하면 안된다. 서로 참조하는 것 x
+  
+  // 다른 패키지에 있는 클래스에서도 이 변수를 사용하게 하려면 공개해야 한다. 
+  public static Scanner keyboard;
 
 
-
-  static void addLesson() {
+  public static void addLesson() {
 
     Lesson lesson = new Lesson();
     //  (레퍼런스)
@@ -59,7 +60,7 @@ public class LessonHandler {
   }
   
 
-  static void listLesson() {
+  public static void listLesson() {
 
     for (int i = 0; i < lessonCount; i++) {
       Lesson l = lessons[i];
