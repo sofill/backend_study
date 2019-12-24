@@ -33,7 +33,8 @@ public class BoardHandler {
     board.date = new Date(System.currentTimeMillis());
     board.viewCount = 0;
 
-    // 게시물 데이터가 보관된 Board 인스턴스의 주소를 레퍼런스 배열에 저장한다. 
+    // 수업 정보를 담고 있는 인스턴스의 주소를 나중에 사용할 수 있도록
+    // 레퍼런스 배열에 보관해 둔다.
     boards[boardCount++] = board; 
     System.out.println("저장하였습니다.");
   }

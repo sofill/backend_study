@@ -42,10 +42,10 @@ public class App {
           LessonHandler.listLesson(정규수업);
           break;
         case "/member/add":
-          MemberHandler.addMember(일반회원);
+          MemberHandler.addMember( );
           break;
         case "/member/list":
-          MemberHandler.listMember(일반회원);
+          MemberHandler.listMember();
           break;
         case "/board/add" :
           BoardHandler.addBoard(게시판1);
