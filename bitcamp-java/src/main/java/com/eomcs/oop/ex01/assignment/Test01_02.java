@@ -1,0 +1,35 @@
+package com.eomcs.oop.ex01.assignment;
+
+import java.util.Scanner;
+
+public class Test01_02 {
+  public static void main(String[] args) {
+
+    class Score {
+      String name;
+      int kor;
+      int eng;
+      int math;
+    }
+
+    Scanner keyScan = new Scanner(System.in);
+
+    System.out.println("입력: ");
+
+    Score s = new Score();
+    
+    s.name = keyScan.next();
+    s.kor = keyScan.nextInt();
+    s.eng = keyScan.nextInt();
+    s.math = keyScan.nextInt();
+
+    keyScan.close();
+
+    System.out.println(s.name);
+    System.out.println(s.kor);
+    System.out.println(s.eng);
+    System.out.println(s.math);
+
+  }
+
+}
