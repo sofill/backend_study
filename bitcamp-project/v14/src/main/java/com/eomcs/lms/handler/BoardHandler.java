@@ -36,8 +36,8 @@ public class BoardHandler {
     // 이런 도구를 "의존 객체(dependency object)"라 부른다.
     // 보통 " dependency"라 부른다. 
     // 생성자에서 해야할 일은 인스턴스를 생성할 때 이런 의존 객체를 반드시 초기화시키도록 하는 것이다!!!
-    this.input = input;
-    this.boards = new Board[BOARD_SIZE];
+    this.input = input; //초기화
+    this.boards = new Board[BOARD_SIZE]; //위 배열의 레퍼런스 주소를 생성
   }
 
   public BoardHandler(Scanner input, int capacity) {
