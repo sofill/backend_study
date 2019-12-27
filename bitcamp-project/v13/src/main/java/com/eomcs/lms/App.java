@@ -15,15 +15,15 @@ public class App {
     // 그 메서드가 작업할 때 사용할 키보드 객체를 설정해 준다. 
     LessonHandler.keyboard = keyboard;
     MemberHandler.keyboard = keyboard;
-    //BoardHandler.keyboard = keyboard;
+    BoardHandler.keyboard = keyboard;
 
     // BoardHandler의 메서드가 사용할 메모리만 게시판마다 따로 생성한다. 
-    BoardHandler 게시판1 = new BoardHandler(keyboard);
-    BoardHandler 게시판2 = new BoardHandler(keyboard);
-    BoardHandler 게시판3 = new BoardHandler(keyboard);
-    BoardHandler 게시판4 = new BoardHandler(keyboard);
-    BoardHandler 게시판5 = new BoardHandler(keyboard);
-    BoardHandler 게시판6 = new BoardHandler(keyboard);
+    BoardHandler 게시판1 = new BoardHandler();
+    BoardHandler 게시판2 = new BoardHandler();
+    BoardHandler 게시판3 = new BoardHandler();
+    BoardHandler 게시판4 = new BoardHandler();
+    BoardHandler 게시판5 = new BoardHandler();
+    BoardHandler 게시판6 = new BoardHandler();
 
     LessonHandler 정규수업 = new LessonHandler();
 
@@ -61,7 +61,7 @@ public class App {
           break;
         case "/board3/detail": 게시판3.detailBoard();
           break;
-        case "/board4/add": 게시판4.addBoard();
+        case "/board4/add": 게시판4.BoardHandler.addBoard();
           break;
         case "/board4/list": 게시판4.listBoard();
           break;
@@ -77,7 +77,7 @@ public class App {
           break;
         case "/board6/list": 게시판6.listBoard();
           break;
-        case "/board6/detail": 게시판6.detailBoard();
+        case "/board6/detail": 게시판6.detailBoard(;
           break;
         default:
           if (!command.equalsIgnoreCase("quit")) {
