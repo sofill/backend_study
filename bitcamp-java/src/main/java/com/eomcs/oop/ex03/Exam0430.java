@@ -40,9 +40,7 @@ public class Exam0430 {
     Score s1 = new Score();
 
     // 인스턴스 생성 후에 나중에 따로 생성자를 호출할 수 없다!!!
-    Score s1 = new Score("ㅎㅎㄴㅇ허니알")
-
-        Score s2 = new Score("유관순");
+    Score s2 = new Score("유관순");
     Score s3 = new Score("홍길동", 100, 90, 77);
 
     System.out.printf("%s, %d, %d, %d, %d, %.1f\n",
