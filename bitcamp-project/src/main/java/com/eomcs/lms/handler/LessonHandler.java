@@ -6,19 +6,19 @@ import com.eomcs.lms.domain.Lesson;
 
 public class LessonHandler {
 
-  LessonList lessonList;
+  ArrayList lessonList;
 
   public Scanner input;
 
   
   public LessonHandler(Scanner input) {
     this.input = input;
-    this.lessonList = new LessonList();
+    this.lessonList = new ArrayList();
   }
 
   public LessonHandler(Scanner input, int capacity) {
     this.input = input;
-    lessonList = new LessonList(capacity);
+    lessonList = new ArrayList(capacity);
   }
   
   public void addLesson() {
@@ -56,8 +56,9 @@ public class LessonHandler {
 
 
   public void listLesson() {
-    Lesson[] lessons = lessonList.toArray();
-    for (Lesson l : lessons) {
+    Object[] arr = this.lessonList.toArray();
+    for (Object obj : arr) {
+      Lesson l = (Lesson) obj; //형변환 하기 위해 넣은 내용
       System.out.printf("%d. %s / %s / %s ~ %s / %d / %d\n", 
           l.getNo(), l.getTitle(), 
           l.getDescription(), l.getStartDate(), 

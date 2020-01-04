@@ -8,12 +8,12 @@ public class MemberHandler {
 
   public Scanner input;
   
-  MemberList memberList;
+  ArrayList memberList;
 
   
   public MemberHandler(Scanner input) {
     this.input = input;
-    this.memberList = new MemberList();
+    this.memberList = new ArrayList();
   }
   
   public void addMember() {
@@ -48,8 +48,9 @@ public class MemberHandler {
   }
 
   public void listMember() {
-    Member[] members = memberList.toArray();
-    for (Member m : members) {
+    Object[] arr = this.memberList.toArray();
+    for (Object obj : arr) {
+      Member m = (Member)obj;
       System.out.printf("%d. %s / %s / %s / %s\n", 
           m.getNo(), m.getName(), m.getEmail(), 
           m.getTel(), m.getRegisteredDate());
