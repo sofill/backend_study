@@ -2,7 +2,7 @@ package com.eomcs.basic.ex05;
 
 //# 비트 연산자 : &, |, ^, ~
 
-public class Exam03_5 {
+public class Exam0350 {
     public static void main(String[] args) {
         int a = 0b0110_1100;
         int b = 0b0101_0101;

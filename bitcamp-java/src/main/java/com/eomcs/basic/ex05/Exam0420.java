@@ -2,7 +2,7 @@ package com.eomcs.basic.ex05;
 
 // 비트 이동 연산자 : >>, >>>, << 
 
-public class Exam04_2 {
+public class Exam0420 {
   public static void main(String[] args) {
     // >> 비트 이동 연산자 사용법
     // - 왼쪽 쪽 빈자리를 원래 숫자와 같은 부호 값으로 채운다.
