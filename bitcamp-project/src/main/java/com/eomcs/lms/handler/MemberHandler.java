@@ -18,8 +18,8 @@ public class MemberHandler {
   public MemberHandler(Scanner input, int capacity){
     this.input = input;
     this.memberList = new ArrayList<>(capacity);
-
   }
+  
   public void listMember() {
     // MemberList의 보관된 값을 받을 배열을 준비한다.
     Member[] arr = new Member[this.memberList.size()];
