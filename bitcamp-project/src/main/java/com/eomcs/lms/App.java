@@ -28,6 +28,12 @@ public class App {
         case "/lesson/list":
           lessonHandler.listLesson();
           break;
+        case "/lesson/detail":
+          lessonHandler.detailLesson();
+          break; 
+        case "/lesson/update":
+          lessonHandler.updateLesson();
+          break;  
         case "/member/add":
           memberHandler.addMember();
           break;

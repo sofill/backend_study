@@ -7,7 +7,7 @@ public class ArrayList<E> {
   private static final int DEFAULT_CAPACITY = 2;
   
   Object[] elementData;
-  private int size;
+  int size;
   
   public ArrayList() {
     this.elementData = new Object[DEFAULT_CAPACITY];
@@ -87,16 +87,6 @@ public class ArrayList<E> {
     }
     return arr;
     */
-  }
-  
-  @SuppressWarnings("unchecked")
-  public E[] toArray(E[] arr) {
-    if (arr.length < this.size) {
-      // 파라미터로 받은 배열이 작을 때는 새 배열을 만들어 리턴.
-      return (E[]) Arrays.copyOf(this.elementData, this.size, arr.getClass());
-    }
-    System.arraycopy(this.elementData, 0, arr, 0, this.size);
-    return arr; // 넉넉할 때는 파라미터로 받은 배열을 그대로 리턴. 
   }
 }
 

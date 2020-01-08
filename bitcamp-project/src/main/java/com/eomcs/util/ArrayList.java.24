@@ -7,7 +7,7 @@ public class ArrayList<E> {
   private static final int DEFAULT_CAPACITY = 2;
   
   Object[] elementData;
-  private int size;
+  int size;
   
   public ArrayList() {
     this.elementData = new Object[DEFAULT_CAPACITY];

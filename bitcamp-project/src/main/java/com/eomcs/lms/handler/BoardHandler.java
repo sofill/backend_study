@@ -117,10 +117,6 @@ public class BoardHandler {
     this.boardList.remove(index);
     
     System.out.println("게시글을 삭제했습니다.");
-    
-    
-    
-  
   }
 
 }

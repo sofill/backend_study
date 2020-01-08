@@ -1,9 +1,9 @@
 package com.eomcs.lms.handler;
 
-import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Scanner;
+import com.eomcs.lms.domain.Board;
 import com.eomcs.lms.domain.Lesson;
-import com.eomcs.util.ArrayList;
 
 public class LessonHandler {
 
@@ -49,10 +49,10 @@ public class LessonHandler {
     lesson.setDescription(input.nextLine());
 
     System.out.print("시작일? ");
-    lesson.setStartDate(Date.valueOf(input.next()));
+    lesson.setStartDate(input.nextLine());
 
     System.out.print("종료일? ");
-    lesson.setEndDate(Date.valueOf(input.next()));
+    lesson.setEndDate(input.nextLine());
 
     System.out.print("총수업시간? ");
     lesson.setTotalHours(input.nextInt());
@@ -127,7 +127,7 @@ public class LessonHandler {
       System.out.println("정보 변경을 취소했습니다.");
       return;
     }
-    
+
     Lesson newLesson = new Lesson();
     newLesson.setNo(oldLesson.getNo());
     newLesson.setTitle(title);
@@ -137,17 +137,48 @@ public class LessonHandler {
     newLesson.setEndDate(endDate);
     newLesson.setTotalHours(totalHours);
     newLesson.setDayHours(dayHours);
-    
+
     this.lessonList.set(index,  newLesson);
-    
+
     System.out.println("수업 정보를 변경했습니다.");
   }
-  
-  
-    
-    
 
+
+  public void detailBoard() {
+    System.out.print("게시글 인덱스? ");
+    int index = input.nextInt();
+    input.nextLine(); // 숫자 뒤의 남은 공백 제거
+
+    Board board = this.lessonList.get(index);
+
+    if (board == null) {
+      System.out.println("게시글 인덱스가 유효하지 않습니다.");
+      return;
+    }
+
+    System.out.printf("번호: %d\n", board.getNo());
+    System.out.printf("수업명: %s\n", board.getTitle());
+    System.out.printf("설: %s\n", board.getDate());
+    System.out.printf("조회수: %d\n", board.getViewCount());
+  }
+  
+  public void deleteLesson() {
+    System.out.print("수업 인덱스? ");
+    int index = input.nextInt();
+    input.nextLine(); // 숫자 뒤의 남은 공백 제거
+
+    Board board = this.lessonList.get(index);
+
+    if (board == null) {
+      System.out.println("수업 인덱스가 유효하지 않습니다.");
+      return;
+    }
+
+    this.lessonList.remove(index);
+
+    System.out.println("게시글을 삭제했습니다.");
   }
 }
+
 
 
