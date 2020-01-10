@@ -26,20 +26,31 @@ public class ArrayListTest {
     System.out.println("---------------");
     
     print(a1);
-    //a1.size = 10;
+    
     a1.remove(-1);
-    a1.size();
+    
     oldValue = a1.remove(5);
     System.out.printf("삭제 전(%s) ==> 삭제 후(%s)\n", oldValue, a1.get(0));
     
     System.out.println("---------------");
     
     print(a1);
+    
+    System.out.println("---------------");
+    
+    a1.add(0, "1111");
+    a1.add(3, "2222");
+    a1.add(6, "3333");
+    a1.add(-1, "4444");
+    a1.add(8, "5555");
+    print(a1);
+    
+    System.out.println("---------------");
+    
   }
   
   static void print(ArrayList<String> arr) {
-    String[] list = new String[arr.size()];
-    arr.toArray(list);
+    String[] list = arr.toArray(new String[0]);
     for (String e : list) {
       System.out.println(e);
     }

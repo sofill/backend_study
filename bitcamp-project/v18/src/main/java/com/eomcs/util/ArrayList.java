@@ -4,11 +4,13 @@ import java.util.Arrays;
 
 public class ArrayList<E> {
   
+  ///필드///
   static final int DEFAULT_CAPACITY = 3;
   
   Object[] list;
   int size = 0;
   
+  ///생성자///
   public ArrayList() {
     this.list = new Object[DEFAULT_CAPACITY];
   }
@@ -20,6 +22,7 @@ public class ArrayList<E> {
       this.list = new Object[capacity];
   }
 
+  ///메서드///
   @SuppressWarnings({"unchecked"})
   public E[] toArray(E[] arr) {
     
@@ -55,7 +58,7 @@ public class ArrayList<E> {
     }
   }
   
-  public int size() {
+  public int size() { //내 배열 사이즈가 몇 개인지 알려주는 메서드
     return this.size;
   }
 }

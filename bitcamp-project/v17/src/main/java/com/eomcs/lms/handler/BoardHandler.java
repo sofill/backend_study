@@ -21,6 +21,16 @@ public class BoardHandler {
     boardList = new ArrayList(capacity);
   }
 
+  public void listBoard() {
+    Object[] arr = this.boardList.toArray();
+    for (Object obj : arr) {
+      Board b = (Board)obj;
+      System.out.printf("%d, %s, %s, %d\n", 
+          b.getNo(), b.getTitle(), b.getDate(), 
+          b.getViewCount());
+    }
+  }
+  
   public void addBoard() {
     Board board = new Board(); 
 
@@ -37,16 +47,6 @@ public class BoardHandler {
     boardList.add(board); //값을 넣은 객체를 레퍼런스 배열에 저장
 
     System.out.println("저장하였습니다.");
-  }
-
-  public void listBoard() {
-    Object[] arr = this.boardList.toArray();
-    for (Object obj : arr) {
-      Board b = (Board)obj;
-      System.out.printf("%d, %s, %s, %d\n", 
-          b.getNo(), b.getTitle(), b.getDate(), 
-          b.getViewCount());
-    }
   }
 
   public void detailBoard() {

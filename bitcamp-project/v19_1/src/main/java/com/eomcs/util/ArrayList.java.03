@@ -1,12 +1,12 @@
 package com.eomcs.util;
-
+//3) 인스턴스 변수 초기화를 생성자로 옮긴다. 
 public class ArrayList {
   
   Object[] elementData;
   int size;
   
   public ArrayList() {
-    super();
+    super(); //생성자 생성시 자동으로 생성되므로 생략 가능함.
     
     this.elementData = new Object[100];
   }

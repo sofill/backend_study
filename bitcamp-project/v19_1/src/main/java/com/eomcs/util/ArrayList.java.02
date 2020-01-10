@@ -1,5 +1,5 @@
 package com.eomcs.util;
-
+// 2) 객체 목록을 다룰 때 사용할 인스턴스 변수 준비
 public class ArrayList {
   
   Object[] elementData = new Object[100];
