@@ -1,5 +1,5 @@
 package com.eomcs.util;
-
+// 12) add() 변경 : 배열이 꽉 차면 50% 증가시킨다. 
 import java.util.Arrays;
 
 public class ArrayList {

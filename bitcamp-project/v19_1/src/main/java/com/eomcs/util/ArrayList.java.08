@@ -1,5 +1,5 @@
 package com.eomcs.util;
-
+// 8) 객체를 목록에 저장하는 add() 메서드를 정의한다. 
 public class ArrayList {
   
   private static final int DEFAULT_CAPACITY = 10;
@@ -24,6 +24,8 @@ public class ArrayList {
   }
 }
 
+	public void add(Object e) {
+		this.elementData[this.size++] = e;
 
 
 

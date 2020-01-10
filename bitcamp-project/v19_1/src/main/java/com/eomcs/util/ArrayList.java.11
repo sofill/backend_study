@@ -1,5 +1,5 @@
 package com.eomcs.util;
-
+// 11) 목록에 저장된 특정 위치의 값을 삭제하는 remove() 메서드를 정의한다. 
 public class ArrayList {
   
   private static final int DEFAULT_CAPACITY = 10;

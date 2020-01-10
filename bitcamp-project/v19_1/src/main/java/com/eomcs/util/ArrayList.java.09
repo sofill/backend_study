@@ -1,5 +1,5 @@
 package com.eomcs.util;
-
+// 9) 객체를 목록에서 꺼내는 get() 메서드를 정의한다. 
 public class ArrayList {
   
   private static final int DEFAULT_CAPACITY = 10;

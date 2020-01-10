@@ -1,5 +1,5 @@
 package com.eomcs.util;
-
+// 10) 목록의 저장된 특정 위치의 값을 변경하는 set() 메서드를 정의한다. 
 public class ArrayList {
   
   private static final int DEFAULT_CAPACITY = 10;

@@ -30,6 +30,6 @@ public class Exam0440 {
 // 3) main() => m1() => m2()
 // 4) main() => m1()
 // 5) main() => m1() => m3()
-// 6) main() => m1()++.00
+// 6) main() => m1()
 // 7) main()
 // 8) 종료!

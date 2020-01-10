@@ -1,7 +1,7 @@
 package com.eomcs.basic.ex05;
 
-//# 산술 연산자 : 암시적 형변환  
- 
+//# 산술 연산자 : 암시적 형변환(implicit type conversion)
+//
 public class Exam0150 {
   public static void main(String[] args) {
     byte b = 1;
@@ -14,9 +14,8 @@ public class Exam0150 {
     char c = 7;
 
     // byte + byte = int
-    // => 연산을 하기 전에 byte 값이 int로 암시적 형변환 된다. (자바가 '알아서' 하는걸 말함~)
-    //
-    // byte r1 = b + b; // 컴파일 오류!
+    // => 연산을 하기 전에 byte 값이 int로 암시적 형변환 된다.
+    //byte r1 = b + b; // 컴파일 오류!
 
     // short + short = int
     // => 연산을 하기 전에 short 값이 int로 암시적 형변환 된다.
@@ -59,7 +58,7 @@ public class Exam0150 {
     // boolean + int = 컴파일 오류!
     // => 산술 연산자는 정수 타입(byte, short, char, int, long)과
     //    부동소수점 타입(float, double)에 대해서만 
-    //    실행할 수 있다. ★형변환 자체를 안한다!
+    //    실행할 수 있다. 
     //int r12 = bool + i; // 컴파일 오류!
   }
 }
@@ -72,7 +71,7 @@ public class Exam0150 {
 //   "암시적 형변환(implicit type conversion)"이라 부른다.
 // - 암시적 형변환 규칙
 //   다음과 같이 오른쪽 타입의 값으로 자동 변환시킨다.
-//   byte,short,char => int => long => float => double ★ (!) 
+//   byte,short,char => int => long => float => double
 //
 // - 정수와 부동소수점에 대해서만 암시적 형변환이 일어난다.
 //   그 외 다른 타입은 불가능하다!

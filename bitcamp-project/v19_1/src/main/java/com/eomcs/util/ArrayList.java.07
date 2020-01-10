@@ -1,5 +1,5 @@
 package com.eomcs.util;
-
+// 7) 생성자에서 배열을 만들 때 초기 크기가 기본 크기 보다 작다면 기본 크기로 배열을 만든다. 
 public class ArrayList {
   
   private static final int DEFAULT_CAPACITY = 10;

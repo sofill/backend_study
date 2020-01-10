@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Exam0110 {
   public static void main(String[] args) {
     Scanner keyScan = new Scanner(System.in);
-    System.out.print("밑변의 길이만큼 별을 찍어라 밑변을 입력하시오. ");
+    System.out.print("밑변의 길이? ");
     int len = keyScan.nextInt();
 
     int starLen = 1;

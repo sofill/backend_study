@@ -1,5 +1,5 @@
 package com.eomcs.util;
-//3) 인스턴스 변수 초기화를 생성자로 옮긴다. 
+// 3) 인스턴스 변수 초기화를 생성자로 옮긴다. 
 public class ArrayList {
   
   Object[] elementData;

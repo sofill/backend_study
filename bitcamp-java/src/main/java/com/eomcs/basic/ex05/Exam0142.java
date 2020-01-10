@@ -1,27 +1,26 @@
 package com.eomcs.basic.ex05;
 
 //# 산술 연산자 : 연산의 결과 타입
- 
+//
 public class Exam0142 {
   public static void main(String[] args) {
     // int와 int의 연산 결과는 int이다.
     // 다른 타입이 될 수 없다.
-    // 0111 1111 1111 1111 1111 1111 1111 1111 = Integer.MAX_VALUE
-
+    // => 0111 1111 1111 1111 1111 1111 1111 1111 = Integer.MAX_VALUE
+    //
     int x = Integer.MAX_VALUE; // 0x7fffffff = 약 +21억
     int y = Integer.MAX_VALUE; // 0x7fffffff = 약 +21억
-
+    
     int r1 = x + y; // 0x7fffffff + 0x7fffffff = 0xfffffffe = -2
-    //     0111 1111 1111 1111 1111 1111 1111 1111 (x) 
-    // + 0111 1111 1111 1111 1111 1111 1111 1111 (y)
-    // ---------------------------------------
-    //     1111 1111 1111 1111 1111 1111 1111 1110  (r1) <-  4 바이트에서 첫 번째 자리가 1 이면 음수다...!!
+    //   0111 1111 1111 1111 1111 1111 1111 1111(x)
+    // + 0111 1111 1111 1111 1111 1111 1111 1111(y)
+    // ---------------------------------------------
+    //   1111 1111 1111 1111 1111 1111 1111 1110(r1)
     System.out.println(r1); // int(4byte) + int(4byte) = int(4byte)
     // => int와 int의 연산 결과가 int의 범위를 넘어가면 
-    //       의도한 결과가 낭지 않을 수 있다. (짤려서)
-    //       
-
-    // 그럼 int와 int의 연산 결과를 더 큰 메모리에 담는다면 해결될까??
+    //    의도한 결과가 나오지 않을 수 있다.
+    
+    // 그래서 int와 int의 연산 결과를 더 큰 메모리에 담는다면 해결될까?
     long r2 = x + y;  // 0x7fffffff + 0x7fffffff = 0xfffffffe = -2
     System.out.println(r2); // int(4byte) + int(4byte) = int(4byte)
     // 해결 안됨!
@@ -33,12 +32,10 @@ public class Exam0142 {
     // - long 변수의 값이 -2가 된다.
 
     // 진정한 해결책?
-    // - int와 int 연산 결과가 int 크기를 넘어갈 것 같으면
-    //     형변환하여 계산하라!
-    r2 = (long)x + (long)y; //    <<=== 이렇게 하면 된다!!★
+    // - int와 int 연산 결과가 int 크기를 넘어갈 것 같으면 
+    //   형변환하여 계산하라!
+    r2 = (long)x + (long)y;
     System.out.println(r2);
-
-
   }
 }
 

@@ -1,5 +1,5 @@
 package com.eomcs.util;
-
+// 6) 배열의 기본 크기를 직접 지정하지 않고 상수로 정의한 후 그 상수를 사용한다. 
 public class ArrayList {
   
   private static final int DEFAULT_CAPACITY = 10;
