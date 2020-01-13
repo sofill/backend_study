@@ -1,5 +1,5 @@
 package com.eomcs.util;
-
+// 13) get() 변경 : 유효한 인덱스가 아니면 null을 리턴한다. 
 import java.util.Arrays;
 
 public class ArrayList {
@@ -39,6 +39,8 @@ public class ArrayList {
   }
   
   public Object get(int index) {
+  
+  //유효한 인덱스가 아니면 null을 리턴한다. 
     if (index < 0 || index >= this.size) {
       return null;
     }

@@ -1,5 +1,5 @@
 package com.eomcs.util;
-
+// 15) set() 변경 : 변경한 후 변경 전의 값을 리턴한다. 
 import java.util.Arrays;
 
 public class ArrayList {
@@ -46,6 +46,8 @@ public class ArrayList {
   }
   
   public Object set(int index, Object e) {
+  
+  // 변경한 후 변경 전의 값을 리턴한다.
     if (index < 0 || index >= this.size) {
       return null;
     }

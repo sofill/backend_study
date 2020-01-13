@@ -1,5 +1,5 @@
 package com.eomcs.util;
-
+// 14) set() 변경 : 유효한 인덱스가 아니면 메서드를 실행하지 않는다. 
 import java.util.Arrays;
 
 public class ArrayList {
@@ -45,7 +45,9 @@ public class ArrayList {
     return this.elementData[index];
   }
   
-  public void set(int index, Object e) {
+  public void set(int index, Object e) { 
+  
+  //유효한 인덱스가 아니면 메서드를 실행하지 않는다. 
     if (index < 0 || index >= this.size) {
       return;
     }

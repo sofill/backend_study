@@ -1,5 +1,5 @@
 package com.eomcs.util;
-
+// 19) remove() 변경 : System.arraycopy()를 사용하여 삭제를 처리한다. 
 import java.util.Arrays;
 
 public class ArrayList {
@@ -58,11 +58,14 @@ public class ArrayList {
     if (index < 0 || index >= this.size) {
       return null;
     }
-    
+    // System.arraycopy()를 사용하여 삭제를 처리한다. 
     Object oldValue = this.elementData[index];
     System.arraycopy(this.elementData, index + 1, 
         this.elementData, index, this.size - (index + 1) );
-    /*
+
+        //System.arraycopy(this.list, 0, arr, 0, list.length);
+        
+    /*   ↑
     for (int i = index + 1; i < this.size; i++) {
       this.elementData[i - 1] = this.elementData[i];
     }

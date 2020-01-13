@@ -24,9 +24,6 @@ public class ArrayList {
   }
 }
 
-	public void add(Object e) {
-		this.elementData[this.size++] = e;
-
 
 
 

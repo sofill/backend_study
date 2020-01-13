@@ -1,5 +1,5 @@
 package com.eomcs.util;
-
+// 18) size 필드 값을 리턴할 size() 메서드를 정의한다. 
 import java.util.Arrays;
 
 public class ArrayList {
@@ -7,7 +7,7 @@ public class ArrayList {
   private static final int DEFAULT_CAPACITY = 2;
   
   Object[] elementData;
-  int size;
+  private int size;
   
   public ArrayList() {
     this.elementData = new Object[DEFAULT_CAPACITY];
@@ -68,7 +68,10 @@ public class ArrayList {
   }
   
   public int size() {
-    return this.size;
+  // size 필드 값을 리턴할 size() 메서드를 정의한다. 
+  // 현재 size값을 알고 싶을 때도 유용한 메서드.
+  // 단, 외부에서 마음대로 숫자를 바꿀 수 없게끔 필드값에 private로 바꿔놔야 한다.  
+    return this.size; 
   }
 }
 

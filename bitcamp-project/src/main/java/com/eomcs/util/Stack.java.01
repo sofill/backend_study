@@ -1,5 +1,6 @@
 package com.eomcs.util;
 
-public class LinkedList {
+public class Stack {
+  
 
 }

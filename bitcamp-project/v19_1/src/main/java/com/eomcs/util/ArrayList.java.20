@@ -1,5 +1,5 @@
 package com.eomcs.util;
-
+// 20) 목록에 저장된 객체를 배열로 리턴하는 toArray() 메서드를 정의한다. 
 import java.util.Arrays;
 
 public class ArrayList {
@@ -76,6 +76,7 @@ public class ArrayList {
   }
   
   public Object[] toArray() {
+	// List(목록)에 저장된 객체를 Array(배열)로 리턴하는 toArray() 메서드를 정의하자!
     Object[] arr = new Object[this.size];
     for (int i = 0; i < this.size; i++) {
       arr[i] = this.elementData[i];
