@@ -1,5 +1,5 @@
 package com.eomcs.util;
-
+// 4) push() 추가 (=add)
 public class Stack {
   
   private static final int DEFAULT_CAPACITY = 10;

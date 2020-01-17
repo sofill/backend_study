@@ -1,5 +1,5 @@
 package com.eomcs.util;
-
+// 3) 레퍼런스 배열을 초기화시키는 생성자 만들기
 public class Stack {
   
   private static final int DEFAULT_CAPACITY = 10;

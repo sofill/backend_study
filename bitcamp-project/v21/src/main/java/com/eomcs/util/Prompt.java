@@ -3,7 +3,7 @@ package com.eomcs.util;
 import java.sql.Date;
 import java.util.Scanner;
 
-public class Prompt {
+public class Prompt { 
 
   Scanner input;
   
