@@ -47,7 +47,7 @@ class Musics2 {
 
   public Player createPlayer() {
     // return this.new Player();
-    return new Player(); // this를 생략할 수 있다.
+    return new Player(); // this를 생략할 수 있다. 컴파일러가 알아서 붙여준다.
   }
 
   public void delete(final int index) {

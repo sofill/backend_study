@@ -15,17 +15,20 @@ public class Exam0340 {
 
   // 인스턴스 메서드의 로컬 클래스 사용법
   void im() {
-    // 이 인스턴스 메서드는 Exam0340 객체 주소를 받는 내장변수 this가 있다.
+    // 이 인스턴스 메서드는 Exam0340 객체 주소를 받는 내장 변수 this가 있다.
+
     class A {
 
       // 인스턴스 메서드에서 로컬 클래스를 정의하는 경우,
-      // 바깥 클래스의 인스턴스 주소를 알 수 있기 때문에
+      // 바깥 클래스의 인스턴스 주소를 알수 있기 때문에
       // 컴파일러는 바깥 클래스의 인스턴스 주소를 담을 필드를 추가하고,
       // 생성자도 추가한다.
       /*
-       * Exam0340 outer;
+       * Exam0340 outer; // 인스턴스 주소를 담을 필드 
        *
-       * public A(Exam0340 obj) { outer = obj; }
+       * public A(Exam0340 obj) { // 생성자 
+       * outer = obj; 
+       * } //  
        */
 
       void m1() {
@@ -45,10 +48,8 @@ public class Exam0340 {
     final A obj = new A();
     // 컴파일러는 위 코드를 바깥 클래스의 인스턴스 주소를 받는
     // 생성자 호출 코드로 바꾼다.
-    /*
-     * => final A obj = new A(this);
-     */
-
+    // => final A obj = new A(this);
+    //
     obj.m1();
   }
 }

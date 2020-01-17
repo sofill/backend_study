@@ -7,7 +7,7 @@ public class Exam0210 {
   static int sValue;
   static void sm() {}
 
-  // 인스턴스 멤버 
+  // 인스턴스 멤버
   int iValue;
   void im() {}
   
@@ -15,7 +15,7 @@ public class Exam0210 {
   // 따라서 인스턴스가 있어야만 사용할 수 있다.
   class A {
     
-    // 자바 컴파일러는 non-static nested class를 컴파일할 때
+    // 자바 컴파일러는 non-static nested class를 컴파일할 때 
     // 바깥 클래스의 인스턴스 주소를 담을 필드를 자동으로 생성한다.
     // 예)
     // Exam0210 outer;
@@ -37,7 +37,7 @@ public class Exam0210 {
       // 인스턴스 멤버는 같은 인스턴스 멤버를 사용할 수 있다.
       // 왜?
       // => inner class의 객체를 생성할 때 
-      //    컴파일러가 자동으로 추가한 변수(예 : outer)에 
+      //    컴파일러가 자동으로 추가한 변수(예: outer)에 
       //    바깥 클래스의 객체 주소가 저장된다.
       // => 이렇게 inner class 객체에 보관된 바깥 클래스의 객체를 사용하려면
       //    다음과 같은 이름으로 변수를 사용해야 한다.

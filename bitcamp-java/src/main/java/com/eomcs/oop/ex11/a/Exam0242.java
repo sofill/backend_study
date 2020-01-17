@@ -9,7 +9,7 @@ public class Exam0242 {
     final ArrayList<String> m1 = new ArrayList<>();
     m1.add("aaa.mp3");
     m1.add("bbb.mp3");
-    m1.add("bbb.mp3");
+    m1.add("ccc.mp3");
 
     final Iterator<String> i1 = m1.iterator();
     final Iterator<String> i2 = m1.iterator();

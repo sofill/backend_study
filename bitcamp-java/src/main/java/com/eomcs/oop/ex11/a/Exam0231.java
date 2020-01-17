@@ -1,18 +1,13 @@
-// non-static nested class = inner class
+// non-static nested class = inner class의 생성자
 package com.eomcs.oop.ex11.a;
 
 public class Exam0231 {
   public static void main(final String[] args) {
-    // 다른 클래스의 인스턴스 멤버는 반드시 인스턴스가 있어야만 사용할 수 있다.
-    //
-    // Exam0230_X.iValue = 100; // 컴파일 오류!
-    // Exam0230_X.im(); // 컴파일 오류!
-
     final Exam0231_X obj = new Exam0231_X();
 
     obj.new A("홍길동", 20);
     // 위 코드는 컴파일러가 다음과 같이 바꾼다.
-    // => 바깥 클래스의 객체 주소를 받기 위해 컴파일러가 변경한 생성자를 호출한다.
+    // => 바깥 클래스의 객체 주소를 받기 위해 컴파일러가 변경시킨 생성자를 호출한다.
     /*
      * new A(obj, "홍길동", 20);
      */
@@ -31,16 +26,14 @@ class Exam0231_X {
     }
 
     /*
-     * 컴파일러가 추가하는 필드 및 생성자
+     * 컴파일러가 추가하는 필드 및 생성자;
      *
      * Exam0231_X outer;
      *
-     * 우리가 추가한 생성자는 다음과 같이 바같 클래스의 객체 주소를 받을 수 있도록 파라미터가 추가된다.
+     * 우리가 추가한 생성자는 다음과 같이 바깥 클래스의 객체 주소를 받을 수 있도록 파라미터가 추가된다.
      *
      * public A(Exam0231_X outer, final String name, final int age) { this.outer = outer; this.name
-     * = name; this.age = age;
+     * = name; this.age = age; }
      */
-
-    void m1() {}
   }
 }

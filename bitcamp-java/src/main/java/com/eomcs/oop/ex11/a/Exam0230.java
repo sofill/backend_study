@@ -13,7 +13,7 @@ public class Exam0230 {
     obj.im(); // OK!
 
     obj.new A();
-    // 위 코드는 컴파일러가 다음과 같이 바꾼다.
+    // 위 코드는 컴파일러 다음과 같이 바꾼다.
     // => 바깥 클래스의 객체 주소인 obj를 생성자에 넘기는 코드로 바꾼다.
     /*
      * new A(obj);
@@ -21,7 +21,7 @@ public class Exam0230 {
 
     // 주의!
     // => static nested class와 달리 inner class 객체를 생성할 때
-    // 바깥 클래스명으로 생성할 수 없다.
+    // 바깥 '클래스명'으로 생성할 수 없다.
     //
     // a = new Exam0230_X.A(); // 컴파일 오류!
 
@@ -32,7 +32,7 @@ public class Exam0230 {
 class Exam0230_X {
   class A {
     /*
-     * 컴파일러가 추가하는 필드 및 생성자
+     * 컴파일러가 추가하는 필드 및 생성자;
      *
      * Exam0230_X outer;
      *
