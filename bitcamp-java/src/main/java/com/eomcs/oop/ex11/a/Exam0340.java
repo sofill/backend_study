@@ -24,11 +24,9 @@ public class Exam0340 {
       // 컴파일러는 바깥 클래스의 인스턴스 주소를 담을 필드를 추가하고,
       // 생성자도 추가한다.
       /*
-       * Exam0340 outer; // 인스턴스 주소를 담을 필드 
+       * Exam0340 outer;
        *
-       * public A(Exam0340 obj) { // 생성자 
-       * outer = obj; 
-       * } //  
+       * public A(Exam0340 obj) { outer = obj; }
        */
 
       void m1() {

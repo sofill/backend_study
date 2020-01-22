@@ -7,17 +7,13 @@ public class Exam0540 {
     void print();
   }
 
-  void m1(A obj) {
-    obj.print();
+  public static void main(final String[] args) {
+    final Exam0540 r = new Exam0540();
+    r.m1(() -> System.out.println("안녕!"));
   }
-  
-  public static void main(String[] args) {
-    Exam0540 r = new Exam0540();
-    r.m1(new A() {
-      @Override
-      public void print() {
-        System.out.println("안녕!");
-      }
-    });
+
+  // 파라미터의 값을 준비할 때 익명클래스를 사용할 수 있다.
+  void m1(final A obj) {
+    obj.print();
   }
 }

@@ -14,7 +14,7 @@ public class Exam0350 {
     class A {
       void m1() {
         // 로컬 클래스는 자신이 선언된 그 메서드의 로컬 변수를 사용할 수 있다.
-        // => 단 값을 변경하지 못하는 final 변수를 사용할 수 있다.
+        // => 단 값을 변경하지 못하는 final 변수만 사용할 수 있다.
         System.out.println(a);
       }
     }

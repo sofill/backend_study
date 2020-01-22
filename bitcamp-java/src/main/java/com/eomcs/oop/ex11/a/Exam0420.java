@@ -10,7 +10,7 @@ public class Exam0420 {
   public static void main(final String[] args) {
     // 익명 클래스로 인터페이스 구현하기
     // 문법:
-    // => 인터페이스명 레퍼런스 = new 인터페이스명() {}
+    // => 인터페이스명 레퍼런스 = new 인터페이스명() {};
     //
     A obj = new A() {
       @Override

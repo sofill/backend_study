@@ -8,6 +8,8 @@ public class Exam0310 {
     String s3 = new String("ccc");
     String s4 = new String("bbb"); // s2 != s4
 
+    // 잊지말자!
+    // => ArrayList가 객체를 비교할 때에는 equals()를 사용한다!
     ArrayList list = new ArrayList();
     list.add(s1);
     list.add(s2);
@@ -23,10 +25,6 @@ public class Exam0310 {
     }
     System.out.println();
   }
-}   
-
-
-
-
+}
 
 

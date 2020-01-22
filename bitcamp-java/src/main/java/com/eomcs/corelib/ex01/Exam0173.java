@@ -61,15 +61,13 @@ public class Exam0173 {
     // 같은 engine의 객체 주소라는 뜻이다.
     car.engine.cc = 2000;
     System.out.println(car2.engine.cc);
-    // car의 엔진cc를 바꿨는데 car2의 엔진cc가 바뀐다 => 왜? 같은 엔진 
     
     // 
     // Object의 clone()은 해당 객체의 필드 값만 복제한다.
     // 그 인스턴스 변수가 가리키고 있는 객체는 복제하지 않는다.
     // 이런 방식의 복제를 "shallow copy(얕은 복제)"라 부른다.
-    // "shallow copy(얕은 복제)"라 부른다.
     //
-    // 그 객체가 포함하고 있는 하위 객체까지 복제하는 것을 
+    // 그 객체의 인스턴스 변수가 가리키고 있는 객체까지 복제하는 것을 
     // "deep copy(깊은 복제)"라 부른다.
     // deep copy는 개발자가 직접 clone() 메서드 안에 
     // deep copy를 수행하는 코드를 작성해야 한다.
