@@ -1,5 +1,11 @@
 package com.eomcs.lms;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.sql.Date;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
@@ -38,26 +44,32 @@ public class App {
   static Deque<String> commandStack = new ArrayDeque<>();
   static Queue<String> commandQueue = new LinkedList<>();
 
+  static ArrayList<Lesson> lessonList = new ArrayList<>();
+  static LinkedList<Board> boardList = new LinkedList<>();
+  static LinkedList<Member> memberList = new LinkedList<>();
+
   public static void main(String[] args) {
+
+    // 파일에서 데이터 로딩
+    loadLessonData();
+    loadMemberData();
+    loadBoardData();
 
     Prompt prompt = new Prompt(keyboard);
     HashMap<String, Command> commandMap = new HashMap<>();
 
-    LinkedList<Board> boardList = new LinkedList<>();
-    commandMap.put("/board/add", new BoardAddCommand(prompt, boardList));
-    commandMap.put("/board/list", new BoardListCommand(boardList));
+    commandMap.put("/board/add",  new BoardAddCommand(prompt, boardList));
+    commandMap.put("/board/list",  new BoardListCommand(boardList));
     commandMap.put("/board/detail", new BoardDetailCommand(prompt, boardList));
     commandMap.put("/board/update", new BoardUpdateCommand(prompt, boardList));
     commandMap.put("/board/delete", new BoardDeleteCommand(prompt, boardList));
 
-    ArrayList<Lesson> lessonList = new ArrayList<>();
     commandMap.put("/lesson/add", new LessonAddCommand(prompt, lessonList));
     commandMap.put("/lesson/list", new LessonListCommand(lessonList));
     commandMap.put("/lesson/detail", new LessonDetailCommand(prompt, lessonList));
     commandMap.put("/lesson/update", new LessonUpdateCommand(prompt, lessonList));
     commandMap.put("/lesson/delete", new LessonDeleteCommand(prompt, lessonList));
 
-    LinkedList<Member> memberList = new LinkedList<>();
     commandMap.put("/member/add", new MemberAddCommand(prompt, memberList));
     commandMap.put("/member/list", new MemberListCommand(memberList));
     commandMap.put("/member/detail", new MemberDetailCommand(prompt, memberList));
@@ -66,19 +78,18 @@ public class App {
 
     commandMap.put("/hello", new HelloCommand(prompt));
     commandMap.put("/compute/plus", new ComputePlusCommand(prompt));
-    // LinkedList<Compute> computeList = new LinkedList<>(); // 배열은 안사용하니까 추가 안함
 
     String command;
 
     while (true) {
-      System.out.print("\n명령> ");
+      System.out.println("\n명령> ");
       command = keyboard.nextLine();
 
       if (command.length() == 0)
         continue;
 
       if (command.equals("quit")) {
-        System.out.println("안녕");
+        System.out.println("안녕!");
         break;
       } else if (command.equals("history")) {
         printCommandHistory(commandStack.iterator());
@@ -98,21 +109,27 @@ public class App {
         try {
           commandHandler.execute();
         } catch (Exception e) {
-          System.out.printf("명령어 실행 중 오류 발생 : %s\n", e.getMessage());
+          System.out.printf("명령어 실행 중 오류 발생: %s\n", e.getMessage());
         }
       } else {
-        System.out.println("실행할 수 없는 명령입니다.");
+        System.out.println("실행 할 수 없는 명령입니다.");
       }
     }
 
     keyboard.close();
-  }
 
-  // 이전에는 Stack에서 값을 꺼내는 방법과 Queue에서 값을 꺼내는 방법이 다르기 때문에
+    //데이터를 파일에 저장
+    saveLessonData();
+    saveMemberData();
+    saveBoardData();
+
+  } // end of main()
+
+  // 이전에는 stack에서 값을 꺼내는 방법과 Queue에서 값을 꺼내는 방법이 다르기 때문에
   // printCommandHistory()와 printCommandHistory2() 메서드를 따로 정의했다.
-  // 이제 Stack과 Queue는 일관된 방식으로 값을 꺼내주는 Iterator가 있기 때문에
+  // 이제 Stack 과 Queue 는 일관된 방식으로 값을 꺼내주는 Iterator 가 있기 때문에
   // 두 메서드를 하나로 합칠 수 있다.
-  // 파라미터로 Iterator를 받아서 처리하기만 하면 된다.
+  // 파라미터로 Iterator 를 받아서 처리하기만 하면 된다.
   //
   private static void printCommandHistory(Iterator<String> iterator) {
     int count = 0;
@@ -120,15 +137,10 @@ public class App {
       System.out.println(iterator.next());
       count++;
 
-      if ((count % 5) == 0) {
-        System.out.print(":");
-        String str = keyboard.nextLine();
-        if (str.equalsIgnoreCase("q")) {
-          break;
-        }
-      }
-    }
-  }
-}
+
+
+      }} // end finally
+} // end saveMemberData
+} // end App
 
 
