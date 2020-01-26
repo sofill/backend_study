@@ -58,8 +58,8 @@ public class App {
     Prompt prompt = new Prompt(keyboard);
     HashMap<String, Command> commandMap = new HashMap<>();
 
-    commandMap.put("/board/add",  new BoardAddCommand(prompt, boardList));
-    commandMap.put("/board/list",  new BoardListCommand(boardList));
+    commandMap.put("/board/add", new BoardAddCommand(prompt, boardList));
+    commandMap.put("/board/list", new BoardListCommand(boardList));
     commandMap.put("/board/detail", new BoardDetailCommand(prompt, boardList));
     commandMap.put("/board/update", new BoardUpdateCommand(prompt, boardList));
     commandMap.put("/board/delete", new BoardDeleteCommand(prompt, boardList));
@@ -78,6 +78,7 @@ public class App {
 
     commandMap.put("/hello", new HelloCommand(prompt));
     commandMap.put("/compute/plus", new ComputePlusCommand(prompt));
+
 
     String command;
 
@@ -118,18 +119,18 @@ public class App {
 
     keyboard.close();
 
-    //데이터를 파일에 저장
+    // 데이터를 파일에 저장
     saveLessonData();
     saveMemberData();
     saveBoardData();
 
   } // end of main()
 
-  // 이전에는 stack에서 값을 꺼내는 방법과 Queue에서 값을 꺼내는 방법이 다르기 때문에
+  // 이전에는 Stack에서 값을 꺼내는 방법과 Queue에서 값을 꺼내는 방법이 다르기 때문에
   // printCommandHistory()와 printCommandHistory2() 메서드를 따로 정의했다.
-  // 이제 Stack 과 Queue 는 일관된 방식으로 값을 꺼내주는 Iterator 가 있기 때문에
+  // 이제 Stack과 Queue는 일관된 방식으로 값을 꺼내주는 Iterator가 있기 때문에
   // 두 메서드를 하나로 합칠 수 있다.
-  // 파라미터로 Iterator 를 받아서 처리하기만 하면 된다.
+  // 파라미터로 Iterator를 받아서 처리하기만 하면 된다.
   //
   private static void printCommandHistory(Iterator<String> iterator) {
     int count = 0;
@@ -137,10 +138,24 @@ public class App {
       System.out.println(iterator.next());
       count++;
 
+      if ((count % 5) == 0) {
+        System.out.println(":");
+        String str = keyboard.nextLine();
+        if (str.equalsIgnoreCase("q")) {
+          break;
+        }
+      }
+    }
+  }
+
+  private static void loadLessonData() {
+    // 데이터가 보관된 파일을
 
 
-      }} // end finally
+
+
+  }
+} // end finally
 } // end saveMemberData
 } // end App
-
 

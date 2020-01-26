@@ -170,8 +170,15 @@ public class App {
 
       // 위의 코드를 간략히 줄이면 다음과 같다.
       lessonList.addAll(Arrays.asList(new Gson().fromJson(in, Lesson[].class)));
-
       System.out.printf("총 %d 개의 수업 데이터를 로딩했습니다.\n", lessonList.size());
+
+      //위의 코드를 전개하면 다음과 같다
+      Gson g = new Gson();
+      Lesson[] l = Arrays.asList(g.fromJson(in , Lesson[].class));
+      lessonList.addAll(l);
+      // 참조지역변수(g, l)을 사용하지 않고 한 번에 바로 적용한 구문은 아래와 같다.
+      lessonList.addAll(Arrays.asList(new Gson().fromJson(in, Lesson[].class)));
+
 
     } catch (IOException e) {
       System.out.println("파일 읽기 중 오류 발생! - " + e.getMessage());
