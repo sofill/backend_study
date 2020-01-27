@@ -27,6 +27,7 @@
   - 'gson' 키워드로 검색
 - build.gradle 을 편집한다.
   - 의존 라이브러리 블록(dependencies {})에 gson 정보를 추가한다.
+  (	compile group: 'com.google.code.gson', name: 'gson', version: '2.8.6' )
 - 이클립스 설정 파일을 갱신한다.
   - 'gradle eclipse'를 실행
   - 이클립스에서 해당 프로젝트를 'refresh'.
