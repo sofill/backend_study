@@ -1,4 +1,3 @@
-// "/lesson/update" 명령 처리
 package com.eomcs.lms.handler;
 
 import java.util.List;
@@ -60,7 +59,6 @@ public class LessonUpdateCommand implements Command {
     this.lessonList.set(index, newLesson);
     System.out.println("수업을 변경했습니다.");
   }
-
 
   private int indexOfLesson(int no) {
     for (int i = 0; i < this.lessonList.size(); i++) {

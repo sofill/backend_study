@@ -148,7 +148,7 @@ public class App {
   }
 
   private static void loadLessonData() {
-    // 데이터가 보관된 파일을 정보를 준비한다.
+    // 데이터가 보관된 파일 정보를 준비한다.
     File file = new File("./lesson.csv");
 
     FileReader in = null;

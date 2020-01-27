@@ -1,4 +1,3 @@
-// "/lesson/detail" 명령 처리
 package com.eomcs.lms.handler;
 
 import java.util.List;
@@ -44,9 +43,6 @@ public class LessonDetailCommand implements Command {
     }
     return -1;
   }
-
-
-
 }
 
 

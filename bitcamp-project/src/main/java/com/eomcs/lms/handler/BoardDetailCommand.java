@@ -1,10 +1,10 @@
-// "/board/detail" 명령 처리
 package com.eomcs.lms.handler;
 
 import java.util.List;
 import com.eomcs.lms.domain.Board;
 import com.eomcs.util.Prompt;
 
+// "/board/detail" 명령 처리
 public class BoardDetailCommand implements Command {
 
   List<Board> boardList;
@@ -40,6 +40,7 @@ public class BoardDetailCommand implements Command {
     }
     return -1;
   }
+
 }
 
 

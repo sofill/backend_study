@@ -1,4 +1,3 @@
-// "/lesson/delete" 명령 처리
 package com.eomcs.lms.handler;
 
 import java.util.List;
@@ -15,7 +14,6 @@ public class LessonDeleteCommand implements Command {
     this.prompt = prompt;
     this.lessonList = list;
   }
-
 
   @Override
   public void execute() {
@@ -39,9 +37,6 @@ public class LessonDeleteCommand implements Command {
     }
     return -1;
   }
-
-
-
 }
 
 

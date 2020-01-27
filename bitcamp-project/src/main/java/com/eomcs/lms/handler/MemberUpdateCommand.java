@@ -1,4 +1,3 @@
-// "/member/update" 명령어 처리
 package com.eomcs.lms.handler;
 
 import java.util.List;
@@ -29,6 +28,7 @@ public class MemberUpdateCommand implements Command {
     Member newMember = new Member();
 
     newMember.setNo(oldMember.getNo());
+    newMember.setRegisteredDate(oldMember.getRegisteredDate());
 
     newMember.setName(
         prompt.inputString(String.format("이름(%s)? ", oldMember.getName()), oldMember.getName()));

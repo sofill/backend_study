@@ -1,8 +1,6 @@
-// "/member/add" 명령 처리
 package com.eomcs.lms.handler;
 
 import java.sql.Date;
-import java.util.Iterator;
 import java.util.List;
 import com.eomcs.lms.domain.Member;
 import com.eomcs.util.Prompt;
@@ -20,19 +18,6 @@ public class MemberAddCommand implements Command {
 
   @Override
   public void execute() {
-
-    // 목록에서 값을 꺼내는 일을 해 줄 Iterator 객체를 준비한다.
-    Iterator<Member> iterator = memberList.iterator();
-
-    // Iterator 객체를 통해 값을 꺼낸다.
-    while (iterator.hasNext()) {
-      Member m = iterator.next();
-      System.out.printf("%d, %s, %s, %s, %s\n", m.getNo(), m.getName(), m.getEmail(), m.getTel(),
-          m.getRegisteredDate());
-    }
-  }
-
-  public void addMember() {
     Member member = new Member();
 
     member.setNo(prompt.inputInt("번호? "));
@@ -48,5 +33,3 @@ public class MemberAddCommand implements Command {
     System.out.println("저장하였습니다.");
   }
 }
-
-

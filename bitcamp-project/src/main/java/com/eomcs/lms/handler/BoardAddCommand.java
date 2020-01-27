@@ -31,7 +31,6 @@ public class BoardAddCommand implements Command {
     System.out.println("저장하였습니다.");
   }
 
-
 }
 
 

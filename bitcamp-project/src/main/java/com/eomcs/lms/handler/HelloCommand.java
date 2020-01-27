@@ -1,8 +1,8 @@
-// "/hello" 명령 처리
 package com.eomcs.lms.handler;
 
 import com.eomcs.util.Prompt;
 
+// "/hello" 명령 처리
 public class HelloCommand implements Command {
 
   Prompt prompt;
@@ -13,7 +13,8 @@ public class HelloCommand implements Command {
 
   @Override
   public void execute() {
-    String name = prompt.inputString("이름?");
+    String name = prompt.inputString("이름? ");
+
     System.out.printf("%s님 반갑습니다!\n", name);
   }
 }

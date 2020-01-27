@@ -1,4 +1,3 @@
-// "/lesson/add" 명령 처리
 package com.eomcs.lms.handler;
 
 import java.util.List;
