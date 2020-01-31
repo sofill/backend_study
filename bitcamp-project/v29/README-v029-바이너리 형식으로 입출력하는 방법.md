@@ -2,9 +2,9 @@
 
 ## 학습목표
 
-- 바이너리 입출력 스트림 클래스를 사용하여 객체의 필드 값을 바이너리 형식으로 읽고 쓰는 방법
-- DataInputStream/DataOutputStream을 사용하는 방법
-
+- 바이너리 입출력 스트림 클래스를 사용하여 객체의 필드 값을 바이너리 형식으로 읽고 쓸 수 있다.
+- DataInputStream/DataOutputStream을 사용할 수 있다.
+  
 ## 실습 소스 및 결과
 
 - src/main/java/com/eomcs/lms/App.java 변경
@@ -17,7 +17,5 @@
 
 #### 실행 결과
 
-`App`의 실행 결과는 이전 버전과 같다. (파일만 다를 뿐~)
-
-
+`App`의 실행 결과는 이전 버전과 같다.
 

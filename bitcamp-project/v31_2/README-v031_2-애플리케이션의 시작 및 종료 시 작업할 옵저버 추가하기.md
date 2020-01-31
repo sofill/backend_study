@@ -1,4 +1,4 @@
-# 31_2 - 애플리케이션을 시작하거나 종료할 때 작업할 옵저버를 추가한다. 
+# 31_2 - 애플리케이션의 시작 및 종료 시 작업할 옵저버 추가하기
 
 ## 학습목표
 
@@ -19,11 +19,11 @@
 	  
 		 
 ### 훈련 2: DataLoaderListener 옵저버를 App 객체에 등록하고 실행 확인하라. 
- 
+
 - App.java 변경 (App.java.01)
 - DataLoaderListener 객체를 생성한 후 App 객체에 등록한다.
 - 실행하여 옵저버가 동작하는지 확인한다.
-    
+  
 
 ### 훈련 3: DataLoaderListener 옵저버에서 데이터를 로딩하고 저장하게 하라. 
 
@@ -36,14 +36,14 @@
 	- 데이터 로딩, 저장 관련 메서드를 제거한다.
 	- 데이터 로딩 호출 코드를 제거한다. (DataLoaderListener가 할 일)
 	- 데이터 저장 호출 코드를 제거한다. (DataLoaderListener가 할 일) 
-	 
+	
 
 ### 훈련 4: App 클래스가 옵저버의 결과물을 사용할 수 있게 하라!
- 		    
+
 - ApplicationContextListener.java (변경)
 	- contextInitialized()에 Map 파라미터를 추가하라.
 	- contextDestroyed()에 Map 파라미터를 추가하라. 
-	 
+	
 ### 훈련 5: DataLoaderListener의 작업 결과를 Map 객체를 통해 공유하라.
 
 - DataLoaderListener.java (변경)

@@ -1,4 +1,4 @@
-# 24 - `Iterator` 디자인 패턴의 활용
+# 24_1 - `Iterator` 디자인 패턴의 활용
 
 ## 학습 목표
 
@@ -62,7 +62,7 @@
     - `Iterator` 구현체를 리턴하는 iterator() 를 정의한다.
 
 ### 훈련7. Queue 객체에 들어 있는 값을 꺼내 줄 Iterator 구현체를 준비하고 리턴한다.
-    
+
 - QueueIterator.java 생성
   - Iterator 인터페이스를 구현한다.
 - Queue.java 변경
