@@ -31,7 +31,7 @@ public class Exam0220 {
 // 데이터 읽기 시간 = average seek time + data transfer time
 // 퀀텀 HDD 예)
 // average seek time = 0.0105 초
-// data trasfer time = 0.00000005 초 / 1 byte
+// data transfer time = 0.00000005 초 / 1 byte
 //
 // 1000 바이트를 읽을 때
 // 1) 1바이트를 1000 번 읽는 경우

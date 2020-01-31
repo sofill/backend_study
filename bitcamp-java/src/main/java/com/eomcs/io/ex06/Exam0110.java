@@ -18,7 +18,7 @@ public class Exam0110 {
     long endTime = System.currentTimeMillis();
 
     System.out.println(endTime - startTime);
-    System.out.println(callCount);
+    System.out.println(callCount); // 몇 개의 바이트를 읽었는지
 
     in.close();
   }

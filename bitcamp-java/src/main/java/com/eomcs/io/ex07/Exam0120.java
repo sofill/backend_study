@@ -26,7 +26,7 @@ public class Exam0120 {
     // - 읽은 문자열을 저장할 바이트 배열을 준비한다.
     byte[] bytes = new byte[size];
 
-    // - 데이트를 읽어 바이트 배열에 저장한다.
+    // - 데이터를 읽어 바이트 배열에 저장한다.
     in.read(bytes);
 
     // - 바이트 배열에 저장된 문자 코드를 String 객체로 만든다.
@@ -52,7 +52,7 @@ public class Exam0120 {
     // 읽어들일 항목이 많을 경우 코드가 매우 복잡할 것이다.
     // 해결책?
     // - ByteArrayInputStream을 상속 받아 이런 기능을 수행하는 메서드를 추가하라!
-    // - DataInputStream 클래스처럼 만들라!
+    // - 그리고 DataInputStream 클래스처럼 만들라!
 
   }
 

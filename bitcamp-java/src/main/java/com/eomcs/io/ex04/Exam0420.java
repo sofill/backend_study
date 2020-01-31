@@ -18,8 +18,8 @@ public class Exam0420 {
     // => 예) new String(buf, 0, 10, "UTF-8")
     //    buf 배열에서 0번부터 10개의 바이트를 꺼낸다.
     //    그 바이트는 UTF-8 코드로 되어 있다.
-    //    이 UTF-8 코드 배열을 UTF-16 문자 배열로 만들어 String 객체를 리턴한다.
-    String str = new String(buf, 0, 11, "UTF-8");
+    //    이 UTF-8 코드 배열을 UCS2 문자 배열로 만들어 String 객체를 리턴한다.
+    String str = new String(buf, 0, count, "UTF-8");
 
     in.close();
 
