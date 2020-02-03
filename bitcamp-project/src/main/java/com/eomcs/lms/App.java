@@ -3,8 +3,8 @@ package com.eomcs.lms;
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -42,18 +42,18 @@ public class App {
   Deque<String> commandStack = new ArrayDeque<>();
   Queue<String> commandQueue = new LinkedList<>();
 
-
   // 옵저버 목록을 관리할 객체 준비
-  // - 같은 인스턴스를 중복해서 등록하지 않도록 한다. (그래서 List 말고 Set을 씀)
-  // - Set은 등록 순서를 따지지 않는 아이다!
-  Set<ApplicationContextListener> listeners = new HashSet<>();
-
+  // - 같은 인스턴스를 중복해서 등록하지 않도록 한다.
+  // - Set은 등록 순서를 따지지 않는다.
+  Set<ApplicationContextListener> listeners = new LinkedHashSet<>();
+  // HashsSet() : 순서가 랜덤이고 보장받지 못함.
+  // LinkedHashSet() : 내가 원하는대로 순서를 놓을 수 있음.
+  // HashMap과 LinkedHashMap 도 마찬가지.
 
   // 옵저버와 공유할 값을 보관할 객체를 준비한다.
-  Map<String,Object> context = new HashMap<>();
+  Map<String, Object> context = new HashMap<>();
 
-
-  // 옵저버를 등록할 메서드를 준비한다.
+  // 옵저버를 등록하는 메서드이다.
   public void addApplicationContextListener(ApplicationContextListener listener) {
     listeners.add(listener);
   }
@@ -64,40 +64,38 @@ public class App {
   }
 
   // 애플리케이션이 시작되면, 등록된 리스너에게 알린다.
-  private void notifaApplicationInitialized() {
+  private void notifyApplicationInitialized() {
     for (ApplicationContextListener listener : listeners) {
       // 옵저버를 실행할 때 작업 결과를 리턴 받을 수 있도록 바구니를 넘긴다.
       // 물론 옵저버에게 전달할 값이 있으면 넘기기 전에 바구니에 담도록 한다.
       // 파라미터 Map과 같은 객체를 사용하면 이런 점에서 편하다.
-      // 즉 파라미터로 값을 전달(IN)하고, 리턴(OUT) 받을 수 있다.
+      // 즉 파라미터로 값을 전달(IN)하고 리턴(OUT) 받을 수 있다.
       listener.contextInitialized(context);
     }
   }
 
   // 애플리케이션이 종료되면, 등록된 리스너에게 알린다.
-  private void notifaApplicationDestroyed() {
+  private void notifyApplicationDestroyed() {
     for (ApplicationContextListener listener : listeners) {
       // 옵저버를 실행할 때 작업 결과를 리턴 받을 수 있도록 바구니를 넘긴다.
       // 물론 옵저버에게 전달할 값이 있으면 넘기기 전에 바구니에 담도록 한다.
       // 파라미터 Map과 같은 객체를 사용하면 이런 점에서 편하다.
-      // 즉 파라미터로 값을 전달(IN)하고, 리턴(OUT) 받을 수 있다.
+      // 즉 파라미터로 값을 전달(IN)하고 리턴(OUT) 받을 수 있다.
       listener.contextDestroyed(context);
     }
   }
 
+  @SuppressWarnings("unchecked")
   public void service() {
 
     // 애플리케이션이 시작되면 등록된 옵저버를 실행한다.
-    // 즉, DataLoarderListener 를 실행한다.
-    notifaApplicationInitialized();
+    // 즉 DataLoaderListener를 실행한다.
+    notifyApplicationInitialized();
 
-    // 옵저버의 실행이 끝났으면 DataLoarderListener 옵저버가 준비한
-    // List 객체를 꺼내보자!!!
-    @SuppressWarnings("unchecked")
+    // 옵저버의 실행이 끝났으면 DataLoaderListener 옵저버가 준비한
+    // List 객체를 꺼내보자!
     List<Board> boardList = (List<Board>) context.get("boardList");
-    @SuppressWarnings("unchecked")
     List<Lesson> lessonList = (List<Lesson>) context.get("lessonList");
-    @SuppressWarnings("unchecked")
     List<Member> memberList = (List<Member>) context.get("memberList");
 
     Prompt prompt = new Prompt(keyboard);
@@ -165,10 +163,9 @@ public class App {
 
     keyboard.close();
 
-    notifaApplicationDestroyed();
+    notifyApplicationDestroyed();
 
   } // service()
-
 
   private void printCommandHistory(Iterator<String> iterator) {
     int count = 0;
@@ -186,15 +183,14 @@ public class App {
     }
   }
 
-
   public static void main(String[] args) {
     App app = new App();
 
-    // 애플리케이션의 상태 정보를 받을 옵저버를 등록한다.
+    // 애플리케이션의 상태를 정보를 받을 옵저버를 등록한다.
     app.addApplicationContextListener(new DataLoaderListener());
+    app.addApplicationContextListener(new GreetingListener());
 
-    app.service();  // 실무에서는 메인에 때려넣지 않고 보통 인스턴스 메서드를 만들어 거기에 넣는다.
-
+    app.service();
   }
 }
 
