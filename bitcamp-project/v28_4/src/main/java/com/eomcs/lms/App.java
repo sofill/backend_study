@@ -78,7 +78,7 @@ public class App {
     commandMap.put("/member/detail", new MemberDetailCommand(prompt, memberList));
     commandMap.put("/member/update", new MemberUpdateCommand(prompt, memberList));
     commandMap.put("/member/delete", new MemberDeleteCommand(prompt, memberList));
-
+ 
     commandMap.put("/hello", new HelloCommand(prompt));
     commandMap.put("/compute/plus", new ComputePlusCommand(prompt));
 

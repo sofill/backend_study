@@ -1,6 +1,6 @@
 package com.eomcs.design_pattern.observer.after.h;
 
-public interface CarObserver { // 인터페이스는 무조건 public static
+public interface CarObserver { // 인터페이스는 무조건 public
   // 자동차 시동을 켤 때 호출될 메서드
   // => 보통 메서드의 이름은 동사로 시작하는데,
   //    옵저버에게 통지할 때 호출하는 메서드는

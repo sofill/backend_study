@@ -1,7 +1,7 @@
 package com.eomcs.lms;
 
 import java.util.Map;
-import com.eomcs.lms.contaxt.ApplicationContextListener;
+import com.eomcs.lms.context.ApplicationContextListener;
 
 public class GreetingListener implements ApplicationContextListener {
 

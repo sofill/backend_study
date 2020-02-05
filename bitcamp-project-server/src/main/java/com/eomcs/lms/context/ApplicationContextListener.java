@@ -1,4 +1,4 @@
-package com.eomcs.lms.contaxt;
+package com.eomcs.lms.context;
 
 import java.util.Map;
 
