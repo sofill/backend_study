@@ -4,19 +4,18 @@ import java.io.Serializable;
 import java.sql.Date;
 
 // 객체를 serialize 하려면 이 기능을 활성화시켜야 한다.
-// - java.io.Serializable 을 구현하라!
+// - java.io.Serializable을 구현하라!
 // - serialize 데이터를 구분하기 위해 버전 번호를 명시하라.
-
+//
 public class Board implements Serializable {
 
-  private static final long serialVersionUID = 20200131L; // 용량상관없고 날짜를 숫자로삽입해서 버전업용도로 사용..
+  private static final long serialVersionUID = 20200131L;
 
   private int no;
   private String title;
   private Date date;
   private int viewCount;
   private String writer;
-
 
   @Override
   public String toString() {
@@ -41,7 +40,7 @@ public class Board implements Serializable {
 
   public String toCsvString() {
     return String.format("%d,%s,%s,%d,%s", this.getNo(), this.getTitle(), this.getDate(),
-        this.getViewCount(), this.getWriter()); // ServerAppTest용
+        this.getViewCount(), this.getWriter());
   }
 
   @Override
