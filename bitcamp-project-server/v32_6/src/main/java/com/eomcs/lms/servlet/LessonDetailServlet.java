@@ -2,22 +2,28 @@ package com.eomcs.lms.servlet;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import com.eomcs.lms.dao.LessonFileDao;
+import java.util.List;
 import com.eomcs.lms.domain.Lesson;
 
 public class LessonDetailServlet implements Servlet {
 
-  LessonFileDao lessonDao;
+  List<Lesson> lessons;
 
-  public LessonDetailServlet(LessonFileDao lessonDao) {
-    this.lessonDao = lessonDao;
+  public LessonDetailServlet(List<Lesson> lessons) {
+    this.lessons = lessons;
   }
 
   @Override
   public void service(ObjectInputStream in, ObjectOutputStream out) throws Exception {
     int no = in.readInt();
 
-    Lesson lesson = lessonDao.findByNo(no); //이건 그냥 찾았으면 리턴하면 됨.
+    Lesson lesson = null;
+    for (Lesson l : lessons) {
+      if (l.getNo() == no) {
+        lesson = l;
+        break;
+      }
+    }
 
     if (lesson != null) {
       out.writeUTF("OK");

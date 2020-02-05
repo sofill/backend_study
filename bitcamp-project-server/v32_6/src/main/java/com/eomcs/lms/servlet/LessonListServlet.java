@@ -2,20 +2,21 @@ package com.eomcs.lms.servlet;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import com.eomcs.lms.dao.LessonFileDao;
+import java.util.List;
+import com.eomcs.lms.domain.Lesson;
 
 public class LessonListServlet implements Servlet {
 
-  LessonFileDao lessonDao;
+  List<Lesson> lessons;
 
-  public LessonListServlet(LessonFileDao lessonDao) {
-    this.lessonDao = lessonDao;
+  public LessonListServlet(List<Lesson> lessons) {
+    this.lessons = lessons;
   }
 
   @Override
   public void service(ObjectInputStream in, ObjectOutputStream out) throws Exception {
     out.writeUTF("OK");
     out.reset();
-    out.writeObject(lessonDao.findAll()); // lessonDao야. 다 꺼내서 클라이언트한테 줘!
+    out.writeObject(lessons);
   }
 }

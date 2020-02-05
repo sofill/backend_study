@@ -2,23 +2,30 @@ package com.eomcs.lms.servlet;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import com.eomcs.lms.dao.LessonFileDao;
+import java.util.List;
 import com.eomcs.lms.domain.Lesson;
 
 public class LessonAddServlet implements Servlet {
 
-  LessonFileDao lessonDao;
+  List<Lesson> lessons;
 
-  public LessonAddServlet(LessonFileDao lessonDao) {
-    this.lessonDao = lessonDao;
+  public LessonAddServlet(List<Lesson> lessons) {
+    this.lessons = lessons;
   }
 
   @Override
   public void service(ObjectInputStream in, ObjectOutputStream out) throws Exception {
     Lesson lesson = (Lesson) in.readObject();
 
+    int i = 0;
+    for (; i < lessons.size(); i++) {
+      if (lessons.get(i).getNo() == lesson.getNo()) {
+        break;
+      }
+    }
 
-    if (lessonDao.insert(lesson) > 0) { //1개가 됐든 2개가 됐든 insert를 했다면
+    if (i == lessons.size()) {
+      lessons.add(lesson);
       out.writeUTF("OK");
 
     } else {
