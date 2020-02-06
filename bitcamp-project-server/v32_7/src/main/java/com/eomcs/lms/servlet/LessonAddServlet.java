@@ -5,11 +5,11 @@ import java.io.ObjectOutputStream;
 import com.eomcs.lms.dao.LessonObjectFileDao;
 import com.eomcs.lms.domain.Lesson;
 
-public class LessonUpdateServlet implements Servlet {
+public class LessonAddServlet implements Servlet {
 
   LessonObjectFileDao lessonDao;
 
-  public LessonUpdateServlet(LessonObjectFileDao lessonDao) {
+  public LessonAddServlet(LessonObjectFileDao lessonDao) {
     this.lessonDao = lessonDao;
   }
 
@@ -17,12 +17,13 @@ public class LessonUpdateServlet implements Servlet {
   public void service(ObjectInputStream in, ObjectOutputStream out) throws Exception {
     Lesson lesson = (Lesson) in.readObject();
 
-    if (lessonDao.update(lesson) > 0) {
+
+    if (lessonDao.insert(lesson) > 0) { //1개가 됐든 2개가 됐든 insert를 했다면
       out.writeUTF("OK");
 
     } else {
       out.writeUTF("FAIL");
-      out.writeUTF("해당 번호의 수업이 없습니다.");
+      out.writeUTF("같은 번호의 수업이 있습니다.");
     }
   }
 }

@@ -3,21 +3,20 @@ package com.eomcs.lms.servlet;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import com.eomcs.lms.dao.LessonObjectFileDao;
-import com.eomcs.lms.domain.Lesson;
 
-public class LessonUpdateServlet implements Servlet {
+public class LessonDeleteServlet implements Servlet {
 
   LessonObjectFileDao lessonDao;
 
-  public LessonUpdateServlet(LessonObjectFileDao lessonDao) {
+  public LessonDeleteServlet(LessonObjectFileDao lessonDao) {
     this.lessonDao = lessonDao;
   }
 
   @Override
   public void service(ObjectInputStream in, ObjectOutputStream out) throws Exception {
-    Lesson lesson = (Lesson) in.readObject();
+    int no = in.readInt();
 
-    if (lessonDao.update(lesson) > 0) {
+    if (lessonDao.delete(no) > 0) { // 0보다 크다는 건 삭제했다는 뜻, 삭제했다면
       out.writeUTF("OK");
 
     } else {

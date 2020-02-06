@@ -17,9 +17,9 @@
 ## 실습 소스 및 결과
 
 - src/main/java/com/eomcs/lms/dao 패키지 생성
-- src/main/java/com/eomcs/lms/dao/BoardFileDao.java 추가
-- src/main/java/com/eomcs/lms/dao/LessonFileDao.java 추가
-- src/main/java/com/eomcs/lms/dao/MemberFileDao.java 추가
+- src/main/java/com/eomcs/lms/dao/BoardObjectFileDao.java 추가
+- src/main/java/com/eomcs/lms/dao/LessonObjectFileDao.java 추가
+- src/main/java/com/eomcs/lms/dao/MemberObjectFileDao.java 추가
 - src/main/java/com/eomcs/lms/ServerApp.java 변경
 
 
@@ -28,7 +28,7 @@
 ### 훈련 1: 게시물 데이터를 처리할 DAO 클래스를 정의하라.
 
 - com.eomcs.dao 패키지를 생성한다. 
-- com.eomcs.lms.BoardFileDao 클래스를 정의한다.  
+- com.eomcs.lms.BoardObjectFileDao 클래스를 정의한다.  
 
 ### 훈련 2: BoardFileDao 객체를 적용하라.  
 

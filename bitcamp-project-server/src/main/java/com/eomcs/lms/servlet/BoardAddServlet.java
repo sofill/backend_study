@@ -2,14 +2,14 @@ package com.eomcs.lms.servlet;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import com.eomcs.lms.dao.BoardFileDao;
+import com.eomcs.lms.dao.BoardObjectFileDao;
 import com.eomcs.lms.domain.Board;
 
 public class BoardAddServlet implements Servlet {
 
-  BoardFileDao boardDao;
+  BoardObjectFileDao boardDao;
 
-  public BoardAddServlet(BoardFileDao boardDao) {
+  public BoardAddServlet(BoardObjectFileDao boardDao) {
     this.boardDao = boardDao;
   }
 
@@ -17,7 +17,7 @@ public class BoardAddServlet implements Servlet {
   public void service(ObjectInputStream in, ObjectOutputStream out) throws Exception {
     Board board = (Board) in.readObject();
 
-    if (boardDao.insert(board) > 0) { // 1개가 됐든 2개가 됐든 insert 했다면
+    if (boardDao.insert(board) > 0) { // 등록했다면,
       out.writeUTF("OK");
 
     } else {

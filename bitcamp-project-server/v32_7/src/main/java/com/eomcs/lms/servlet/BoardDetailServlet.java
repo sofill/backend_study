@@ -5,21 +5,23 @@ import java.io.ObjectOutputStream;
 import com.eomcs.lms.dao.BoardObjectFileDao;
 import com.eomcs.lms.domain.Board;
 
-public class BoardUpdateServlet implements Servlet {
+public class BoardDetailServlet implements Servlet {
 
   BoardObjectFileDao boardDao;
 
-  public BoardUpdateServlet(BoardObjectFileDao boardDao) {
+  public BoardDetailServlet(BoardObjectFileDao boardDao) {
     this.boardDao = boardDao;
   }
 
-
   @Override
   public void service(ObjectInputStream in, ObjectOutputStream out) throws Exception {
-    Board board = (Board) in.readObject();
+    int no = in.readInt();
 
-    if (boardDao.update(board) > 0) { // 변경했다면,
+    Board board = boardDao.findByNo(no); //이건 그냥 찾았으면 리턴하면 돼.
+
+    if (board != null) {
       out.writeUTF("OK");
+      out.writeObject(board);
 
     } else {
       out.writeUTF("FAIL");

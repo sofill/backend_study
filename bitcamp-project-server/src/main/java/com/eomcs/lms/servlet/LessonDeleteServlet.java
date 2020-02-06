@@ -2,13 +2,13 @@ package com.eomcs.lms.servlet;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import com.eomcs.lms.dao.LessonFileDao;
+import com.eomcs.lms.dao.LessonObjectFileDao;
 
 public class LessonDeleteServlet implements Servlet {
 
-  LessonFileDao lessonDao;
+  LessonObjectFileDao lessonDao;
 
-  public LessonDeleteServlet(LessonFileDao lessonDao) {
+  public LessonDeleteServlet(LessonObjectFileDao lessonDao) {
     this.lessonDao = lessonDao;
   }
 
@@ -16,7 +16,7 @@ public class LessonDeleteServlet implements Servlet {
   public void service(ObjectInputStream in, ObjectOutputStream out) throws Exception {
     int no = in.readInt();
 
-    if (lessonDao.delete(no) > 0) { // 0보다 크다는 건 삭제했다는 뜻, 삭제했다면
+    if (lessonDao.delete(no) > 0) {
       out.writeUTF("OK");
 
     } else {

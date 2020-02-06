@@ -5,11 +5,11 @@ import java.io.ObjectOutputStream;
 import com.eomcs.lms.dao.MemberObjectFileDao;
 import com.eomcs.lms.domain.Member;
 
-public class MemberAddServlet implements Servlet {
+public class MemberUpdateServlet implements Servlet {
 
   MemberObjectFileDao memberDao;
 
-  public MemberAddServlet(MemberObjectFileDao memberDao) {
+  public MemberUpdateServlet(MemberObjectFileDao memberDao) {
     this.memberDao = memberDao;
   }
 
@@ -17,12 +17,12 @@ public class MemberAddServlet implements Servlet {
   public void service(ObjectInputStream in, ObjectOutputStream out) throws Exception {
     Member member = (Member) in.readObject();
 
-    if (memberDao.insert(member) > 0) {
+    if (memberDao.update(member) > 0) {
       out.writeUTF("OK");
 
     } else {
       out.writeUTF("FAIL");
-      out.writeUTF("같은 번호의 회원이 있습니다.");
+      out.writeUTF("해당 번호의 회원이 없습니다.");
     }
   }
 }

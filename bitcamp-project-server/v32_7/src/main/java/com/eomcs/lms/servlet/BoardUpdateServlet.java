@@ -13,12 +13,11 @@ public class BoardUpdateServlet implements Servlet {
     this.boardDao = boardDao;
   }
 
-
   @Override
   public void service(ObjectInputStream in, ObjectOutputStream out) throws Exception {
     Board board = (Board) in.readObject();
 
-    if (boardDao.update(board) > 0) { // 변경했다면,
+    if (boardDao.update(board) > 0) {
       out.writeUTF("OK");
 
     } else {

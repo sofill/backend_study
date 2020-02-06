@@ -5,24 +5,27 @@ import java.io.ObjectOutputStream;
 import com.eomcs.lms.dao.MemberObjectFileDao;
 import com.eomcs.lms.domain.Member;
 
-public class MemberAddServlet implements Servlet {
+public class MemberDetailServlet implements Servlet {
 
   MemberObjectFileDao memberDao;
 
-  public MemberAddServlet(MemberObjectFileDao memberDao) {
+  public MemberDetailServlet(MemberObjectFileDao memberDao) {
     this.memberDao = memberDao;
   }
 
   @Override
   public void service(ObjectInputStream in, ObjectOutputStream out) throws Exception {
-    Member member = (Member) in.readObject();
+    int no = in.readInt();
 
-    if (memberDao.insert(member) > 0) {
+    Member member = memberDao.findByNo(no); //이건 그냥 찾았으면 리턴하면 돼.
+
+    if (member != null) {
       out.writeUTF("OK");
+      out.writeObject(member);
 
     } else {
       out.writeUTF("FAIL");
-      out.writeUTF("같은 번호의 회원이 있습니다.");
+      out.writeUTF("해당 번호의 회원이 없습니다.");
     }
   }
 }

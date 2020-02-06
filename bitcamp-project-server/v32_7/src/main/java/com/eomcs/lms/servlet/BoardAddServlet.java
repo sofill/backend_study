@@ -5,25 +5,24 @@ import java.io.ObjectOutputStream;
 import com.eomcs.lms.dao.BoardObjectFileDao;
 import com.eomcs.lms.domain.Board;
 
-public class BoardUpdateServlet implements Servlet {
+public class BoardAddServlet implements Servlet {
 
   BoardObjectFileDao boardDao;
 
-  public BoardUpdateServlet(BoardObjectFileDao boardDao) {
+  public BoardAddServlet(BoardObjectFileDao boardDao) {
     this.boardDao = boardDao;
   }
-
 
   @Override
   public void service(ObjectInputStream in, ObjectOutputStream out) throws Exception {
     Board board = (Board) in.readObject();
 
-    if (boardDao.update(board) > 0) { // 변경했다면,
+    if (boardDao.insert(board) > 0) { // 1개가 됐든 2개가 됐든 insert 했다면
       out.writeUTF("OK");
 
     } else {
       out.writeUTF("FAIL");
-      out.writeUTF("해당 번호의 게시물이 없습니다.");
+      out.writeUTF("같은 번호의 게시물이 있습니다.");
     }
   }
 }

@@ -2,22 +2,23 @@ package com.eomcs.lms.servlet;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import com.eomcs.lms.dao.BoardFileDao;
+import com.eomcs.lms.dao.BoardObjectFileDao;
 import com.eomcs.lms.domain.Board;
 
 public class BoardDetailServlet implements Servlet {
 
-  BoardFileDao boardDao;
+  BoardObjectFileDao boardDao;
 
-  public BoardDetailServlet(BoardFileDao boardDao) {
+  public BoardDetailServlet(BoardObjectFileDao boardDao) {
     this.boardDao = boardDao;
   }
+
 
   @Override
   public void service(ObjectInputStream in, ObjectOutputStream out) throws Exception {
     int no = in.readInt();
 
-    Board board = boardDao.findByNo(no); //이건 그냥 찾았으면 리턴하면 돼.
+    Board board = boardDao.findByNo(no);
 
     if (board != null) {
       out.writeUTF("OK");

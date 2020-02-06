@@ -2,14 +2,14 @@ package com.eomcs.lms.servlet;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import com.eomcs.lms.dao.LessonFileDao;
+import com.eomcs.lms.dao.LessonObjectFileDao;
 import com.eomcs.lms.domain.Lesson;
 
 public class LessonAddServlet implements Servlet {
 
-  LessonFileDao lessonDao;
+  LessonObjectFileDao lessonDao;
 
-  public LessonAddServlet(LessonFileDao lessonDao) {
+  public LessonAddServlet(LessonObjectFileDao lessonDao) {
     this.lessonDao = lessonDao;
   }
 
@@ -17,8 +17,7 @@ public class LessonAddServlet implements Servlet {
   public void service(ObjectInputStream in, ObjectOutputStream out) throws Exception {
     Lesson lesson = (Lesson) in.readObject();
 
-
-    if (lessonDao.insert(lesson) > 0) { //1개가 됐든 2개가 됐든 insert를 했다면
+    if (lessonDao.insert(lesson) > 0) {
       out.writeUTF("OK");
 
     } else {

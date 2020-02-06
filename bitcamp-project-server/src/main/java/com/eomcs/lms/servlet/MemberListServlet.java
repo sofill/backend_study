@@ -2,13 +2,13 @@ package com.eomcs.lms.servlet;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import com.eomcs.lms.dao.MemberFileDao;
+import com.eomcs.lms.dao.MemberObjectFileDao;
 
 public class MemberListServlet implements Servlet {
 
-  MemberFileDao memberDao;
+  MemberObjectFileDao memberDao;
 
-  public MemberListServlet(MemberFileDao memberDao) {
+  public MemberListServlet(MemberObjectFileDao memberDao) {
     this.memberDao = memberDao;
   }
 
@@ -16,6 +16,6 @@ public class MemberListServlet implements Servlet {
   public void service(ObjectInputStream in, ObjectOutputStream out) throws Exception {
     out.writeUTF("OK");
     out.reset();
-    out.writeObject(memberDao.findAll()); // 다 꺼내서 클라이언트한테 줘
+    out.writeObject(memberDao.findAll());
   }
 }

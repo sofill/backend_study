@@ -17,7 +17,7 @@ public class MemberAddServlet implements Servlet {
   public void service(ObjectInputStream in, ObjectOutputStream out) throws Exception {
     Member member = (Member) in.readObject();
 
-    if (memberDao.insert(member) > 0) {
+    if (memberDao.insert(member) > 0) { //1명이든 2명이든 insert를 했다면
       out.writeUTF("OK");
 
     } else {
@@ -26,3 +26,4 @@ public class MemberAddServlet implements Servlet {
     }
   }
 }
+
