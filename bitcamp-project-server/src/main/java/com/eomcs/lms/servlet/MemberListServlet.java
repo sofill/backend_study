@@ -16,6 +16,6 @@ public class MemberListServlet implements Servlet {
   public void service(ObjectInputStream in, ObjectOutputStream out) throws Exception {
     out.writeUTF("OK");
     out.reset();
-    out.writeObject(memberDao); // 다 꺼내서 클라이언트한테 줘
+    out.writeObject(memberDao.findAll()); // 다 꺼내서 클라이언트한테 줘
   }
 }

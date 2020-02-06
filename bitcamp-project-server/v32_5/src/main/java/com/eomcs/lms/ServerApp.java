@@ -48,7 +48,7 @@ public class ServerApp {
   }
   // 옵저버 관련코드 끝!
 
-  public void service() {
+  public void service() { // 인스턴스메서드로 만들고->
 
     notifyApplicationInitialized();
 

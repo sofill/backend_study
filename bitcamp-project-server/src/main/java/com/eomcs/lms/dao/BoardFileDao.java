@@ -61,11 +61,11 @@ public class BoardFileDao {
     list.add(board); // 새 게시물을 등록한다.
     saveData();
     return 1; //1개를 저장했습니다.
-  }
+  } // BoardAdd
 
   public List<Board> findAll() throws Exception {
     return list;
-  }
+  } // BoardList
 
   public Board findByNo(int no) throws Exception {
     int index = indexOf(no);
@@ -73,7 +73,7 @@ public class BoardFileDao {
       return null;
     }
     return list.get(index);
-  }
+  } // BoardDetail
 
   public int update(Board board) throws Exception {
     int index = indexOf(board.getNo());
@@ -84,7 +84,7 @@ public class BoardFileDao {
     list.set(index, board); // 기존 객체를 파라미터로 받은 객체로 바꾼다.
     saveData();
     return 1;
-  }
+  }  // BoardUpdate
 
   public int delete(int no) throws Exception {
     int index = indexOf(no);
@@ -94,7 +94,7 @@ public class BoardFileDao {
     list.remove(index);
     saveData();
     return 1;
-  }
+  } // BoardDelete
 
   private int indexOf(int no) {
     for (int i = 0; i < list.size(); i++) {
