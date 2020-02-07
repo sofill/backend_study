@@ -1,20 +1,18 @@
 package com.eomcs.lms.handler;
 
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import com.eomcs.lms.dao.proxy.LessonDaoProxy;
 import com.eomcs.lms.domain.Lesson;
 import com.eomcs.util.Prompt;
 
+//"/board/update" 명령 처리
 public class LessonUpdateCommand implements Command {
 
-  ObjectOutputStream out;
-  ObjectInputStream in;
-
   Prompt prompt;
+  LessonDaoProxy lessonDao;
 
-  public LessonUpdateCommand(ObjectOutputStream out, ObjectInputStream in, Prompt prompt) {
-    this.out = out;
-    this.in = in;
+  public LessonUpdateCommand(LessonDaoProxy lessonDao, Prompt prompt) {
+    this.lessonDao = lessonDao;
+    this.lessonDao = lessonDao;
     this.prompt = prompt;
   }
 
@@ -23,17 +21,14 @@ public class LessonUpdateCommand implements Command {
     try {
       int no = prompt.inputInt("번호? ");
 
-      out.writeUTF("/lesson/detail");
-      out.writeInt(no);
-      out.flush();
+      Lesson oldLesson = null;
 
-      String response = in.readUTF();
-      if (response.equals("FAIL")) {
-        System.out.println(in.readUTF());
+      try {
+        oldLesson = lessonDao.findByNo(no);
+      } catch (Exception e) {
+        System.out.println("해당 번호의 수업이 없습니다.");
         return;
       }
-
-      Lesson oldLesson = (Lesson) in.readObject();
       Lesson newLesson = new Lesson();
 
       newLesson.setNo(oldLesson.getNo());
@@ -60,16 +55,7 @@ public class LessonUpdateCommand implements Command {
         return;
       }
 
-      out.writeUTF("/lesson/update");
-      out.writeObject(newLesson);
-      out.flush();
-
-      response = in.readUTF();
-      if (response.equals("FAIL")) {
-        System.out.println(in.readUTF());
-        return;
-      }
-
+      lessonDao.update(newLesson);
       System.out.println("수업을 변경했습니다.");
 
     } catch (Exception e) {

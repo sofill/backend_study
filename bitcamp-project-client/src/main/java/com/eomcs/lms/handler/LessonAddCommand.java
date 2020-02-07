@@ -1,20 +1,18 @@
 package com.eomcs.lms.handler;
 
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import com.eomcs.lms.dao.proxy.LessonDaoProxy;
 import com.eomcs.lms.domain.Lesson;
 import com.eomcs.util.Prompt;
 
+// "/lesson/add" 명령어 처리
 public class LessonAddCommand implements Command {
 
-  ObjectOutputStream out;
-  ObjectInputStream in;
-
   Prompt prompt;
+  LessonDaoProxy lessonDao;
 
-  public LessonAddCommand(ObjectOutputStream out, ObjectInputStream in, Prompt prompt) {
-    this.out = out;
-    this.in = in;
+  public LessonAddCommand(LessonDaoProxy lessonDao, Prompt prompt) {
+    this.lessonDao = lessonDao;
+    this.lessonDao = lessonDao;
     this.prompt = prompt;
   }
 
@@ -31,16 +29,7 @@ public class LessonAddCommand implements Command {
     lesson.setDayHours(prompt.inputInt("일수업시간? "));
 
     try {
-      out.writeUTF("/lesson/add");
-      out.writeObject(lesson);
-      out.flush();
-
-      String response = in.readUTF();
-      if (response.equals("FAIL")) {
-        System.out.println(in.readUTF());
-        return;
-      }
-
+      lessonDao.insert(lesson); // lessondDao가 서버에 요청할 것이고 마치 프록시가 직접 하는 것처럼
       System.out.println("저장하였습니다.");
 
     } catch (Exception e) {

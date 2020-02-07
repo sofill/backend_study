@@ -1,19 +1,17 @@
 package com.eomcs.lms.handler;
 
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import com.eomcs.lms.dao.proxy.LessonDaoProxy;
 import com.eomcs.util.Prompt;
 
+//"/lesson/delete" 명령 처리
 public class LessonDeleteCommand implements Command {
 
-  ObjectOutputStream out;
-  ObjectInputStream in;
-
   Prompt prompt;
+  LessonDaoProxy lessonDao;
 
-  public LessonDeleteCommand(ObjectOutputStream out, ObjectInputStream in, Prompt prompt) {
-    this.out = out;
-    this.in = in;
+  public LessonDeleteCommand(LessonDaoProxy lessonDao, Prompt prompt) {
+    this.lessonDao = lessonDao;
+    this.lessonDao = lessonDao;
     this.prompt = prompt;
   }
 
@@ -21,17 +19,7 @@ public class LessonDeleteCommand implements Command {
   public void execute() {
     try {
       int no = prompt.inputInt("번호? ");
-
-      out.writeUTF("/lesson/delete");
-      out.writeInt(no);
-      out.flush();
-
-      String response = in.readUTF();
-
-      if (response.equals("FAIL")) {
-        System.out.println(in.readUTF());
-        return;
-      }
+      lessonDao.delete(no);   // 이런 식으로 위임한다.
       System.out.println("수업을 삭제했습니다.");
 
     } catch (Exception e) {
