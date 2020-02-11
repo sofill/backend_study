@@ -15,7 +15,6 @@ public class Server0120 {
       System.out.println("클라이언트의 연결을 기다리고 있음.");
 
       try (Socket socket = serverSocket.accept(); // 여기서 일단 멈춤. 대기열에 클라이언트가 들어올 때까지!
-
           OutputStream out = socket.getOutputStream();
           InputStream in = socket.getInputStream()) {
 
@@ -44,6 +43,7 @@ public class Server0120 {
         // byte stream 을 사용할 때는 바로 출력한다.
         // 따라서 flush()를 호출하지 않아도 된다.
         System.out.println("클라인트에게 데이터를 보냈음.");
+
       }
       System.out.println("클라이언트와의 연결을 끊었음.");
 

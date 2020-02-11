@@ -12,11 +12,11 @@ public class Client0210 {
     Scanner keyScan = new Scanner(System.in);
 
     try (Socket socket = new Socket("localhost.", 8888);
-
         PrintWriter out = new PrintWriter(socket.getOutputStream()); // PrintWriter 요게 문제..
         BufferedReader in = new BufferedReader( //BufferedReader는 캐릭터스트림
             new InputStreamReader(socket.getInputStream()))) {  //inputStream은 바이트스트림
       // 그래서 InputStreaReader라는 데코레이터를 붙임. 중간에 얘가 필요
+
       System.out.println("서버와 연결되었음!");
 
       // 서버에 데이터를 보내기 전에 잠깐 멈춤!

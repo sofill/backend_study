@@ -19,6 +19,7 @@ public class Client0160 {
       // 인풋, 아웃풋 상속받은 건 바이트스트림
       // 리더, 라이터 상속받은 건 캐릭터트스림
       // 그냥 다 flush() 해라.
+
       System.out.println("서버와 연결되었음!");
 
       // 서버에 데이터를 보내기 전에 잠깐 멈춤!
@@ -30,6 +31,7 @@ public class Client0160 {
       // byte stream 에서 버퍼를 사용할 때는
       // 데이터를 보내기 위해 반드시 flush()를 호출해야 한다.
       System.out.println("서버에 데이터를 보냈음!");
+
       String str = in.nextLine(); //스캐너는 nextLin, String
       System.out.println(str);
 

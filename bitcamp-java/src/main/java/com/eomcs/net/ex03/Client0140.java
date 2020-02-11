@@ -7,7 +7,6 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class Client0140 {
-
   public static void main(String[] args) {
     Scanner keyScan = new Scanner(System.in);
 
@@ -18,7 +17,7 @@ public class Client0140 {
       System.out.println("서버와 연결되었음!");
 
       // 서버에 데이터를 보내기 전에 잠깐 멈춤!
-      System.out.println(">");
+      System.out.print(">");
       keyScan.nextLine();
 
       // 서버에 Data를 전송한다.
@@ -26,12 +25,13 @@ public class Client0140 {
       out.writeByte(100);
       out.writeFloat(3.14f);
       out.writeUTF("ABC가각간");
-      //out.flush();
+
+      // out.flush();
       // byte stream 을 사용할 때는 바로 출력한다.
       // 따라서 flush()를 호출하지 않아도 된다.
       System.out.println("서버에 데이터를 보냈음!");
 
-      // 서버에서 보낸  Data를 읽는다.
+      // 서버에서 보낸 Data를 읽는다.
       int value = in.readInt();
       byte value2 = in.readByte();
       float value3 = in.readFloat();
