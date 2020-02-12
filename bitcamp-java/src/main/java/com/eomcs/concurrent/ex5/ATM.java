@@ -3,7 +3,7 @@ package com.eomcs.concurrent.ex5;
 public class ATM extends Thread {
   Account account;
 
-  public ATM(String name, Account account) {
+  public ATM(String name, Account account) { //생성자에서 계좌 꽂는다고 가정한다.
     super(name);
     this.account = account;
   }
@@ -19,7 +19,7 @@ public class ATM extends Thread {
         break;
       sum += money;
     }
-    System.out.printf("%s가 찾은 돈: %d원\n", this.getName(), sum);
+    System.out.printf("%s에서 찾은 돈: %d원\n", this.getName(), sum);
   }
 }
 

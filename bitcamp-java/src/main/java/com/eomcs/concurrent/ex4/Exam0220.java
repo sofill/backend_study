@@ -7,6 +7,7 @@ public class Exam0220 {
       public MyThread(String name) {
         super(name);
       }
+      @Override
       public void run() {
         long startTime = System.currentTimeMillis();
         for (int i = 0; i < 100000000; i++)
@@ -25,9 +26,9 @@ public class Exam0220 {
     // 그러다보니 우선 순위를 조정하여 작업을 처리하도록 프로그램을 짜게 되면,
     // 유닉스 계열에서 실행할 때는 의도한 대로 동작할지 모르지만,
     // 윈도우에서는 의도대로 동작하지 않을 것이다.
-    // 따라서 프로그램을 짤 때 스레드의 우선 순위를 조정하는 방법에 의존하지 말라! 
+    // 따라서 프로그램을 짤 때 스레드의 우선 순위를 조정하는 방법에 의존하지 말라!
 
-    System.out.printf("main 스레드 우선 순위: %d\n", 
+    System.out.printf("main 스레드 우선 순위: %d\n",
         Thread.currentThread().getPriority());
 
     System.out.printf("%s 스레드 우선 순위: %d\n",
@@ -40,7 +41,7 @@ public class Exam0220 {
     // main 스레드 작업 시작
     long startTime = System.currentTimeMillis();
     for (int i = 0; i < 100000000; i++)
-      Math.asin(38.567);
+      Math.asin(38.567); // 시간 끌기 용. 왜? 부동소수점 연산은 시간을 많이 소요하기 때문.
     long endTime = System.currentTimeMillis();
     System.out.printf("main = %d\n", endTime - startTime);
   }
