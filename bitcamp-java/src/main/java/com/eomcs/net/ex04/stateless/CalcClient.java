@@ -14,6 +14,8 @@ public class CalcClient {
       int a = Integer.parseInt(keyScan.nextLine());
 
       System.out.print("연산자? ");
+      String op = keyScan.nextLine();
+
       System.out.println("값2? ");
       int b = Integer.parseInt(keyScan.nextLine());
 
@@ -22,6 +24,7 @@ public class CalcClient {
           DataOutputStream out = new DataOutputStream(socket.getOutputStream())) {
 
         out.writeInt(a);
+        out.writeUTF(op);
         out.writeInt(b);
 
         String str = in.nextLine();
@@ -36,6 +39,7 @@ public class CalcClient {
         break;
       }
     }
+
     keyScan.close();
   }
 }

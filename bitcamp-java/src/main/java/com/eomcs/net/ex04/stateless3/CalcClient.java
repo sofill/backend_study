@@ -1,5 +1,5 @@
-// stateless 방식에서 클라이언트를 구분하고 작업 결과를 유지하는 방법
-package com.eomcs.net.ex04.stateless2;
+// stateless 에서 다중 클라이언트 요청 처리하기
+package com.eomcs.net.ex04.stateless3;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -18,7 +18,7 @@ public class CalcClient {
       System.out.print("연산자? ");
       String op = keyScan.nextLine();
 
-      System.out.print("값? ");
+      System.out.println("값? ");
       int value = Integer.parseInt(keyScan.nextLine());
 
       try (Socket socket = new Socket("localhost", 8888);
@@ -49,7 +49,7 @@ public class CalcClient {
         break;
       }
     }
-    keyScan.close(); // 스캐너 종료해 줘야 함.
+    keyScan.close(); // 스캐너 종료해 줘야 함
   }
 }
 

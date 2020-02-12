@@ -1,5 +1,5 @@
-// stateful 방식의 이점 활용하기! - 계산기 서버 만들기
-package com.eomcs.net.ex04.statefull2;
+// stateful 방식 - 다중 클라이언트의 요청 처리 시 문제점과 해결책
+package com.eomcs.net.ex04.stateful2;
 
 import java.io.DataInputStream;
 import java.io.PrintStream;
@@ -39,7 +39,6 @@ public class CalcServer {
       loop: while (true) {
         int a = in.readInt();
         String op = in.readUTF();
-        int b = in.readInt();
 
         switch (op) {
           case "+": result += a; break;

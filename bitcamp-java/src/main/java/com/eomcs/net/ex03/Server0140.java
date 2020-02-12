@@ -38,6 +38,9 @@ public class Server0140 {
         out.writeByte(value2);
         out.writeFloat(value3);
         out.writeUTF(value4);
+        // out.flush();
+        // byte stream 을 사용할 때는 바로 출력한다.
+        // 따라서 flush()를 호출하지 않아도 된다.
         System.out.println("클라인트에게 데이터를 보냈음.");
 
       }

@@ -28,14 +28,13 @@ public class CalcServer {
         System.out.println("클라이언트 요청 처리 중 오류 발생!");
         System.out.println("다음 클라이언트의 요청을 처리합니다.");
       }
-      //ss.close();
     }
+    //ss.close();
   }
   static void processRequest(Socket socket) throws Exception {
     try (Socket socket2 = socket;
         DataInputStream in = new DataInputStream(socket.getInputStream());
-        DataOutputStream out = new DataOutputStream(socket.getOutputStream());
-        ) {
+        DataOutputStream out = new DataOutputStream(socket.getOutputStream());) {
 
       // 클라이언트를 구분하기 위한 아이디
       // => 0 : 아직 클라이언트 아이디가 없다는 의미

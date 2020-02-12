@@ -50,7 +50,7 @@ import java.util.Scanner;
 //   - 서버에 요청할 때마다 연결하고 응답을 받으면 즉시 연결을 끊는다.
 //   - 따라서 비영속적인 단일 작업을 처리할 때 적합한 통신 방식이다.
 // * 비영속적인 작업에 적합한 이 stateless 방식을 영속적으로 사용하려면?
-//   session 이라는 기술이 필요하다. (나중에)
+//     => session 이라는 기술이 필요하다. (나중에)
 
 public class Client0210 {
   public static void main(String[] args) {
@@ -60,7 +60,6 @@ public class Client0210 {
     while (true) {
       System.out.println("이름?");
       String name = keyScan.nextLine();
-      System.out.printf("%S님 반갑습니다.", name);
 
       if (name.equalsIgnoreCase("quit")) {
         break;
@@ -75,7 +74,7 @@ public class Client0210 {
         System.out.println("서버와 연결되었음!");
 
         // 한 번 요청한다.
-        out.println("name");
+        out.println(name);
         out.flush();
 
         // 응답 받으면 서버와 연결을 끊는다.
@@ -87,8 +86,8 @@ public class Client0210 {
       } catch (Exception e) {
         e.printStackTrace();
       }
-
-      keyScan.close();
     }
+    keyScan.close();
   }
 }
+

@@ -10,12 +10,13 @@ public class Exam0110 {
 
   public static void main(String[] args) throws Exception {
     // URL 클래스를 이용하면 HTTP 프로토콜을 신경쓰지 않고
-    // HTTP 요청을 수행할 수 있다. (request line, header 신경쓰지 않아도 됨)
+    // HTTP 요청을 수행할 수 있다.
     //
-    // => 서버와 연결하고 HTTP 요청을 수행한다.
+    // => URL 주소를 검증하고 준비한다.
     URL url = new URL("https://www.daum.net");
 
-    // => 그런 후에 웹서버의 응답 데이터를 읽어들일 도구를 리턴한다.
+    // => 서버와 연결하고 HTTP 요청을 수행한다.
+    // => 그런 후에 웹서버의 응답 데이터를 읽어들일 도구를 준비한다.
     InputStream in = url.openStream();
 
     // => 서버가 보낸 데이터를 한 줄씩 읽기 위해 데코레이터를 붙인다.
@@ -34,9 +35,5 @@ public class Exam0110 {
   }
 
 }
-
-
-
-
 
 

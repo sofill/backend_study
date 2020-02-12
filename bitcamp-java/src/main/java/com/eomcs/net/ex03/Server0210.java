@@ -19,7 +19,7 @@ public class Server0210 {
 
           BufferedReader in = new BufferedReader( //BufferedReader는 캐릭터스트림
               new InputStreamReader(socket.getInputStream())); //inputStream은 바이트스트림
-          // 그래서 InputStreaReader라는 데코레이터를 붙임. 중간에 얘가 필요
+          // 그래서 InputS treaReader라는 데코레이터를 붙임. 중간에 얘가 필요
           PrintStream out = new PrintStream(socket.getOutputStream())) {
 
         System.out.println("클라이언트와가 보낼 한 줄의 문자열을 기다리고 있음");

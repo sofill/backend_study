@@ -60,15 +60,15 @@ public class Client0110 {
         BufferedReader in = new BufferedReader( //BufferedReader는 캐릭터스트림
             new InputStreamReader(socket.getInputStream()))) {  //inputStream은 바이트스트림
       // 그래서 InputStreaReader라는 데코레이터를 붙임. 중간에 얘가 필요
+
       System.out.println("서버와 연결되었음!");
 
       String name = null;
-
       do {
-        System.out.println("이름?");
+        System.out.print("이름?  ");
         name = keyScan.nextLine();
 
-        out.println("name");
+        out.println(name);
         out.flush();
 
         String str = in.readLine();

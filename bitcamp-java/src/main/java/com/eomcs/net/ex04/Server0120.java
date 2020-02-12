@@ -3,7 +3,7 @@ package com.eomcs.net.ex04;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
@@ -16,15 +16,16 @@ public class Server0120 {
       System.out.println("서버 실행!");
 
       while (true) {
+        // 한 클라이언트와 대화 끝나면 다음 클라이언트와 대화 한다.
         try (Socket socket = serverSocket.accept(); // 여기서 일단 멈춤. 대기열에 클라이언트가 들어올 때까지!
 
             BufferedReader in = new BufferedReader( //BufferedReader는 캐릭터스트림
                 new InputStreamReader(socket.getInputStream())); //inputStream은 바이트스트림
-            PrintStream out = new PrintStream(socket.getOutputStream())) {
+            PrintWriter out = new PrintWriter(socket.getOutputStream())) {
 
           System.out.println("클라이언트가 연결되었음!");
 
-          while (true) { // 한 클라이언트와 대화 끝나면 다음 클라이언트와 대화 한다.
+          while (true) {
 
             String name = in.readLine(); // 버퍼드는 readLine()
             if (name.equalsIgnoreCase("quit")) {
@@ -32,7 +33,7 @@ public class Server0120 {
               out.flush();
               break;
             }
-            System.out.printf("%s님 반갑습니다! \n", name);
+            out.printf("%s님 반갑습니다! \n", name);
             out.flush();
           }
         } catch (Exception e) {
