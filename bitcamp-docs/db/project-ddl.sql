@@ -13,6 +13,8 @@ drop table if exists lms_photo;
 -- 사진 게시물 첨부 파일 테이블 삭제
 drop table if exists lms_photo_file;
 
+
+-----------------------------아래 문장 전체 복붙-------------------------
 -- 수업 테이블 생성
 create table lms_lesson (
   lesson_id int not null auto_increment primary key comment '수업 데이터 식별 번호', 
@@ -21,10 +23,18 @@ create table lms_lesson (
   tot_hr int not null comment '총 수업 시간',
   day_hr int not null comment '일 수업 시간',
   titl varchar(255) not null comment '수업명',
-  conts text not null comment '수업 내용'
+  conts text not null comment '수업 내용'               
 ) comment '수업'; 
 
--- 회원 테이블 생성
+위에 -- 한글 한 자당 3 byte 이니까 255 % 3 = 허용 글자수!
+오라클, mySQL 마다 허용되는 글자수 같은 게 다 다르다. 
+그래서 각각의 개발자가 필요한 것임.
+
+
+( ) <- 이 안이 회원 데이터를 설계하는 설계도
+--  <- 주석
+-----------------------------아래 문장 전체 복붙-------------------------
+-- 회원 테이블 생성                                
 create table lms_member (
   member_id int not null auto_increment primary key comment '회원 데이터 식별 번호',
   name varchar(30) not null comment '이름',
@@ -39,7 +49,8 @@ create unique index UIX_lms_member_email
   on lms_member ( -- 회원
     email asc    -- 이메일
   );
-  
+
+-----------------------------아래 문장 전체 복붙-------------------------
 -- 게시물 테이블 생성
 create table lms_board (
   board_id int not null auto_increment primary key comment '게시물 식별 번호',

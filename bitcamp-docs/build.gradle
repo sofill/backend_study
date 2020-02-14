@@ -6,6 +6,8 @@
 plugins {
     id 'eclipse'  // 이클립스 설정 파일을 생성할 수 있다.
 }
-
+implements group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.5.4'
+implements 'com.google.guava:guava:23.0'
+    testCompile 'junit:junit:4.12'
 
 
