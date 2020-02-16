@@ -14,7 +14,7 @@ public class Exam0140 {
         this.count = count;
 
         synchronized (this) {  // <블록으로 추가>
-          // synchronised 블록에서 지정한 객체의 사용을 기다리는 스레드에게
+          // synchronized 블록에서 지정한 객체의 사용을 기다리는 스레드에게
           // 작업을 시작할 것을 알린다.
           notify();
           // notify()  도 동기화 영역에서 호출해야 한다.

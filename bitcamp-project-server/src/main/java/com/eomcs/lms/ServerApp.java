@@ -192,7 +192,7 @@ public class ServerApp {
           System.out.println("클라이언트 요청 처리 중 오류 발생:");
           e.printStackTrace();
         }
-      } else { // 없다면? 간단한 아내 메시지를 응답한다.
+      } else { // 없다면? 간단한 안내 메시지를 응답한다.
         notFound(out);
       }
       out.flush();
