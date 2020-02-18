@@ -88,6 +88,16 @@ select no, name, class, working
 from test1
 where working='Y' and class='java100';
 
+/* 주의!
+   where 절을 통해 결과 데이터를 먼저 선택(selection) 한 다음
+   결과 데이터에서 가져올 컬럼을 선택(projection)한다.
+   따라서 실행 순서는 ->
+   from => where => select 이라는 것 잊지 마라!  
+*/
+select no, name
+from test1
+where working='Y' and class='java100';
+
 /* 재직자가 아닌 사람만 조회하라!*/
 select no, name, class, working
 from test1
@@ -115,7 +125,7 @@ where (no % 3) = 0;
 /* => 다음과 같이 null에 != 연산자를 사용하면 조건이 맞지 않는다.*/
 select *
 from test1
-where tel != null; 
+where tel != null;   /* 이거 실수 많음 */  
 
 /* => null인지 여부를 가릴 때는 is 또는 is not 연산자를 사용하라!*/
 select *
@@ -139,7 +149,7 @@ where tel is null; /* OK */
 ```
 
 ### 사칙연산
-- +, -, *, /, % 연산자를 사용할 수 있다.
+- +, -, *, /, % 연산자를 사용할 수 있다. from 절 없어도 됨.
 ```
 select (4 + 5), (4 - 5), (4 * 5), (4 / 5), (4 % 5);
 ```
@@ -153,7 +163,7 @@ select (4=5), (4!=5), (4>5), (4>=5), (4<5), (4<=5), (4<>5);
 ### between 값1 and 값2 
 - 두 값 사이(두 값도 포함)에 있는지 검사한다.
 ```
-select 5 between 3 and 5;
+select 5 between 3 and 5; /* 5가 3과 5 사이에 있느냐? 는 뜻 */
 ```
 
 ### like
@@ -274,7 +284,7 @@ select date_sub(now(), interval 11 day);
 
 /* 두 날짜 사이의 간격을 알아내기 */
 datediff(날짜1, 날짜2);
-select datediff(curdate(), '2018-3-19');
+	select datediff(curdate(), '2018-3-19');
 
 /* 날짜에서 특정 형식으로 값을 추출하기 */
 date_format(날짜, 형식)
@@ -283,14 +293,14 @@ select date_format(now(), '%M/%d/%y'); /* September/07/17 */
 select date_format(now(), '%W %w %a'); /* Thursday 4 Thu */
 select date_format(now(), '%M %b'); /* September Sep */
 select date_format(now(), '%p %h %H %l'); /* PM 01 13 1 */
-select date_format(now(), '%i %s'); /* 05 45 */
+select date_format(now(), '%h %i %s'); /* 05 45 */
 
 /* 문자열을 날짜 값으로 바꾸기 */
 select str_to_date('11/22/2017', '%m/%d/%Y');
 select str_to_date('2017.2.12', '%Y.%m.%d');
 
 
-/* 날짜 값을 저장할 때 기본 형식은 yyyy-MM-dd이다. */
+/* 날짜 값을 저장할 때 기본 형식은 yyyy-MM-dd이다. (mm은 분이므로 MM이 월을 표시) */
 insert into test1 (title, regdt) values('aaaa', '2017-11-22');
 
 /* 다음 형식의 문자열을 날짜 값으로 지정할 수 없다.*/
