@@ -1,9 +1,8 @@
 // LMS 클라이언트
 package com.eomcs.lms;
 
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.net.Socket;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.HashMap;
@@ -11,10 +10,12 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
-import com.eomcs.lms.dao.proxy.BoardDaoProxy;
-import com.eomcs.lms.dao.proxy.DaoProxyHelper;
-import com.eomcs.lms.dao.proxy.LessonDaoProxy;
-import com.eomcs.lms.dao.proxy.MemberDaoProxy;
+import com.eomcs.lms.dao.BoardDao;
+import com.eomcs.lms.dao.LessonDao;
+import com.eomcs.lms.dao.MemberDao;
+import com.eomcs.lms.dao.mariadb.BoardDaoImpl;
+import com.eomcs.lms.dao.mariadb.LessonDaoImpl;
+import com.eomcs.lms.dao.mariadb.MemberDaoImpl;
 import com.eomcs.lms.handler.BoardAddCommand;
 import com.eomcs.lms.handler.BoardDeleteCommand;
 import com.eomcs.lms.handler.BoardDetailCommand;
@@ -41,12 +42,11 @@ public class ClientApp {
   Deque<String> commandStack;
   Queue<String> commandQueue;
 
-  String host;
-  int port;
+  Connection con;
 
   HashMap<String, Command> commandMap = new HashMap<>();
 
-  public ClientApp() {
+  public ClientApp() throws Exception {
     // 생성자?
     // => 객체가 작업할 때 사용할 자원들을 준비하는 일을 한다.
 
@@ -54,23 +54,16 @@ public class ClientApp {
     commandStack = new ArrayDeque<>();
     commandQueue = new LinkedList<>();
 
-    try {
-      host = prompt.inputString("서버? ");
-      port = prompt.inputInt("포트? ");
+    // <추가> DB 연결 객체 준비
+    Class.forName("org.mariadb.jdbc.Driver");
+    con = DriverManager.getConnection( //
+        "jdbc:mariadb://localhost:3306/studydb", "study", "1111");
 
-    } catch (Exception e) {
-      System.out.println("서버 주소 또는 포트 번호가 유효하지 않습니다!");
-      keyboard.close();
-      return;
-    }
+    // MariaDB 와 연동하여 데이터를 처리하는 DAO 객체 준비
+    BoardDao boardDao = new BoardDaoImpl(con);
+    LessonDao lessonDao = new LessonDaoImpl(con);
+    MemberDao memberDao = new MemberDaoImpl(con);
 
-    // DAO 프록시의 서버 연결을 도와줄 도우미 객체 준비
-    DaoProxyHelper daoProxyHelper = new DaoProxyHelper(host, port);
-
-    // DAO 프록시 객체 준비
-    BoardDaoProxy boardDao = new BoardDaoProxy(daoProxyHelper);
-    LessonDaoProxy lessonDao = new LessonDaoProxy(daoProxyHelper);
-    MemberDaoProxy memberDao = new MemberDaoProxy(daoProxyHelper);
 
     // 사용자 명령을 처리할 Command 객체 준비
     commandMap.put("/board/list", new BoardListCommand(boardDao));
@@ -91,24 +84,6 @@ public class ClientApp {
     commandMap.put("/lesson/update", new LessonUpdateCommand(lessonDao, prompt));
     commandMap.put("/lesson/delete", new LessonDeleteCommand(lessonDao, prompt));
 
-    commandMap.put("/server/stop", () -> {
-      try {
-        try (Socket socket = new Socket(host, port);
-            ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
-            ObjectInputStream in = new ObjectInputStream(socket.getInputStream())) {
-          // 위의 트라이 옮긴 이유 - 명령어 실행할 때마다 서버에 접속하겠다는 것
-
-          //      commandMap.put("/server/stop", new Command() {
-          //        @Override
-          //        public void execute() {     // 위를 아래처럼 람다로 바꿀 수 있음
-          out.writeUTF("/server/stop");
-          out.flush();
-          System.out.println("서버: " + in.readUTF());
-          System.out.println("안녕!");
-        }
-      }catch (Exception e) {
-      }
-    });
   }
 
   public void service() {
@@ -138,6 +113,12 @@ public class ClientApp {
 
     }
     keyboard.close();
+
+    try {
+      con.close();
+    } catch (Exception e) {
+
+    }
   }
 
   private void processCommand(String command) {

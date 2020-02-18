@@ -1,197 +1,123 @@
 package com.eomcs.lms;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Queue;
 import java.util.Scanner;
-import java.util.Set;
-import com.eomcs.lms.context.ApplicationContextListener;
-import com.eomcs.lms.domain.Board;
-import com.eomcs.lms.domain.Lesson;
-import com.eomcs.lms.domain.Member;
-import com.eomcs.lms.handler.BoardAddCommand;
-import com.eomcs.lms.handler.BoardDeleteCommand;
-import com.eomcs.lms.handler.BoardDetailCommand;
-import com.eomcs.lms.handler.BoardListCommand;
-import com.eomcs.lms.handler.BoardUpdateCommand;
-import com.eomcs.lms.handler.Command;
-import com.eomcs.lms.handler.ComputePlusCommand;
-import com.eomcs.lms.handler.HelloCommand;
-import com.eomcs.lms.handler.LessonAddCommand;
-import com.eomcs.lms.handler.LessonDeleteCommand;
-import com.eomcs.lms.handler.LessonDetailCommand;
-import com.eomcs.lms.handler.LessonListCommand;
-import com.eomcs.lms.handler.LessonUpdateCommand;
-import com.eomcs.lms.handler.MemberAddCommand;
-import com.eomcs.lms.handler.MemberDeleteCommand;
-import com.eomcs.lms.handler.MemberDetailCommand;
-import com.eomcs.lms.handler.MemberListCommand;
-import com.eomcs.lms.handler.MemberUpdateCommand;
-import com.eomcs.util.Prompt;
+import com.eomcs.lms.handler.BoardHandler;
+import com.eomcs.lms.handler.LessonHandler;
+import com.eomcs.lms.handler.MemberHandler;
 
 public class App {
 
-  Scanner keyboard = new Scanner(System.in);
+  static Scanner keyboard = new Scanner(System.in);
 
-  Deque<String> commandStack = new ArrayDeque<>();
-  Queue<String> commandQueue = new LinkedList<>();
+  public static void main(String[] args) {
 
-  // 옵저버 목록을 관리할 객체 준비
-  // - 같은 인스턴스를 중복해서 등록하지 않도록 한다.
-  // - Set은 등록 순서를 따지지 않는다.
-  Set<ApplicationContextListener> listeners = new LinkedHashSet<>();
-  // HashsSet() : 순서가 랜덤이고 보장받지 못함.
-  // LinkedHashSet() : 내가 원하는대로 순서를 놓을 수 있음.
-  // HashMap과 LinkedHashMap 도 마찬가지.
+    // Handler의 메서드를 사용하기 전에
+    // 그 메서드가 작업할 때 사용할 키보드 객체를 설정해줘야 한다.
+    LessonHandler.keyboard = keyboard;
+    MemberHandler.keyboard = keyboard;
+    BoardHandler.keyboard = keyboard;
 
-  // 옵저버와 공유할 값을 보관할 객체를 준비한다.
-  Map<String, Object> context = new HashMap<>();
+    // BoardHandler의 메서드가 사용할 메모리만 게시판 마다 따로 생성한다.
+    BoardHandler 게시판1 = new BoardHandler();
+    BoardHandler 게시판2 = new BoardHandler();
+    BoardHandler 게시판3 = new BoardHandler();
+    BoardHandler 게시판4 = new BoardHandler();
+    BoardHandler 게시판5 = new BoardHandler();
+    BoardHandler 게시판6 = new BoardHandler();
 
-  // 옵저버를 등록하는 메서드이다.
-  public void addApplicationContextListener(ApplicationContextListener listener) {
-    listeners.add(listener);
-  }
+    LessonHandler 정규수업 = new LessonHandler();
 
-  // 옵저버를 제거하는 메서드이다.
-  public void removeApplicationContextListener(ApplicationContextListener listener) {
-    listeners.remove(listener);
-  }
-
-  // 애플리케이션이 시작되면, 등록된 리스너에게 알린다.
-  private void notifyApplicationInitialized() {
-    for (ApplicationContextListener listener : listeners) {
-      // 옵저버를 실행할 때 작업 결과를 리턴 받을 수 있도록 바구니를 넘긴다.
-      // 물론 옵저버에게 전달할 값이 있으면 넘기기 전에 바구니에 담도록 한다.
-      // 파라미터 Map과 같은 객체를 사용하면 이런 점에서 편하다.
-      // 즉 파라미터로 값을 전달(IN)하고 리턴(OUT) 받을 수 있다.
-      listener.contextInitialized(context);
-    }
-  }
-
-  // 애플리케이션이 종료되면, 등록된 리스너에게 알린다.
-  private void notifyApplicationDestroyed() {
-    for (ApplicationContextListener listener : listeners) {
-      // 옵저버를 실행할 때 작업 결과를 리턴 받을 수 있도록 바구니를 넘긴다.
-      // 물론 옵저버에게 전달할 값이 있으면 넘기기 전에 바구니에 담도록 한다.
-      // 파라미터 Map과 같은 객체를 사용하면 이런 점에서 편하다.
-      // 즉 파라미터로 값을 전달(IN)하고 리턴(OUT) 받을 수 있다.
-      listener.contextDestroyed(context);
-    }
-  }
-
-  @SuppressWarnings("unchecked")
-  public void service() {
-
-    // 애플리케이션이 시작되면 등록된 옵저버를 실행한다.
-    // 즉 DataLoaderListener를 실행한다.
-    notifyApplicationInitialized();
-
-    // 옵저버의 실행이 끝났으면 DataLoaderListener 옵저버가 준비한
-    // List 객체를 꺼내보자!
-    List<Board> boardList = (List<Board>) context.get("boardList");
-    List<Lesson> lessonList = (List<Lesson>) context.get("lessonList");
-    List<Member> memberList = (List<Member>) context.get("memberList");
-
-    Prompt prompt = new Prompt(keyboard);
-    HashMap<String, Command> commandMap = new HashMap<>();
-
-    commandMap.put("/board/add", new BoardAddCommand(prompt, boardList));
-    commandMap.put("/board/list", new BoardListCommand(boardList));
-    commandMap.put("/board/detail", new BoardDetailCommand(prompt, boardList));
-    commandMap.put("/board/update", new BoardUpdateCommand(prompt, boardList));
-    commandMap.put("/board/delete", new BoardDeleteCommand(prompt, boardList));
-
-    commandMap.put("/lesson/add", new LessonAddCommand(prompt, lessonList));
-    commandMap.put("/lesson/list", new LessonListCommand(lessonList));
-    commandMap.put("/lesson/detail", new LessonDetailCommand(prompt, lessonList));
-    commandMap.put("/lesson/update", new LessonUpdateCommand(prompt, lessonList));
-    commandMap.put("/lesson/delete", new LessonDeleteCommand(prompt, lessonList));
-
-    commandMap.put("/member/add", new MemberAddCommand(prompt, memberList));
-    commandMap.put("/member/list", new MemberListCommand(memberList));
-    commandMap.put("/member/detail", new MemberDetailCommand(prompt, memberList));
-    commandMap.put("/member/update", new MemberUpdateCommand(prompt, memberList));
-    commandMap.put("/member/delete", new MemberDeleteCommand(prompt, memberList));
-
-    commandMap.put("/hello", new HelloCommand(prompt));
-    commandMap.put("/compute/plus", new ComputePlusCommand(prompt));
-
+    MemberHandler 일반회원 = new MemberHandler();
 
     String command;
 
-    while (true) {
+    do {
       System.out.print("\n명령> ");
       command = keyboard.nextLine();
 
-      if (command.length() == 0)
-        continue;
-
-      if (command.equals("quit")) {
-        System.out.println("안녕!");
-        break;
-      } else if (command.equals("history")) {
-        printCommandHistory(commandStack.iterator());
-        continue;
-      } else if (command.equals("history2")) {
-        printCommandHistory(commandQueue.iterator());
-        continue;
+      switch (command) {
+        case "/lesson/add":
+          정규수업.addLesson();
+          break;
+        case "/lesson/list":
+          정규수업.listLesson();
+          break;
+        case "/member/add":
+          일반회원.addMember();
+          break;
+        case "/member/list":
+          일반회원.listMember();
+          break;
+        case "/board/add":
+          게시판1.addBoard();
+          break;
+        case "/board/list":
+          게시판1.listBoard();
+          break;
+        case "/board/detail":
+          게시판1.detailBoard();
+          break;
+        case "/board2/add":
+          게시판2.addBoard();
+          break;
+        case "/board2/list":
+          게시판2.listBoard();
+          break;
+        case "/board2/detail":
+          게시판2.detailBoard();
+          break;
+        case "/board3/add":
+          게시판3.addBoard();
+          break;
+        case "/board3/list":
+          게시판3.listBoard();
+          break;
+        case "/board3/detail":
+          게시판3.detailBoard();
+          break;
+        case "/board4/add":
+          게시판4.addBoard();
+          break;
+        case "/board4/list":
+          게시판4.listBoard();
+          break;
+        case "/board4/detail":
+          게시판4.detailBoard();
+          break;
+        case "/board5/add":
+          게시판5.addBoard();
+          break;
+        case "/board5/list":
+          게시판5.listBoard();
+          break;
+        case "/board5/detail":
+          게시판5.detailBoard();
+          break;
+        case "/board6/add":
+          게시판6.addBoard();
+          break;
+        case "/board6/list":
+          게시판6.listBoard();
+          break;
+        case "/board6/detail":
+          게시판6.detailBoard();
+          break;
+        default:
+          if (!command.equalsIgnoreCase("quit")) {
+            System.out.println("실행할 수 없는 명령입니다.");
+          }
       }
 
-      commandStack.push(command);
+    } while (!command.equalsIgnoreCase("quit"));
 
-      commandQueue.offer(command);
-
-      Command commandHandler = commandMap.get(command);
-
-      if (commandHandler != null) {
-        try {
-          commandHandler.execute();
-        } catch (Exception e) {
-          e.printStackTrace();
-          System.out.printf("명령어 실행 중 오류 발생: %s\n", e.getMessage());
-        }
-      } else {
-        System.out.println("실행할 수 없는 명령입니다.");
-      }
-    }
+    System.out.println("안녕!");
 
     keyboard.close();
-
-    notifyApplicationDestroyed();
-
-  } // service()
-
-  private void printCommandHistory(Iterator<String> iterator) {
-    int count = 0;
-    while (iterator.hasNext()) {
-      System.out.println(iterator.next());
-      count++;
-
-      if ((count % 5) == 0) {
-        System.out.print(":");
-        String str = keyboard.nextLine();
-        if (str.equalsIgnoreCase("q")) {
-          break;
-        }
-      }
-    }
-  }
-
-  public static void main(String[] args) {
-    App app = new App();
-
-    // 애플리케이션의 상태를 정보를 받을 옵저버를 등록한다.
-    app.addApplicationContextListener(new DataLoaderListener());
-    app.addApplicationContextListener(new GreetingListener());
-
-    app.service();
   }
 }
+
+
+
+
 
 

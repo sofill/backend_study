@@ -61,15 +61,15 @@ public class Exam0210 {
     ArrayList<MyThread> list = new ArrayList<>();
 
     public MyThreadPool() {
-      MyThread t1 = new MyThread("1.신나는 음악!!!", this); // <추가> this
+      MyThread t1 = new MyThread("신나는 음악!", this); // <추가> this
       t1.start(); // 생성하자마자 시작시킴
       list.add(t1); // 리스트에 더함
 
-      MyThread t2 = new MyThread("2.카페 음악~~~~~~", this); // <추가> this
+      MyThread t2 = new MyThread("                 카페 음악~~~~~~", this); // <추가> this
       t2.start(); // 생성하자마자 시작시킴
       list.add(t2); // 리스트에 더함
 
-      MyThread t3 = new MyThread("3.슬픈 음악...", this); // <추가> this
+      MyThread t3 = new MyThread("                               슬픈 음악...", this); // <추가> this
       t3.start(); // 생성하자마자 시작시킴
       list.add(t3); // 리스트에 더함
     }
@@ -101,7 +101,7 @@ public class Exam0210 {
     Scanner keyScan = new Scanner(System.in);
 
     while (true) {
-      System.out.print("카운트? ");
+      System.out.print("카운트?\n");
       String str = keyScan.nextLine();
       if(str.equals("quit")) {
         break;
