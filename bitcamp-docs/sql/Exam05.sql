@@ -47,10 +47,10 @@ ALTER TABLE stnt
         );
 
 -- 수강생 유니크 인덱스
-CREATE UNIQUE INDEX UIX_stnt
+CREATE UNIQUE INDEX UIX_stnt --유니크는 중복이 안된다. 
     ON stnt ( -- 수강생
         acc_no ASC, -- 통장번호
-        bank ASC    -- 은행명
+        bank ASC    -- 은행명 --ASC:정렬한다는 뜻
     );
 
 -- 강사

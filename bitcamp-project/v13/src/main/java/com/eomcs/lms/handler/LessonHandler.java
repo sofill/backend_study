@@ -22,7 +22,6 @@ public class LessonHandler {
     //  (레퍼런스)
     System.out.print("번호? ");
     lesson.no = keyboard.nextInt();
-
     keyboard.nextLine(); // nextInt() 후에 남아 있는 줄바꿈 기호를 제거한다.
 
     System.out.print("수업명? ");
@@ -56,11 +55,11 @@ public class LessonHandler {
 
     for (int i = 0; i < this.lessonCount; i++) {
       Lesson l = this.lessons[i];
-      System.out.printf("%d. %s / %s / %s ~ %s / %d / %d\n", 
-          l.no, l.title, 
-          l.description, l.startDate, 
-          l.endDate, l.totalHours, 
-          l.dayHours);      
+      System.out.printf("%d. %s / %s / %s ~ %s / %d / %d\n",
+          l.no, l.title,
+          l.description, l.startDate,
+          l.endDate, l.totalHours,
+          l.dayHours);
     }
   }
 }
