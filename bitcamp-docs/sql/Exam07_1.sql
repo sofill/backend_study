@@ -1,9 +1,9 @@
 /* distinct 와 all */
 
-/* 모든 데이터를 가져온다.*/
+/* 모든 데이터를 가져온다. */
 select all loc from room;
 
-/* all은 생략할 수 있다*/
+/* all은 생략할 수 있다 */
 select loc from room;
 
 /* 중복 값을 한 개만 추출할 때 distinct 를 붙인다.*/

@@ -13,6 +13,10 @@ from room;
 select rno 'room no', loc location, name 
 from room;
 
+/* 라벨명에 공백 넣으면 오류! */
+select rno room no, loc location, name
+from room;
+
 /* 복잡한 형식으로 출력할 경우 라벨명(별명)을 부여한다. 
     예) 강의실명(지점명)*/
 select concat(name, '(', loc, ')')
@@ -21,6 +25,7 @@ from room;
 select concat(name, '(', loc, ')') title
 from room;
 
+-- 현재 몇 개인지
 select count(*) 
 from room;
 
