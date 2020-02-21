@@ -1,4 +1,4 @@
-// 트랜잭션 다루기 - autocommit = true 일 경우의 문제
+// insert 한 후 auto increment PK 값 리턴 받기 // 자동 생성된 번호를 얻는 방법
 package com.eomcs.jdbc.ex2;
 
 import java.sql.Connection;
@@ -8,12 +8,11 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Scanner;
 
-public class Exam0510 {
+public class Exam0420 {
 
   public static void main(String[] args) throws Exception {
     String title = null;
     String contents = null;
-    String filename = null;
 
     try (Scanner keyScan = new Scanner(System.in)) {
 
@@ -23,9 +22,6 @@ public class Exam0510 {
 
       System.out.print("내용? ");
       contents = keyScan.nextLine();
-
-      System.out.print("첨부파일명? ");
-      filename = keyScan.nextLine();
 
       System.out.print("입력하시겠습니까?(Y/n) ");
       String input = keyScan.nextLine();
@@ -38,37 +34,29 @@ public class Exam0510 {
 
     try (Connection con = DriverManager.getConnection( //
         "jdbc:mysql://localhost:3306/studydb?user=study&password=1111");
+
+        // 입력 후 PK 값을 리턴 받고 싶다면,
+        // PreparedStatement 객체를 얻을 때 다음과 같은 옵션을 지정하라!
+        // => prepareStatement(sql, 자동생성된 PK 값 리턴 여부)
+        //
         PreparedStatement stmt = con.prepareStatement( //
             "insert into x_board(title,contents) values(?,?)", //
             Statement.RETURN_GENERATED_KEYS);) {
-
-      // DriverManager가 리턴한 커넥션은 Auto Commit의 기본 상태가 true로 설정되어 있다.
-      // Auto Commit?
-      // => insert, update, delete을 실행한 후 그 결과를 즉시 테이블에 적용하는 것.
 
       stmt.setString(1, title);
       stmt.setString(2, contents);
       int count = stmt.executeUpdate();
       System.out.printf("%d 개 입력 성공!\n", count);
 
-      int no = 0;
+      // insert 수행 후 자동 생성된 PK 값은 따로 요구해야 한다.
       try (ResultSet rs = stmt.getGeneratedKeys()) {
+        // insert를 한 개만 했기 때문에 PK도 한 개만 생성되었다.
+        // 따라서 ResultSet에 대해 여러 번 반복을 할 필요가 없다.
         rs.next();
-        no = rs.getInt(1);
-      }
-      System.out.printf("입력된 게시글 번호: %d\n", no);
 
-      try (PreparedStatement stmt2 = con.prepareStatement( //
-          "insert into x_board_file(file_path,board_id) values(?,?)")) {
-        stmt2.setString(1, filename);
-        stmt2.setInt(2, no);
-        stmt2.executeUpdate();
-        System.out.println("첨부파일 등록 완료!");
-
-      } catch (Exception e) {
-        System.out.printf("첨부파일 등록 오류: %s\n", e.getMessage());
-        // 첨부파일 데이터를 입력하는 중에 오류가 발생하더라도
-        // 기존에 입력한 게시글은 계속 유효하다. ==> 이게 문제점!
+        // 자동 생성된 PK 값을 꺼낼 때는 따로 컬럼 이름이 없기 때문에 컬럼 인덱스로 꺼낸다.
+        int no = rs.getInt(1);
+        System.out.printf("입력된 게시글 번호: %d\n", no);
       }
     }
   }
