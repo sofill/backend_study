@@ -52,7 +52,7 @@ public class Exam0110 {
       //    "DTO (Data Transfer Object)" 라고도 부른다.
       // => 두 객체 사이에 전달되는 값을 표현한다고 해서
       //    "VO (Value Object)" 라고도 부른다.
-      //
+      //데이터처리코드를 별도 클래스로 분리시키는 이유:
 
     } catch (Exception e) {
       e.printStackTrace();
