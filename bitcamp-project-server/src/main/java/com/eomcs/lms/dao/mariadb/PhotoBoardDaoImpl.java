@@ -1,6 +1,7 @@
 package com.eomcs.lms.dao.mariadb;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -11,25 +12,35 @@ import com.eomcs.lms.domain.PhotoBoard;
 
 public class PhotoBoardDaoImpl implements PhotoBoardDao {
 
-  Connection con;
+  String jdbcUrl;
+  String username;
+  String password;
 
-  public PhotoBoardDaoImpl(Connection con) {
-    this.con = con;
+  public PhotoBoardDaoImpl(String jdbcUrl, String username, String password) {
+    this.jdbcUrl = jdbcUrl;
+    this.username = username;
+    this.password = password;
   }
 
   @Override
   public int insert(PhotoBoard photoBoard) throws Exception {
-    try (Statement stmt = con.createStatement()) {
+    try (Connection con = DriverManager.getConnection(jdbcUrl, username, password);
+        Statement stmt = con.createStatement()) {
 
-      int result = stmt.executeUpdate(
-          "insert into lms_photo(titl,lesson_id) values('"
-              + photoBoard.getTitle() + "', " + photoBoard.getLesson().getNo()
-              + ")",
-              Statement.RETURN_GENERATED_KEYS // insert 한 후에 PK 값 리턴 받기
+      int result = stmt.executeUpdate( //
+          "insert into lms_photo(titl,lesson_id) values('" //
+          + photoBoard.getTitle() + "', " + photoBoard.getLesson().getNo() //
+          + ")", //
+          Statement.RETURN_GENERATED_KEYS // insert 후에 PK 값 리턴 받기
           );
 
+      // auto-increament PK 값을 꺼내기 위한 준비를 한다.
       try (ResultSet generatedKeySet = stmt.getGeneratedKeys()) {
+        // PK 컬럼의 값을 가져온다.
+        generatedKeySet.next();
 
+        // 가져온 PK 컬럼의 값을 PhotoBoard 객체에 꺼꾸로 담는다.
+        photoBoard.setNo(generatedKeySet.getInt(1));
       }
 
       return result;
@@ -38,7 +49,8 @@ public class PhotoBoardDaoImpl implements PhotoBoardDao {
 
   @Override
   public List<PhotoBoard> findAllByLessonNo(int lessonNo) throws Exception {
-    try (Statement stmt = con.createStatement();
+    try (Connection con = DriverManager.getConnection(jdbcUrl, username, password);
+        Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery( //
             "select photo_id, titl, cdt, vw_cnt, lesson_id" //
             + " from lms_photo" //
@@ -63,7 +75,8 @@ public class PhotoBoardDaoImpl implements PhotoBoardDao {
 
   @Override
   public PhotoBoard findByNo(int no) throws Exception {
-    try (Statement stmt = con.createStatement();
+    try (Connection con = DriverManager.getConnection(jdbcUrl, username, password);
+        Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery( //
             "select" //
             + " p.photo_id," //
@@ -102,7 +115,8 @@ public class PhotoBoardDaoImpl implements PhotoBoardDao {
 
   @Override
   public int update(PhotoBoard photoBoard) throws Exception {
-    try (Statement stmt = con.createStatement()) {
+    try (Connection con = DriverManager.getConnection(jdbcUrl, username, password);
+        Statement stmt = con.createStatement()) {
       int result = stmt.executeUpdate( //
           "update lms_photo set titl='" //
           + photoBoard.getTitle() //
@@ -113,7 +127,8 @@ public class PhotoBoardDaoImpl implements PhotoBoardDao {
 
   @Override
   public int delete(int no) throws Exception {
-    try (Statement stmt = con.createStatement()) {
+    try (Connection con = DriverManager.getConnection(jdbcUrl, username, password);
+        Statement stmt = con.createStatement()) {
       int result = stmt.executeUpdate( //
           "delete from lms_photo" //
           + " where photo_id=" + no);

@@ -87,7 +87,7 @@ public class ClientApp {
       int index = url.indexOf('/'); // 14
       String[] str = //
           url.substring(0, index) // localhost:9999
-              .split(":"); // {"localhost", "9999"}
+          .split(":"); // {"localhost", "9999"}
 
       host = str[0];
       if (str.length == 2) {

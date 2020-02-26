@@ -1,26 +1,30 @@
 package com.eomcs.lms.dao.mariadb;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import com.eomcs.lms.dao.PhotoFileDao;
-import com.eomcs.lms.domain.Lesson;
-import com.eomcs.lms.domain.PhotoBoard;
 import com.eomcs.lms.domain.PhotoFile;
 
 public class PhotoFileDaoImpl implements PhotoFileDao {
 
-  Connection con;
+  String jdbcUrl;
+  String username;
+  String password;
 
-  public PhotoFileDaoImpl(Connection con) {
-    this.con = con;
+  public PhotoFileDaoImpl(String jdbcUrl, String username, String password) {
+    this.jdbcUrl = jdbcUrl;
+    this.username = username;
+    this.password = password;
   }
 
   @Override
   public int insert(PhotoFile photoFile) throws Exception {
-    try (Statement stmt = con.createStatement()) {
+    try (Connection con = DriverManager.getConnection(jdbcUrl, username, password);
+        Statement stmt = con.createStatement()) {
 
       int result = stmt.executeUpdate( //
           "insert into lms_photo_file(photo_id,file_path) values(" //
@@ -32,86 +36,40 @@ public class PhotoFileDaoImpl implements PhotoFileDao {
   }
 
   @Override
-  public List<PhotoFile> findAllByLessonNo(int lessonNo) throws Exception {
-    try (Statement stmt = con.createStatement();
+  public List<PhotoFile> findAll(int boardNo) throws Exception {
+    try (Connection con = DriverManager.getConnection(jdbcUrl, username, password);
+        Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery( //
-            "select photo_id, titl, cdt, vw_cnt, lesson_id" //
-            + " from lms_photo" //
-            + " where lesson_id=" + lessonNo //
-            + " order by photo_id desc")) {
+            "select photo_file_id, photo_id, file_path" //
+            + " from lms_photo_file" //
+            + " where photo_id=" + boardNo //
+            + " order by photo_file_id asc")) {
 
-      ArrayList<PhotoBoard> list = new ArrayList<>();
-
+      ArrayList<PhotoFile> list = new ArrayList<>();
       while (rs.next()) {
-        PhotoBoard photoBoard = new PhotoBoard();
-        photoBoard.setNo(rs.getInt("photo_id"));
-        photoBoard.setTitle(rs.getString("titl"));
-        photoBoard.setCreatedDate(rs.getDate("cdt"));
-        photoBoard.setViewCount(rs.getInt("vw_cnt"));
+        // 1) 생성자를 통해 인스턴스 필드의 값을 설정하기
+        // list.add(new PhotoFile(//
+        // rs.getInt("photo_file_id"), //
+        // rs.getString("file_path"), //
+        // rs.getInt("photo_id")));
 
-        list.add(photoBoard);
+        // 2) 셋터를 통해 체인 방식으로 인스턴스 필드의 값을 설정하기
+        list.add(new PhotoFile() //
+            .setNo(rs.getInt("photo_file_id")) //
+            .setFilepath(rs.getString("file_path")) //
+            .setBoardNo(rs.getInt("photo_id")));
       }
-
       return list;
     }
   }
 
   @Override
-  public PhotoBoard findByNo(int no) throws Exception {
-    try (Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery( //
-            "select" //
-            + " p.photo_id," //
-            + " p.titl," //
-            + " p.cdt," //
-            + " p.vw_cnt,"//
-            + " l.lesson_id,"//
-            + " l.titl lesson_title" //
-            + " from lms_photo p" //
-            + " inner join lms_lesson l on p.lesson_id=l.lesson_id" //
-            + " where photo_id=" + no)) {
-
-      if (rs.next()) {
-        // 조인 결과 중에서 사진 게시글 결과를 PhotoBoard에 저장한다.
-        PhotoBoard photoBoard = new PhotoBoard();
-        photoBoard.setNo(rs.getInt("photo_id"));
-        photoBoard.setTitle(rs.getString("titl"));
-        photoBoard.setCreatedDate(rs.getDate("cdt"));
-        photoBoard.setViewCount(rs.getInt("vw_cnt"));
-
-        // 조인 결과 중에서 수업 데이터를 Lesson에 저장한다.
-        Lesson lesson = new Lesson();
-        lesson.setNo(rs.getInt("lesson_id"));
-        lesson.setTitle(rs.getString("lesson_title"));
-
-        // Lesson을 PhotoBoard에 저장한다.
-        photoBoard.setLesson(lesson);
-
-        return photoBoard;
-
-      } else {
-        return null;
-      }
-    }
-  }
-
-  @Override
-  public int update(PhotoBoard photoBoard) throws Exception {
-    try (Statement stmt = con.createStatement()) {
+  public int deleteAll(int boardNo) throws Exception {
+    try (Connection con = DriverManager.getConnection(jdbcUrl, username, password);
+        Statement stmt = con.createStatement()) {
       int result = stmt.executeUpdate( //
-          "update lms_photo set titl='" //
-          + photoBoard.getTitle() //
-          + "' where photo_id=" + photoBoard.getNo());
-      return result;
-    }
-  }
-
-  @Override
-  public int delete(int no) throws Exception {
-    try (Statement stmt = con.createStatement()) {
-      int result = stmt.executeUpdate( //
-          "delete from lms_photo" //
-          + " where photo_id=" + no);
+          "delete from lms_photo_file" //
+          + " where photo_id=" + boardNo);
       return result;
     }
   }
