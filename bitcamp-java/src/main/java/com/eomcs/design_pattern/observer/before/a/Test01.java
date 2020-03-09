@@ -7,17 +7,12 @@ public class Test01 {
 
     car.start();
 
-    car.stop();
+    car.run();
 
+    car.stop();
 
   }
 
 }
-
-
-
-
-
-
 
 

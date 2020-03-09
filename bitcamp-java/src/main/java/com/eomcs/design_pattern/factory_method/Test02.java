@@ -7,11 +7,13 @@ class Car2 {
   boolean sunroof;
 }
 
+
 // 인스턴스 생성과정이 복잡할 때 사용하는 설계 기법이다.
 // 복잡한 객체 생성 코드를 메서드에 캡슐화한다.
 // 메서드 호출을 통해 인스턴스를 리턴 받는다.
 // => 이런 메서드를 '팩토리 메서드'라 부른다.
-// => 보통 인스턴스의 팩토리 역할을 하는 클래스는 'XxxFactory'라 이름 짓는다.
+// => 보통 인스턴스의 팩토리 역할을 하는 클래스는 'XxxFactory'라는 이름을 짓는다.
+//
 class Car2Factory {
 
   // 인스턴스를 생성해주는 메서드를 정의한다.
@@ -48,6 +50,7 @@ class Car2Factory {
   }
 }
 
+
 public class Test02 {
 
   public static void main(String[] args) {
@@ -68,13 +71,5 @@ public class Test02 {
   }
 
 }
-
-
-
-
-
-
-
-
 
 

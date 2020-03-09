@@ -33,8 +33,8 @@ public class Receiver5 {
     String filename = in.readUTF();
 
     //3) 파일 데이터 읽기
-    File file = new File("temp/new_" + filename);
-    BufferedOutputStream fileOut = new BufferedOutputStream(
+    File file = new File("temp/ok_" + filename);
+    BufferedOutputStream fileOut = new BufferedOutputStream( 
         new FileOutputStream(file));
 
     for (long i = 0; i < filesize; i++) {

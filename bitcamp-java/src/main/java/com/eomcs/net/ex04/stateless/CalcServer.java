@@ -1,4 +1,4 @@
-// stateful 방식 - 계산기 서버 만들기
+// stateless 방식 - 계산기 서버 만들기
 package com.eomcs.net.ex04.stateless;
 
 import java.io.DataInputStream;
@@ -22,14 +22,13 @@ public class CalcServer {
         System.out.println("다음 클라이언트의 요청을 처리합니다.");
       }
     }
-    //ss.close();
+    // ss.close();
   }
 
   static void processRequest(Socket socket) throws Exception {
     try (Socket socket2 = socket;
         DataInputStream in = new DataInputStream(socket.getInputStream());
-        PrintStream out = new PrintStream(socket.getOutputStream());
-        ) {
+        PrintStream out = new PrintStream(socket.getOutputStream());) {
 
       int a = in.readInt();
       String op = in.readUTF();
@@ -37,16 +36,22 @@ public class CalcServer {
       int result = 0;
 
       switch (op) {
-        case "+": result = a + b; break;
-        case "-": result = a - b; break;
-        case "*": result = a * b; break;
-        case "/": result = a / b; break;
+        case "+":
+          result = a + b;
+          break;
+        case "-":
+          result = a - b;
+          break;
+        case "*":
+          result = a * b;
+          break;
+        case "/":
+          result = a / b;
+          break;
       }
       out.printf("%d %s %d = %d\n", a, op, b, result);
     }
   }
 }
-
-
 
 

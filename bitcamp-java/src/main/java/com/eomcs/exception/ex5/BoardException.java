@@ -33,4 +33,6 @@ public class BoardException extends RuntimeException {
   // 하기 위함이다.
   //
 
+
+
 }

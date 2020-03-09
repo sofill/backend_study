@@ -8,8 +8,6 @@ public class BreakOilCarObserver implements CarObserver {
   }
 
   @Override
-  public void carStopped() {
-
-  }
+  public void carStopped() {}
 
 }

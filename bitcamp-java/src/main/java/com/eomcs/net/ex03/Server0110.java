@@ -14,7 +14,7 @@ public class Server0110 {
 
       System.out.println("클라이언트의 연결을 기다리고 있음.");
 
-      try (Socket socket = serverSocket.accept(); // 여기서 일단 멈춤. 대기열에 클라이언트가 들어올 때까지!
+      try (Socket socket = serverSocket.accept();
 
           // 클라이언트와 데이터를 주고 받을 입출력 스트림 객체를 준비한다.
           // => 출력 스트림 객체를 준비하기
@@ -32,9 +32,9 @@ public class Server0110 {
         // 클라이언트에서 한 줄의 문자열을 보내면
         // 서버는 한 줄의 문자열을 읽은 후에 응답해야 한다.
 
-        System.out.println("클라이언트가 보낸 1바이트를 기다리고 있음");
+        System.out.println("클라이언트가 보낸 1바이트를 기다리고 있음!");
         // => 클라이언트가 1바이트를 보낼 때까지 리턴하지 않는다.
-        int request = in.read(); // 여기서! blocking 모드로 작동한다. 클라이언트가 1바이트 보낼때까지 여기서 계속 기다린다.
+        int request = in.read(); // blocking 모드로 작동한다.
         System.out.println(request);
 
         // 서버가 데이터를 보내지 않으면 클라이언트의 read()는 리턴하지 않는다.

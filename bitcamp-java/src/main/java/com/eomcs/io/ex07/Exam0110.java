@@ -6,11 +6,8 @@ import java.io.ByteArrayInputStream;
 public class Exam0110 {
 
   public static void main(String[] args) throws Exception {
-    byte[] buf = {0x0b, 0x41, 0x42,
-        (byte)0xea, (byte)0xb0, (byte)0x80,
-        (byte)0xea, (byte)0xb0, (byte)0x81,
-        (byte)0xea, (byte)0xb0, (byte)0x84,
-        0x00, 0x00, 0x00, 0x1b, 0x01};
+    byte[] buf = {0x0b, 0x41, 0x42, (byte) 0xea, (byte) 0xb0, (byte) 0x80, (byte) 0xea, (byte) 0xb0,
+        (byte) 0x81, (byte) 0xea, (byte) 0xb0, (byte) 0x84, 0x00, 0x00, 0x00, 0x1b, 0x01};
 
     // 바이트 배열에서 데이터를 읽는 도구
     ByteArrayInputStream in = new ByteArrayInputStream(buf);
@@ -39,6 +36,6 @@ public class Exam0110 {
 
     in.close();
 
-
   }
+
 }

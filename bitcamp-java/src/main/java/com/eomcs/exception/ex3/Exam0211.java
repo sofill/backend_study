@@ -3,9 +3,9 @@ package com.eomcs.exception.ex3;
 
 public class Exam0211 {
 
-  // Error 계열의 예외를 던져서는 안되지만
+  // Error 계열의 예외를 던져서는 안되지만,
   // 혹 던진다고 한다면
-  // 다음과 같이 메서드 선언부에 던지는 예외를 표시(선언)해도 되고
+  // 다음과 같이 메서드 선언부에 던지는 예외를 표시(선언)해도 되고,
   static void m1() throws Error {
     throw new Error();
     // OK! 하지만 이 계열의 클래스를 사용하지 말라!
@@ -16,9 +16,8 @@ public class Exam0211 {
   static void m2() {
     throw new Error();
   }
+  // 즉 Error 계열의 예외를 던질 경우, 메서드 선언부에 표시하는 것은 선택사항이다.
 
-  // 즉 Error 계열의 예외를 던질 경우 메서드 선언부에 표시하는 것은 선택사항이다.
+  public static void main(String[] args) {}
 
-  // Exception 계열의 예외를 던질 때는 반드시 메서드 선언부에 어떤 예외를 던지는지
-  // 지정해야 한다.
 }

@@ -8,8 +8,6 @@ public class SafeBeltCarObserver implements CarObserver {
   }
 
   @Override
-  public void carStopped() {
-
-  }
+  public void carStopped() {}
 
 }

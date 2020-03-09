@@ -24,12 +24,7 @@ public class Car {
 
     // 예) 4월 15일 - 자동차 시동을 끌 때 전조등 자동 끄기 기능을 추가
     System.out.println("전조등을 끈다.");
-
   }
 }
-
-
-
-
 
 

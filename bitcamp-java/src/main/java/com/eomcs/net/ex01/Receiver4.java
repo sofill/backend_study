@@ -19,12 +19,11 @@ public class Receiver4 {
 
     PrintStream out = new PrintStream(socket.getOutputStream());
     DataInputStream in = new DataInputStream(socket.getInputStream());
-    // 데이타인풋스트림으로 바꿈... 바이트인풋스트림?
 
     System.out.println("클라이언트로부터 데이터 수신 중...");
 
     //1) 파일 크기 읽기
-    long filesize = in.readLong(); // 롱값
+    long filesize = in.readLong();
 
     //2) 파일 이름 읽기
     String filename = in.readUTF();
@@ -34,7 +33,7 @@ public class Receiver4 {
     FileOutputStream fileOut = new FileOutputStream(file);
 
     for (long i = 0; i < filesize; i++) {
-      fileOut.write(in.read()); // 파일 사이즈만큼 계속 읽는다. ..
+      fileOut.write(in.read());
     }
     System.out.println("클라이언트로부터 데이터 수신 완료!");
 

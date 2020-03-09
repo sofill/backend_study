@@ -17,4 +17,7 @@ public class Exam0310 {
     else
       throw new IOException();
   }
+
+  public static void main(String[] args) {}
+
 }

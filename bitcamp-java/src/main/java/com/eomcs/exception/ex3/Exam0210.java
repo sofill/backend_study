@@ -44,4 +44,7 @@ public class Exam0210 {
     else
       throw new RuntimeException(); // OK!
   }
+
+  public static void main(String[] args) {}
+
 }

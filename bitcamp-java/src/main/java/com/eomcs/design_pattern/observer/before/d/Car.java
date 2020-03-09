@@ -21,12 +21,7 @@ public class Car {
 
   public void stop() {
     System.out.println("시동을 끈다.");
-
   }
 }
-
-
-
-
 
 

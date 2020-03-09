@@ -25,16 +25,10 @@ public class Exam0310 {
     MyThread t = new MyThread(); // 우선순위 5
     t.start();
 
-    // 모든 스레드가 완료될 때까지 JVM은 종료되지 않는다!!!
-
+    // 모든 스레드가 완료할 때까지 JVM은 종료되지 않는다.
     System.out.println("프로그램 종료?");
   }
 
 }
-
-
-
-
-
 
 

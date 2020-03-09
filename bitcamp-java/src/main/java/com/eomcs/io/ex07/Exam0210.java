@@ -1,4 +1,4 @@
-// DataBufferdOutputStream을 이용하여 객체 출력 - 인스턴스의 값을 출력
+// DataBufferedOutputStream을 이용하여 객체 출력 - 인스턴스의 값을 출력
 package com.eomcs.io.ex07;
 
 public class Exam0210 {
@@ -30,13 +30,11 @@ public class Exam0210 {
     // => DataBufferedOutputStream과 DataOutputStream 클래스는
     //    생성자를 빼고 나머지 코드가 모두 같다.
     // => 안타깝게도 DataOutputStream의 코드를 복사하지 않고
-    //    재사용하는 방법이 없다.
-    //    이것이 상속으로 기능을 확장했을 때의 한계이다.
+    //   재사용하는 방법이 없다.
+    //   이것이 상속으로 기능을 확장했을 때의 한계이다.
     // => 해결책?
-    //    바이트 값을 읽어 String,int,boolean 값으로 바꾸는 코드를
-    //    장신구(decorator)처럼 붙였다 뗐다 하게 만들라!
-
-
+    //   바이트 값을 읽어 String,int,boolean 값으로 바꾸는 코드를
+    //   장신구(decorator)처럼 붙였다 뗐다 하게 만들라!
   }
 
 }

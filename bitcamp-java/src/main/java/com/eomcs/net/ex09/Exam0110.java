@@ -1,4 +1,4 @@
-// Apache HttpClient 라이브러리를 이용하여 웹서버 만들기
+// Apache HttpClient 라이브러리를 이용하여 웹서버 만들기 
 package com.eomcs.net.ex09;
 
 import java.io.File;
@@ -27,7 +27,7 @@ import org.apache.http.protocol.HttpCoreContext;
 import org.apache.http.protocol.HttpRequestHandler;
 
 public class Exam0110 {
-
+  
   public static void main(String[] args) throws Exception {
     SocketConfig socketConfig = SocketConfig.custom()
         .setSoTimeout(15000)
@@ -45,7 +45,7 @@ public class Exam0110 {
 
     server.start();
     System.out.println("서버 실행 중...");
-
+    
     server.awaitTermination(Long.MAX_VALUE, TimeUnit.DAYS);
 
     Runtime.getRuntime().addShutdownHook(new Thread() {
@@ -80,7 +80,6 @@ public class Exam0110 {
       this.docRoot = docRoot;
     }
 
-    @Override
     public void handle(
         final HttpRequest request,
         final HttpResponse response,
@@ -91,7 +90,7 @@ public class Exam0110 {
       if (!method.equals("GET")) { // GET 요청이 아니라면 오류 내용을 응답한다.
         throw new MethodNotSupportedException(method + " method not supported");
       }
-
+      
       String target = request.getRequestLine().getUri();
 
       final File file = new File(this.docRoot, URLDecoder.decode(target, "UTF-8"));

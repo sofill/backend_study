@@ -7,19 +7,15 @@ public class Exam0320 {
 
   public static void main(String[] args) throws Exception {
 
-    File dir = new File("temp2/a");
+    File dir = new File("temp/a");
 
-    // 디렉토리를 생성할 떄 존재하지 않는 중간 디렉토리를 만들고 싶다면, mkdirs() 를 호출하라.
-    // mkdirs()
-    // - 지정된 경로에 디렉토리가 존재하지 않으면 그 디렉토리도 만든다.
+    // 하위 디렉토리 생성하기
     //
-    if (dir.mkdirs()) {
-      System.out.println("temp2/a 디렉토리를 생성하였습니다.");
+    if (dir.mkdir()) {
+      System.out.println("temp/a 디렉토리를 생성하였습니다.");
     } else {
-      System.out.println("temp2/a 디렉토리를 생성할 수 없습니다.");
+      System.out.println("temp/a 디렉토리를 생성할 수 없습니다.");
     }
-
-
   }
 
 }

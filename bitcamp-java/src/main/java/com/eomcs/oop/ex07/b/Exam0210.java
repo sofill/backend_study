@@ -18,19 +18,18 @@ public class Exam0210 extends C {
     B obj2 = new B();
 
     //obj2.privateVar = 100; // 접근 불가! 오직 그 클래스 안에서만 사용 가능.
-    //obj2.defaultVar = 100; // 접근 불가! 같은 패키지까지만 접근 가능.서브 패키지라고 해도 다른 패키지이다.
+    //obj2.defaultVar = 100; // 접근 불가! 같은 패키지까지만 접근 가능.
     //obj2.protectedVar = 100; // 접근 불가! 같은 패키지 또는 자식 클래스 접근 가능
     obj2.publicVar = 100; // OK! 모두 다 접근 가능.
 
 
-    C obj3 = new C(); //0210은 C를 상속받았다!
+    C obj3 = new C();
 
-    //obj3.privateVar = 100; // 접근 불가! 오직 그 클래스 안에서만 사용 가능. 
+    //obj3.privateVar = 100; // 접근 불가! 오직 그 클래스 안에서만 사용 가능.
     //obj3.defaultVar = 100; // 접근 불가! 같은 패키지까지만 접근 가능.
     //obj3.protectedVar = 100; // 접근 불가! 같은 패키지 또는 자식 클래스 접근 가능
     // 자식 클래스인데 접근 불가?
     // 이유 => 자기의 인스턴스 변수가 아니다.
-    //  ★자식 클래스에서 만든 인스턴스 변수에 대해서만!
     obj2.publicVar = 100; // OK! 모두 다 접근 가능.
 
     Exam0210 obj4 = new Exam0210();
@@ -41,9 +40,7 @@ public class Exam0210 extends C {
     obj4.publicVar = 100;
   }
   
-  //질문에 의한 추가설명
-  
-  void m1(C obj) { //인스턴스메서드
+  void m1(C obj) {
     //obj.privateVar = 100;
     //obj.defaultVar = 100;
     //obj.protectedVar = 100;
@@ -60,15 +57,11 @@ public class Exam0210 extends C {
   void m3() {
     //this.privateVar = 100;
     //this.defaultVar = 100;
-    this.protectedVar = 100; 
-        //m3가 속해 있는 Exam0210에서 만든 인스턴스인 경우는 비록 패키지가 달라도 protect에 접근할 수 있다.★
+    this.protectedVar = 100;
     this.publicVar = 100;
   }
-    
-    
-   
-     
-  }
+  
+  
 }
 
 // private      : 클래스 안에서만 접근 가능

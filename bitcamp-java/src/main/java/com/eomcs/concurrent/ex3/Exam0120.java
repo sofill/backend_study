@@ -11,7 +11,7 @@ public class Exam0120 {
           System.out.println("===> " + i);
         }
       }
-    }.start(); // 실무에서 이런게 나와도 당황하지 않을것
+    }.start();
 
     for (int i = 0; i < 1000; i++) {
       System.out.println(">>>> " + i);

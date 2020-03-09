@@ -21,7 +21,7 @@ import org.apache.http.protocol.HttpContext;
 import org.apache.http.protocol.HttpRequestHandler;
 
 public class Exam0210 {
-
+  
   public static void main(String[] args) throws Exception {
     SocketConfig socketConfig = SocketConfig.custom()
         .setSoTimeout(15000)
@@ -39,7 +39,7 @@ public class Exam0210 {
 
     server.start();
     System.out.println("서버 실행 중...");
-
+    
     server.awaitTermination(Long.MAX_VALUE, TimeUnit.DAYS);
 
     Runtime.getRuntime().addShutdownHook(new Thread() {
@@ -67,7 +67,6 @@ public class Exam0210 {
 
   static class MyHttpRequestHandler implements HttpRequestHandler  {
 
-    @Override
     public void handle(
         final HttpRequest request,
         final HttpResponse response,
@@ -78,7 +77,7 @@ public class Exam0210 {
       if (!method.equals("GET")) { // GET 요청이 아니라면 오류 내용을 응답한다.
         throw new MethodNotSupportedException(method + " method not supported");
       }
-
+      
       response.setStatusCode(HttpStatus.SC_OK);
       StringEntity entity = new StringEntity(
           "<html><body><h1>Hello!</h1></body></html>",

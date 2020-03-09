@@ -31,7 +31,6 @@ public class Exam0240 {
 class Musics {
 
   class Player {
-
     public void play() {
       // 이 메서드가 호출되려면, Player 객체가 존재해야 한다.
       // Player 객체가 존재하려면, Musics 객체가 존재해야 한다.

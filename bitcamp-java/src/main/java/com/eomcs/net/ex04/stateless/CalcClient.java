@@ -1,4 +1,4 @@
-// stateful 방식 - 계산기 클라이언트 만들기
+// stateless 방식 - 계산기 클라이언트 만들기
 package com.eomcs.net.ex04.stateless;
 
 import java.io.DataOutputStream;
@@ -16,7 +16,7 @@ public class CalcClient {
       System.out.print("연산자? ");
       String op = keyScan.nextLine();
 
-      System.out.println("값2? ");
+      System.out.print("값2? ");
       int b = Integer.parseInt(keyScan.nextLine());
 
       try (Socket socket = new Socket("localhost", 8888);
@@ -34,7 +34,7 @@ public class CalcClient {
         System.out.println("서버와 통신 중 오류 발생!");
       }
 
-      System.out.println("계속 하시겠습니까? (Y/n)");
+      System.out.print("계속하시겠습니까?(Y/n)");
       if (keyScan.nextLine().equalsIgnoreCase("n")) {
         break;
       }
@@ -43,9 +43,5 @@ public class CalcClient {
     keyScan.close();
   }
 }
-
-//    keyScan.close(); // 스캐너 종료해 줘야 함.
-
-
 
 

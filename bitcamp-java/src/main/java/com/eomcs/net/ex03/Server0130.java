@@ -14,12 +14,12 @@ public class Server0130 {
 
       System.out.println("클라이언트의 연결을 기다리고 있음.");
 
-      try (Socket socket = serverSocket.accept(); // 여기서 일단 멈춤. 대기열에 클라이언트가 들어올 때까지!
+      try (Socket socket = serverSocket.accept();
           DataOutputStream out = new DataOutputStream(socket.getOutputStream());
           DataInputStream in = new DataInputStream(socket.getInputStream())) {
 
+        System.out.println("클라이언트가 보낸 int 값을 기다리고 있음!");
 
-        System.out.println("클라이언트가 보낸 int 값을를 기다리고 있음");
         int value = in.readInt();
         System.out.println(value);
 
@@ -29,6 +29,7 @@ public class Server0130 {
 
         // 클라이언트에서 받은 int 값을 그대로 리턴한다.
         out.writeInt(value);
+        z
         System.out.println("클라인트에게 데이터를 보냈음.");
 
       }

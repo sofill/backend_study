@@ -21,7 +21,7 @@ public class Exam0230 {
 
     // 주의!
     // => static nested class와 달리 inner class 객체를 생성할 때
-    // 바깥 '클래스명'으로 생성할 수 없다.
+    // 바깥 클래스명으로 생성할 수 없다.
     //
     // a = new Exam0230_X.A(); // 컴파일 오류!
 

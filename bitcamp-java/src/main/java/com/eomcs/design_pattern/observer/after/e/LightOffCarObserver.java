@@ -3,8 +3,7 @@ package com.eomcs.design_pattern.observer.after.e;
 public class LightOffCarObserver implements CarObserver {
 
   @Override
-  public void carStarted() {
-  }
+  public void carStarted() {}
 
   @Override
   public void carStopped() {

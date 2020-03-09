@@ -68,7 +68,7 @@ public class Exam0510 {
       } catch (Exception e) {
         System.out.printf("첨부파일 등록 오류: %s\n", e.getMessage());
         // 첨부파일 데이터를 입력하는 중에 오류가 발생하더라도
-        // 기존에 입력한 게시글은 계속 유효하다. ==> 이게 문제점!
+        // 기존에 입력한 게시글은 계속 유효하다.
       }
     }
   }

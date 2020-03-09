@@ -9,8 +9,6 @@ public class Exam0353 {
   }
 
   void m1() {
-    int a; // 로컬 변수
-    a = 100;
     class A {
       void m1() {
         // 로컬 클래스에서 바깥 메서드의 로컬 변수를 사용할 때는

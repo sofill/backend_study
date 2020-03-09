@@ -9,8 +9,7 @@ public class Car2 {
   private Car2() {
     System.out.println("Car2()");
   }
-  // 대신 만드는 스태틱 클래스메소드를 만든다. 
-  // 인스턴스를 만들고(null상태) 
+
   public static Car2 getInstance() {
     if (Car2.instance == null) {
       Car2.instance = new Car2();

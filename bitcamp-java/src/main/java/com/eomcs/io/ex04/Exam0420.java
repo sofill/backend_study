@@ -1,4 +1,4 @@
-// 데이터 읽기 - String 값 읽기
+// 데이터 읽기 - String 값 읽기 
 package com.eomcs.io.ex04;
 
 import java.io.FileInputStream;
@@ -12,7 +12,7 @@ public class Exam0420 {
 
     int count = in.read(buf);
 
-    // Exam0410 s의 실행 결과로 만들어진 파일을 읽어라!
+    // Exam0410의 실행 결과로 만들어진 파일을 읽어라!
     // 바이트 배열에 들어있는 값을 사용하여 String 인스턴스를 만든다.
     // new String(바이트배열, 시작번호, 개수, 문자코드표)
     // => 예) new String(buf, 0, 10, "UTF-8")

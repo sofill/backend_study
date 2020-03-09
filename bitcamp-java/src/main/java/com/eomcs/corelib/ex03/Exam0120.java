@@ -10,6 +10,7 @@ public class Exam0120 {
     list.add("bbb"); // aaa, bbb,
     list.add("ccc"); // aaa, bbb, ccc,
     list.add("ddd"); // aaa, bbb, ccc, ddd,
+
     print(list);
 
     list.remove(2); // aaa, bbb, ddd,
@@ -31,11 +32,13 @@ public class Exam0120 {
     list.add(5, "ttt"); // zzz, bbb, yyy, xxx, ddd, ttt
     print(list);
 
-    list.set(1, "aaa"); // zzz, aaa, yyy, xxx, ddd, ttt
+    list.set(1, "aaa"); // zzz, aaa, yyy, xxx, ddd
     print(list);
 
-    list.add("ccc"); // zzz, aaa, yyy, xxx, ddd, ccc
-    list.add("eee"); // zzz, aaa, yyy, xxx, ddd, ccc, eee
+    list.add("ccc"); // zzz, aaa, yyy, xxx, ddd, ttt, ccc
+    print(list);
+
+    list.add("eee"); // zzz, aaa, yyy, xxx, ddd, ttt, ccc, eee
     print(list);
   }
 

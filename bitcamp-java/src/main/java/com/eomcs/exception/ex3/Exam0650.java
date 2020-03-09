@@ -22,8 +22,5 @@ public class Exam0650 {
     ) {
       System.out.println("try 블록 실행...");
     }
-    // finally 블록에서 B의 close()를 호출하지 않아도,
-    // 자동으로 호출될 것이다. 실행하여 확인하라!
   }
 }
-

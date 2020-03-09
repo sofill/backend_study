@@ -25,14 +25,14 @@ public class DataOutputStream extends DecoratorOutputStream {
 
   public void writeLong(long value) throws Exception {
     // 실제 쓰기 작업은 이 객체와 연결된 부품을 통해 수행한다.
-    연결된부품.write((int)(value >> 56));
-    연결된부품.write((int)(value >> 48));
-    연결된부품.write((int)(value >> 40));
-    연결된부품.write((int)(value >> 32));
-    연결된부품.write((int)(value >> 24));
-    연결된부품.write((int)(value >> 16));
-    연결된부품.write((int)(value >> 8));
-    연결된부품.write((int)value);
+    연결된부품.write((int) (value >> 56));
+    연결된부품.write((int) (value >> 48));
+    연결된부품.write((int) (value >> 40));
+    연결된부품.write((int) (value >> 32));
+    연결된부품.write((int) (value >> 24));
+    연결된부품.write((int) (value >> 16));
+    연결된부품.write((int) (value >> 8));
+    연결된부품.write((int) value);
   }
 
   public void writeBoolean(boolean value) throws Exception {
@@ -43,8 +43,5 @@ public class DataOutputStream extends DecoratorOutputStream {
       연결된부품.write(0);
   }
 }
-
-
-
 
 

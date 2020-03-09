@@ -24,16 +24,6 @@ public class BufferedInputStream extends DecoratorInputStream {
     }
     return buf[cursor++] & 0x000000ff;
   }
-
 }
-
-
-
-
-
-
-
-
-
 
 

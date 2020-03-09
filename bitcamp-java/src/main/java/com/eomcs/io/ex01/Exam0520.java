@@ -6,15 +6,17 @@ import java.io.File;
 public class Exam0520 {
 
   public static void main(String[] args) throws Exception {
+
     File dir = new File(".");
 
     // 파일이나 디렉토리 정보를 File 객체로 받기
     File[] files = dir.listFiles();
 
     for (File file : files) {
-      System.out.printf("%s %12d %s\n", file.isDirectory() ? "d" : "-", // 조건연산자를 둠,
-          // 트루면 %s 자리에 d를 넣고 폴스면 - 를 출력
-          file.length(), file.getName());
+      System.out.printf("%s %12d %s\n", 
+          file.isDirectory() ? "d" : "-", 
+          file.length(),
+          file.getName());
     }
 
   }

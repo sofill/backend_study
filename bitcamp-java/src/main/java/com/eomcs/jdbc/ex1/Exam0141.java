@@ -20,15 +20,15 @@ public class Exam0141 {
     // 따라서 java.sql.Driver를 구현한 클래스를 로딩하거나 생성할 필요가 없다.
     //
     try {
-      // Driver 구현체를 명시적으로 로딩하지 않는다!!
+      // Driver 구현체를 명시적으로 로딩하지 않는다!
       // 그래도 'service-provider loading' 절차에 따라
-      // mariaDdb 에 Driver 구현체가 로딩되고 객체가 생성되어 등록될 것이다.
+      // mariadb의 Driver 구현체가 로딩되고 객체가 생성되어 등록될 것이다.
 
       // DriverManager에 자동 등록된 것을 확인해보자!
       java.sql.Driver driver = DriverManager.getDriver("jdbc:mariadb:");
       System.out.println(driver);
 
-      System.out.println("테스트~!!!!");
+      System.out.println("테스트!");
 
     } catch (Exception e) {
       e.printStackTrace();

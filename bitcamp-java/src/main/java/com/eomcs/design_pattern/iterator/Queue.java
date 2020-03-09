@@ -1,7 +1,6 @@
 // 제네릭 적용
 package com.eomcs.design_pattern.iterator;
 
-
 // Queue가 보관하는 데이터 타입을 E 라고 가정하자.
 // => E라고 가정한 상태에서 코드를 작성한다.
 //
@@ -40,12 +39,5 @@ public class Queue<E> extends LinkedList<E> {
     };
   }
 }
-
-
-
-
-
-
-
 
 

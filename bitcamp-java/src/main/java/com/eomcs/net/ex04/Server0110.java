@@ -1,4 +1,4 @@
-// 통신 방식 - stateful
+// 통신 방식 - Stateful
 package com.eomcs.net.ex04;
 
 import java.io.BufferedReader;
@@ -15,10 +15,8 @@ public class Server0110 {
 
       System.out.println("서버 실행!");
 
-      try (Socket socket = serverSocket.accept(); // 여기서 일단 멈춤. 대기열에 클라이언트가 들어올 때까지!
-
-          BufferedReader in = new BufferedReader( //BufferedReader는 캐릭터스트림
-              new InputStreamReader(socket.getInputStream())); //inputStream은 바이트스트림
+      try (Socket socket = serverSocket.accept();
+          BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
           PrintWriter out = new PrintWriter(socket.getOutputStream())) {
 
         System.out.println("클라이언트가 연결되었음!");

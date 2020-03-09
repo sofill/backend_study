@@ -1,4 +1,4 @@
-// 익명 클래스로 fileFilter 만들기
+// 익명 클래스로 FileFilter 만들기
 package com.eomcs.io.ex01;
 
 import java.io.File;
@@ -9,15 +9,15 @@ public class Exam0630 {
 
   public static void main(String[] args) throws Exception {
 
-    // 필터 객체를 한 번만 만들 것이라면
+    // 필터 객체를 한 개만 만들 것이라면
     // 익명 클래스로 정의하는 것이 낫다.
-    // 익명 클래스는 클래스 이름을 빼고
+    //
     FileFilter filter = new FileFilter() {
       @Override
       public boolean accept(File file) {
         if (file.isFile() && file.getName().endsWith(".java"))
-          return true; // 조회 결과에 포함시켜라!
-        return false; // 조회 결과에서 제외하라!
+          return true;
+        return false;
       }
     };
 

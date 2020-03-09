@@ -21,15 +21,13 @@ public class CalcServer {
         System.out.println("다음 클라이언트의 요청을 처리합니다.");
       }
     }
-    //ss.close();
+    // ss.close();
   }
 
   static void processRequest(Socket socket) throws Exception {
-    try (
-        Socket socket2 = socket;
+    try (Socket socket2 = socket;
         DataInputStream in = new DataInputStream(socket.getInputStream());
-        PrintStream out = new PrintStream(socket.getOutputStream());
-        ) {
+        PrintStream out = new PrintStream(socket.getOutputStream());) {
 
       loop: while (true) {
         int a = in.readInt();
@@ -38,21 +36,27 @@ public class CalcServer {
         int result = 0;
 
         switch (op) {
-          case "+": result = a + b; break;
-          case "-": result = a - b; break;
-          case "*": result = a * b; break;
-          case "/": result = a / b; break;
-          case "quit": break loop;
+          case "+":
+            result = a + b;
+            break;
+          case "-":
+            result = a - b;
+            break;
+          case "*":
+            result = a * b;
+            break;
+          case "/":
+            result = a / b;
+            break;
+          case "quit":
+            break loop;
         }
 
         out.printf("%d %s %d = %d\n", a, op, b, result);
       }
-    out.println("quit");
+      out.println("quit");
     }
   }
 }
-
-
-
 
 

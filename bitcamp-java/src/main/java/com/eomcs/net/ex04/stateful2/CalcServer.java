@@ -1,4 +1,4 @@
-// stateful 방식 - 다중 클라이언트의 요청 처리 시 문제점과 해결책
+// stateful 방식의 이점 활용 - 계산기 서버 만들기
 package com.eomcs.net.ex04.stateful2;
 
 import java.io.DataInputStream;
@@ -14,8 +14,8 @@ public class CalcServer {
 
     while (true) {
       Socket socket = ss.accept();
-      // stateful 을 사용할 때의 이점 :
-      // 연결되어 있는 동안 클라이언트의 작업 결과를 계속 유지할 수 있다.
+      // stateful을 사용할 때 이점:
+      // => 연결되어 있는 동안 클라이언트의 작업 결과를 계속 유지할 수 있다.
       try {
         processRequest(socket);
       } catch (Exception e) {
@@ -23,29 +23,36 @@ public class CalcServer {
         System.out.println("다음 클라이언트의 요청을 처리합니다.");
       }
     }
-    //ss.close();
+    // ss.close();
   }
 
   static void processRequest(Socket socket) throws Exception {
-    try (
-        Socket socket2 = socket;
+    try (Socket socket2 = socket;
         DataInputStream in = new DataInputStream(socket.getInputStream());
-        PrintStream out = new PrintStream(socket.getOutputStream());
-        ) {
+        PrintStream out = new PrintStream(socket.getOutputStream());) {
 
       // 작업 결과를 유지할 변수
       int result = 0;
 
       loop: while (true) {
-        int a = in.readInt();
         String op = in.readUTF();
+        int a = in.readInt();
 
         switch (op) {
-          case "+": result += a; break;
-          case "-": result -= a; break;
-          case "*": result *= a; break;
-          case "/": result /= a; break;
-          case "quit": break loop;
+          case "+":
+            result += a;
+            break;
+          case "-":
+            result -= a;
+            break;
+          case "*":
+            result *= a;
+            break;
+          case "/":
+            result /= a;
+            break;
+          case "quit":
+            break loop;
         }
 
         out.printf("계산 결과: %d\n", result);
@@ -54,4 +61,5 @@ public class CalcServer {
     }
   }
 }
+
 

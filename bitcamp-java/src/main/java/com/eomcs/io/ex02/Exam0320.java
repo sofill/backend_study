@@ -17,6 +17,7 @@ public class Exam0320 {
     in.close();
 
     System.out.printf("%d\n", count);
+
     for (int i = 0; i < 20; i++)
       System.out.printf("%x ", buf[i]);
 
@@ -25,7 +26,5 @@ public class Exam0320 {
   }
 
 }
-
-
 
 

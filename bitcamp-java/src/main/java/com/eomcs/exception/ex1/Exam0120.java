@@ -14,6 +14,5 @@ public class Exam0120 {
     }
   }
 }
-// 정상적인 상황
 
 

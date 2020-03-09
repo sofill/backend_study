@@ -25,14 +25,14 @@ public class DataBufferedOutputStream extends BufferedOutputStream {
 
   public void writeLong(long value) throws Exception {
     // 상속 받은 write() 메서드를 사용하여 long 값 출력
-    this.write((int)(value >> 56));
-    this.write((int)(value >> 48));
-    this.write((int)(value >> 40));
-    this.write((int)(value >> 32));
-    this.write((int)(value >> 24));
-    this.write((int)(value >> 16));
-    this.write((int)(value >> 8));
-    this.write((int)value);
+    this.write((int) (value >> 56));
+    this.write((int) (value >> 48));
+    this.write((int) (value >> 40));
+    this.write((int) (value >> 32));
+    this.write((int) (value >> 24));
+    this.write((int) (value >> 16));
+    this.write((int) (value >> 8));
+    this.write((int) value);
   }
 
   public void writeBoolean(boolean value) throws Exception {
@@ -43,8 +43,5 @@ public class DataBufferedOutputStream extends BufferedOutputStream {
       this.write(0);
   }
 }
-
-
-
 
 

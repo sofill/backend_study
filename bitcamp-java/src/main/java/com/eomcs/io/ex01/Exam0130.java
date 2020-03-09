@@ -12,7 +12,7 @@ public class Exam0130 {
 
     // 존재하지 않는 폴더를 조회
     //
-    File currentDir = new File("하하");
+    File currentDir = new File("./haha");
     System.out.printf("폴더명: %s\n", currentDir.getName());
     System.out.printf("경로: %s\n", currentDir.getPath());
     System.out.printf("절대경로: %s\n", currentDir.getAbsolutePath());
@@ -26,11 +26,9 @@ public class Exam0130 {
     // 존재하지 않는 폴더인 경우 정보를 알아낼 수 없다. 모두 false
     System.out.printf("디렉토리여부: %b\n", currentDir.isDirectory());
     System.out.printf("파일여부: %b\n", currentDir.isFile());
-    System.out.printf("감춤여부: %b\n", currentDir.isHidden());
+    System.out.printf("감춤폴더: %b\n", currentDir.isHidden());
     System.out.printf("존재여부: %b\n", currentDir.exists());
     System.out.printf("실행가능여부: %b\n", currentDir.canExecute());
-
-    System.out.println("----------------------------");
   }
 
 }

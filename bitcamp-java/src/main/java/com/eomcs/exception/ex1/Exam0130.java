@@ -3,6 +3,7 @@ package com.eomcs.exception.ex1;
 
 public class Exam0130 {
   public static void main(String[] args) {
+
     int result = Calculator2.compute("#", 100, 200);
 
     // 예전에는 작업 실행중에 오류가 발생하면 희귀한 값을 리턴하여 알려줬다.

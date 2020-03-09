@@ -6,8 +6,8 @@ public class Exam0231 {
     final Exam0231_X obj = new Exam0231_X();
 
     obj.new A("홍길동", 20);
-    // 위 코드는 컴파일러가 다음과 같이 바꾼다.
-    // => 바깥 클래스의 객체 주소를 받기 위해 컴파일러가 변경시킨 생성자를 호출한다.
+    // 위 코드는 컴파일러 다음과 같이 바꾼다.
+    // => 바깥 클래스의 객체 주소를 받기 위해 컴파일러가 변경한 생성자를 호출한다.
     /*
      * new A(obj, "홍길동", 20);
      */
@@ -35,5 +35,6 @@ class Exam0231_X {
      * public A(Exam0231_X outer, final String name, final int age) { this.outer = outer; this.name
      * = name; this.age = age; }
      */
+    void m1() {}
   }
 }

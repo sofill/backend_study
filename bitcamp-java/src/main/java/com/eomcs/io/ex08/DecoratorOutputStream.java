@@ -8,7 +8,7 @@ public abstract class DecoratorOutputStream extends OutputStream {
 
   public DecoratorOutputStream(OutputStream 부품) {
     // 장식품처럼 붙였다 뗐다 할 수 있는 기능을 수행하는 객체는
-    // 다른 장식품과 연결할 수 있도록 생성자에서 그 객체의 주소를 받아야 한다. 반드시!
+    // 다른 장식품과 연결할 수 있도록 생성자에서 그 객체의 주소를 받아야 한다.
     this.연결된부품 = 부품;
   }
 

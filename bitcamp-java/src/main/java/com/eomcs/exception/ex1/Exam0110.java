@@ -8,4 +8,3 @@ public class Exam0110 {
     System.out.println(result);
   }
 }
-// 얘는 무조건 정상적인 값이 리턴된다고 가정하고 있는 중이다 .

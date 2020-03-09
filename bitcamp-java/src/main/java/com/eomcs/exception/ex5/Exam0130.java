@@ -34,7 +34,7 @@ public class Exam0130 {
       // 어떤 방법?
       // => 게시물 예외를 직관적으로 알 수 있는 클래스를 만든다.
       // => 그 클래스가 BoardException 이다.
-
+      //
       throw new BoardException("게시물 입력 도중 오류 발생!", 원본오류);
     }
   }
@@ -50,8 +50,7 @@ public class Exam0130 {
 
     } catch (BoardException e) {
       System.out.println(e.getMessage());
-      System.out.println("게시물 입력 중에 오류 발생");
-      // e.printStackTrace();
+      e.printStackTrace();
     }
 
   }

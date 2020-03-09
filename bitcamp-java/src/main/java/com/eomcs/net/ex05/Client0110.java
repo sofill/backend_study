@@ -13,7 +13,7 @@ public class Client0110 {
     Scanner in = new Scanner(socket.getInputStream());
     PrintStream out = new PrintStream(socket.getOutputStream());
 
-    out.println("Hello");
+    out.println("Hello!");
     System.out.println("데이터 보냄!");
 
     String str = in.nextLine();
@@ -26,8 +26,5 @@ public class Client0110 {
     System.out.println("서버와 연결 끊음!");
   }
 }
-
-
-
 
 

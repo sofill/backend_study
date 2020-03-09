@@ -1,4 +1,4 @@
-//버퍼 기능을 입출력 플러그인/장신구(decorator)로 전환한다.
+// 버퍼 기능을 입출력 플러그인/장신구(decorator)로 전환한다.
 package com.eomcs.io.ex08;
 
 import java.io.IOException;
@@ -10,7 +10,7 @@ public class BufferedOutputStream extends DecoratorOutputStream {
   int cursor;
 
   public BufferedOutputStream(OutputStream out) {
-    // 연결할 부품을 보관하기 위해 수퍼 클래스의 생성자를 호출한다 .
+    // 연결할 부품을 보관하기 위해 수퍼 클래스의 생성자를 호출한다.
     super(out);
   }
 
@@ -22,7 +22,7 @@ public class BufferedOutputStream extends DecoratorOutputStream {
     }
 
     // 1바이트 출력하라고 하면 일단 버퍼에 저장할 것이다.
-    buf[cursor++] = (byte)b;
+    buf[cursor++] = (byte) b;
   }
 
   @Override
@@ -40,10 +40,5 @@ public class BufferedOutputStream extends DecoratorOutputStream {
   }
 
 }
-
-
-
-
-
 
 

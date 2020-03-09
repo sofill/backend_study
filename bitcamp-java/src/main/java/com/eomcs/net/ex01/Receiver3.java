@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class Receiver3 {
 
   public static void main(String[] args) throws Exception {
-    System.out.println("서버 리시버3 테스트입니당~~ㅋㅋ");
+    System.out.println("서버 실행!");
 
     Scanner keyScan = new Scanner(System.in);
 
@@ -41,8 +41,5 @@ public class Receiver3 {
   }
 
 }
-
-
-
 
 

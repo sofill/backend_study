@@ -1,4 +1,4 @@
-// 활용 - 지정한 폴더에서 .class 파일만 찾아 출력하라.
+// 활용 - 클래스 파일 이름을 출력할 때 패키지 이름을 포함하라.
 package com.eomcs.io.ex01;
 
 import java.io.File;
@@ -11,38 +11,38 @@ public class Exam0731 {
     File dir = new File("bin/main");
     System.out.println(dir.getCanonicalPath());
 
-    printList(dir);
+    printList(dir, "");
   }
 
-  static void printList(File dir) {
+  static void printList(File dir, String packageName) {
 
-    // 현재 디렉토리의 하위 파일 및 디렉토리 목록을 알아낸다.
     File[] files = dir.listFiles(new FileFilter() {
       @Override
       public boolean accept(File pathname) {
-        if (pathname.isHidden())
+        if (pathname.isHidden()) {
           return false;
+        }
 
         if (pathname.getName().contains("$")) {
           return false;
         }
 
-        if (pathname.isDirectory() || pathname.isFile() && pathname.getName().endsWith(".class")) {
+        if (pathname.isDirectory()
+            || (pathname.isFile() && pathname.getName().endsWith(".class"))) {
           return true;
         }
         return false;
       }
     });
 
-    // 리턴 받은 파일 배열에서 이름을 꺼내 출력한다.
+    if (packageName.length() > 0) {
+      packageName += ".";
+    }
     for (File file : files) {
-      if (file.isHidden()) {
-        continue;
-      }
       if (file.isDirectory()) {
-        printList(file);
+        printList(file, packageName + file.getName());
       } else {
-        System.out.printf("%s\n", file.getName());
+        System.out.println(packageName + file.getName().replace(".class", ""));
       }
     }
   }

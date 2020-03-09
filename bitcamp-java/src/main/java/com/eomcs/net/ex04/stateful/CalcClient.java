@@ -33,11 +33,8 @@ public class CalcClient {
     in.close();
     out.close();
     socket.close();
-    keyScan.close(); // 스캐너 종료해 줘야 함.
+    keyScan.close();
   }
 }
-
-
-
 
 

@@ -4,7 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 public class BufferedInputStream extends FileInputStream {
-  byte[] buf = new byte[8196];
+  byte[] buf = new byte[8192];
   int size; // 배열에 저장되어 있는 바이트의 수
   int cursor; // 바이트 읽은 배열의 위치
 
@@ -28,12 +28,12 @@ public class BufferedInputStream extends FileInputStream {
     int i = 0;
     for (; i < buf.length; i++) {
       // 1바이트를 읽어서 파라미터로 받은 바이트 배열에 채운다.
-      int b = (byte) this.read();
+      int b = this.read();
       if (b == -1) {
         // 바이트 배열을 다 채우기도 전에 읽을 데이터가 없다면 읽기를 멈춘다.
         break;
       }
-      buf[i]  = (byte) b;
+      buf[i] = (byte) b;
     }
     return i; // 지금까지 읽은 데이터의 수를 리턴한다.
   }

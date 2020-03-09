@@ -15,7 +15,7 @@ public class Exam0140 {
     // => jdbc.drivers=foo.bah.Driver:wombat.sql.Driver:bad.taste.ourDriver
     // => 이때 각 Driver 구현체는 'system class loader'를 통해 로딩된다.
     // => 시스템 프로퍼티? JVM에 설정된 "key=value" 이다.
-    //
+    // => 시스템 프로퍼티를 꺼내는 방법? 다음과 같다.
     System.out.printf("java.home=%s\n", System.getProperty("java.home"));
     System.out.printf("user.home=%s\n", System.getProperty("user.home"));
 
@@ -23,14 +23,14 @@ public class Exam0140 {
     // 예1) JVM을 실행할 때 JVM 옵션을 지정하는 방법
     // - java -Djdbc.drivers=클래스명:클래스명:클래스명 Exam0140
     //
-    // 예2) 프로그램 코드에서 설정
-    // => System.setProperty("jdbc.drivers", "com.eomcs.jdbc.ex1.MyDriver");
-
+    // 예2) 프로그램 코드에서 설정하는 방법
+    // - System.setProperty("jdbc.drivers", "com.eomcs.jdbc.ex1.MyDriver");
+    //
     System.setProperty("jdbc.drivers", "com.eomcs.jdbc.ex1.MyDriver:org.mariadb.jdbc.Driver");
     System.out.printf("jdbc.drivers=%s\n", System.getProperty("jdbc.drivers"));
 
     try {
-      // Driver 구현체를 로딩하지 않는다!!
+      // Driver 구현체를 로딩하지 않는다!
 
       // DriverManager에 자동 등록된 것을 확인해보자!
       java.sql.Driver driver = DriverManager.getDriver("jdbc:mariadb:");

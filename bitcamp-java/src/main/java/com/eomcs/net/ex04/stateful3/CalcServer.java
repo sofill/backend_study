@@ -1,4 +1,4 @@
-// stateful 방식 - 다중 클라이언트의 요청 처리시 문제점과 해결책
+// stateful 방식 - 다중 클라이언트의 요청 처리 시 문제점과 해결책
 package com.eomcs.net.ex04.stateful3;
 
 import java.io.DataInputStream;
@@ -9,7 +9,7 @@ import java.net.Socket;
 
 public class CalcServer {
 
-  // 클라이언트와 통신하는 부분을 별도로 분리하여
+  // 클라이언트와 통신하는 부분을 별도의 분리하여
   // 독립적으로 실행하게 한다.
   static class RequestHandler extends Thread {
 
@@ -41,8 +41,8 @@ public class CalcServer {
       System.out.println("클라이언트의 연결을 기다림!");
       Socket socket = ss.accept();
       InetSocketAddress remoteAddr = (InetSocketAddress) socket.getRemoteSocketAddress();
-      System.out.printf("클라이언트(%s:%d)가 연결되었음!\n",
-          remoteAddr.getAddress(), remoteAddr.getPort()); // 상대편의 주소와 포트번호
+      System.out.printf("클라이언트(%s:%d)가 연결되었음!\n", //
+          remoteAddr.getAddress(), remoteAddr.getPort());
 
       // 연결된 클라이언트가 연결을 끊기 전까지는
       // 대기하고 있는 다른 클라이언트의 요청을 처리할 수 없다.
@@ -50,11 +50,12 @@ public class CalcServer {
       // 해결책?
       // 클라이언트와 대화하는 부분을 스레드로 분리하여 실행하라!
       RequestHandler requestHandler = new RequestHandler(socket);
-      requestHandler.start(); // 스레드를 실행할 때는 런이 아닌 스타트를 호출한다.
-      // 스레드를 실행하려면 start()  를 호출하라.
-      // start()에 내부에서 run() 을 호출할 것이다.
+      requestHandler.start();
+      // 스레드를 실행하려면 start() 를 호출하라.
+      // start()에 내부에서 run()을 호출할 것이다.
       // start() 호출한 후에 즉시 리턴한다.
-      System.out.printf("%s 클라이언트와의 대화를 별도의 스레드에서 담당합니다.\n", remoteAddr.getAddress());
+      System.out.printf("%s 클라이언    트와의 대화를 별도의 스레드에서 담당합니다!\n", //
+          remoteAddr.getAddress());
     }
     // ss.close();
   }
