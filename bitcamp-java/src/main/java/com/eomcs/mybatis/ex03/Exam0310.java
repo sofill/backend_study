@@ -1,7 +1,8 @@
-// dynamic sql 다루기 - 조건문 사용 전
+// <sql> 사용법
 package com.eomcs.mybatis.ex03;
 
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 import org.apache.ibatis.io.Resources;
@@ -9,7 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-public class Exam0110 {
+public class Exam0310 {
 
   public static void main(String[] args) throws Exception {
     InputStream inputStream = Resources.getResourceAsStream(//
@@ -20,36 +21,34 @@ public class Exam0110 {
     SqlSession sqlSession = factory.openSession();
 
     // 실행 예:
-    // => 사용자로부터 게시글의 번호를 입력 받아 조회한다.
-    // => 만약 오류가 발생하면 전체 게시글을 출력한다.
+    // => 게시물 번호를 여러 개 지정하여 조회하기
+    //
+
+    HashMap<String, Object> params = new HashMap<>();
 
     Scanner keyScan = new Scanner(System.in);
-    System.out.print("게시글 번호? ");
-    String str = keyScan.nextLine();
+
+    System.out.print("제목? ");
+    String value = keyScan.nextLine();
+    params.put("title", value);
+
     keyScan.close();
 
-    List<Board> list = null;
+    List<Board> list = sqlSession.selectList("BoardMapper2.select26", params);
+    // <sql> 태그를 사용하면
+    // => 여러 SQL 문에서 중복적으로 사용하는 SQL 일부를 별도로 관리할 수 있다.
+    // => 중복된 SQL을 메서드처럼 별도로 관리하기 때문에
+    // 사용하여 SQL을 관리하기가 쉬워진다.
 
-    try {
-      // dynamic SQL 문법을 사용하기 전:
-      // => 게시글 번호가 주어지면 특정 게시글만 조회하는
-      // select1 SQL을 실행한다.
-      list = sqlSession.selectList("BoardMapper.select1", Integer.parseInt(str));
-
-    } catch (Exception e) {
-      // => 게시글 번호가 없으면 전체 게시글을 조회하는
-      // select2 SQL을 실행한다.
-      list = sqlSession.selectList("BoardMapper.select2");
-    }
 
     for (Board board : list) {
-      System.out.printf("%d, %s, %s, %d\n", //
+      System.out.printf("%d, %s, %s, %s, %d\n", //
           board.getNo(), //
           board.getTitle(), //
+          board.getContent(), //
           board.getRegisteredDate(), //
           board.getViewCount());
     }
-
     sqlSession.close();
   }
 

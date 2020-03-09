@@ -1,16 +1,15 @@
-// dynamic sql 다루기 - <where> 사용 후
+// dynamic sql 다루기 - <set> 사용법
 package com.eomcs.mybatis.ex03;
 
 import java.io.InputStream;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Scanner;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-public class Exam0160 {
+public class Exam0230 {
 
   public static void main(String[] args) throws Exception {
     InputStream inputStream = Resources.getResourceAsStream(//
@@ -21,19 +20,16 @@ public class Exam0160 {
     SqlSession sqlSession = factory.openSession();
 
     // 실행 예:
-    // => 여러 개의 조건을 합쳐서 검색하기
+    // => 게시글 변경하기
+    // => 제목만 바꿀 경우, 내용만 바꿀 경우, 둘 다 바꿀 경우에 대해
+    // <set>과 <if>를 이용하면 한 개의 SQL로 처리할 수 있다.
+
     HashMap<String, Object> params = new HashMap<>();
 
     Scanner keyScan = new Scanner(System.in);
 
-    System.out.print("번호? ");
-    String value = keyScan.nextLine();
-    if (value.length() > 0) {
-      params.put("no", value);
-    }
-
     System.out.print("제목? ");
-    value = keyScan.nextLine();
+    String value = keyScan.nextLine();
     if (value.length() > 0) {
       params.put("title", value);
     }
@@ -46,23 +42,20 @@ public class Exam0160 {
 
     keyScan.close();
 
+    params.put("no", 1); // 1번 게시글 변경
 
-    List<Board> list = sqlSession.selectList("BoardMapper.select7", //
-        params);
+    int count = sqlSession.update("BoardMapper.update4", params);
+    System.out.println(count);
 
-    // select7의 이점:
-    // => or/and 앞에 조건이 없을 때 or/and를 자동으로 제거한다.
-    // => where 조건이 없을 때는 where을 생성하지 않는다.
+    // <if>
+    // => 이 태그를 이용하여 사용자가 입력한 항목만 변경한다.
+    //
+    // <set>
+    // => 이 태그를 이용하여 SQL 앞,뒤에 붙은 콤마(,)를 자동으로 제거한다.
+    //
+    // => dynamic sql 제조 방법은 SQL 작성을 줄이게 해준다.
 
-    for (Board board : list) {
-      System.out.printf("%d, %s, %s, %s, %d\n", //
-          board.getNo(), //
-          board.getTitle(), //
-          board.getContent(), //
-          board.getRegisteredDate(), //
-          board.getViewCount());
-    }
-
+    sqlSession.commit();
     sqlSession.close();
   }
 
