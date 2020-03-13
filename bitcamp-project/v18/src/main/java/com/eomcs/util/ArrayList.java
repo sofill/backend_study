@@ -34,7 +34,6 @@ public class ArrayList<E> {
     // 위의 arraycopy()는 다음 코드와 같다.
     for (int i = 0; i < this.size; i++) {
       arr[i] = (E) this.list[i];
-    }
     */
 
     return arr;

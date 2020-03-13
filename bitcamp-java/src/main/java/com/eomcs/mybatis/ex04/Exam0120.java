@@ -17,7 +17,7 @@ public class Exam0120 {
 
     SqlSession sqlSession = factory.openSession();
 
-    Board board = sqlSession.selectOne("BoardMapper2.selectBoardWithFile", 1);
+    Board board = sqlSession.selectOne("BoardMapper2.selectBoardWithFile", 2);
 
     System.out.println("[게시글 조회]");
     System.out.printf("번호: %d\n", board.getNo());
@@ -27,16 +27,15 @@ public class Exam0120 {
     System.out.printf("조회수: %d\n", board.getViewCount());
     System.out.println();
 
-    // 조인을 사용하지 않으면 다음과 같이
-    // 게시글의 첨부파일 데이터를 따로 조회해야 한다.
-    /*
-    List<AttachFile> files = sqlSession.selectList("BoardMapper.selectFile", 1);
+    //조인을 사용하면,
+    //게시글 객체 안에 첨부파일 객체가 들어 있다.
+    // 그래서 따로 첨부파일을 select 할 필요가 없다.
+
 
     System.out.println("[첨부파일]");
-    for (AttachFile file : files) {
+    for (AttachFile file : board.getFiles()) {
       System.out.printf("%d, %s\n", file.getNo(), file.getFilePath());
     }
-     */
     sqlSession.close();
   }
 }
