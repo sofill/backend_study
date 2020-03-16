@@ -113,7 +113,23 @@
 - com.eomcs.lms.ServerApp 변경
   - ApplicationContext를 사용하여 객체를 관리한다.
   
-  
+### 훈련7: @Component 애노테이션이 붙은 객체만 관리한다.(ApplicationContext07)
+
+- com.eomcs.lms.servlet.impl.XxxServiceImpl 변경
+	- 클래스에 Component 애노테이션을 적용한다.
+- com.eomcs.util.AnnotationContext 클래스 변경
+	- @Component가 붙은 클래스만 찾아내 객체를 새엇ㅇ한다.
+	- 내부에 보관된 객체 정보를 출력하는 printBeans() 추가한다.
+- com.eomcs.ContextLoaderListener 변경
+	- ApplicationContext 를 생성한 후 printBeans() 호출하여 보관된 객체 정보를 조회한다.
+	
+### 훈련8: IoC 컨테이너의 이점을 활용해 보자.
+
+- com.eomcs.lms.servlet.HelloServlet 추가
+	- 클라이언트가 "/hello"를 요청했을 때 "안녕하세요1" 하고 인사말을 응답한다.
+	- IoC 컨테이너를 도입하면, 새 명령을 처리하는 서블릿이 추가되더라도 
+		기존 코드(예: ServerApp) 를 변경할 필요가 없다.
+	
   
   
   
