@@ -6,8 +6,9 @@ import java.util.Scanner;
 import com.eomcs.lms.domain.Board;
 import com.eomcs.lms.service.BoardService;
 import com.eomcs.util.Component;
+import com.eomcs.util.RequestMapping;
 
-@Component("/board/list")
+@Component
 public class BoardListServlet implements Servlet {
 
   BoardService boardService;
@@ -17,6 +18,7 @@ public class BoardListServlet implements Servlet {
   }
 
   @Override
+  @RequestMapping("/board/list")
   public void service(Scanner in, PrintStream out) throws Exception {
     List<Board> boards = boardService.list();
     for (Board board : boards) {
@@ -25,7 +27,7 @@ public class BoardListServlet implements Servlet {
           board.getTitle(), //
           board.getDate(), //
           board.getViewCount() //
-      );
+          );
     }
   }
 }

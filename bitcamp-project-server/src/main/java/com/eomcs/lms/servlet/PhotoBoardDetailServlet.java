@@ -7,8 +7,9 @@ import com.eomcs.lms.domain.PhotoFile;
 import com.eomcs.lms.service.PhotoBoardService;
 import com.eomcs.util.Component;
 import com.eomcs.util.Prompt;
+import com.eomcs.util.RequestMapping;
 
-@Component("/photoboard/detail")
+@Component
 public class PhotoBoardDetailServlet implements Servlet {
 
   PhotoBoardService photoBoardService;
@@ -19,6 +20,7 @@ public class PhotoBoardDetailServlet implements Servlet {
   }
 
   @Override
+  @RequestMapping("/photoboard/detail")
   public void service(Scanner in, PrintStream out) throws Exception {
     int no = Prompt.getInt(in, out, "사진 게시글 번호? ");
 

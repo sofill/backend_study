@@ -6,8 +6,9 @@ import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.service.MemberService;
 import com.eomcs.util.Component;
 import com.eomcs.util.Prompt;
+import com.eomcs.util.RequestMapping;
 
-@Component("/auth/login")
+@Component
 public class LoginServlet implements Servlet {
 
   MemberService memberService;
@@ -17,6 +18,7 @@ public class LoginServlet implements Servlet {
   }
 
   @Override
+  @RequestMapping("/auth/login")
   public void service(Scanner in, PrintStream out) throws Exception {
     String email = Prompt.getString(in, out, "이메일? ");
     String password = Prompt.getString(in, out, "암호? ");

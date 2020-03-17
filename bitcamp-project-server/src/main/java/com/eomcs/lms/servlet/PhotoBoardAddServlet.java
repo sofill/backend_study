@@ -11,8 +11,9 @@ import com.eomcs.lms.service.LessonService;
 import com.eomcs.lms.service.PhotoBoardService;
 import com.eomcs.util.Component;
 import com.eomcs.util.Prompt;
+import com.eomcs.util.RequestMapping;
 
-@Component("/photoboard/add")
+@Component
 public class PhotoBoardAddServlet implements Servlet {
 
   PhotoBoardService photoBoardService;
@@ -26,6 +27,7 @@ public class PhotoBoardAddServlet implements Servlet {
   }
 
   @Override
+  @RequestMapping("/photoboard/add")
   public void service(Scanner in, PrintStream out) throws Exception {
 
     PhotoBoard photoBoard = new PhotoBoard();

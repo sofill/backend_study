@@ -1,6 +1,7 @@
 package com.eomcs.util;
 
 import java.io.File;
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.Parameter;
@@ -44,6 +45,29 @@ public class ApplicationContext {
     }
   }
 
+  public String[] getBeanNamesForAnnotation(Class<? extends Annotation> annotationType) {
+    // 특정 애노테이션이 붙은 객체를 찾아 보자.
+
+    // => 객체 이름을 저장할 목록을 준비한다.
+    ArrayList<String> beanNames = new ArrayList<>();
+
+    // => 객체풀에서 전체 객체의 이름을 꺼낸다.
+    Set<String> beanNameSet = objPool.keySet();
+    for (String beanName : beanNameSet) {
+      // 객체풀에서 이름을 이용하여 객체를 하나 꺼낸다.
+      Object obj = objPool.get(beanName);
+
+      // 해당 객체에 파라미터로 지정한 애노테이션이 붙었는지 알아낸다.
+      if (obj.getClass().getAnnotation(annotationType) != null) {
+        beanNames.add(beanName);
+      }
+    }
+    // ArrayList 에서 문자열을 배열로 받는다.
+    String[] names = new String[beanNames.size()];
+    beanNames.toArray(names);
+    return names;
+  }
+
   public void printBeans() {
     System.out.println("-----------------------------------");
     Set<String> beanNames = objPool.keySet();
@@ -51,7 +75,7 @@ public class ApplicationContext {
       System.out.printf("%s =====> %s\n", //
           beanName, // 객체 이름
           objPool.get(beanName).getClass().getName() // 클래스명
-      );
+          );
     }
   }
 
@@ -176,7 +200,7 @@ public class ApplicationContext {
     if (clazz.isInterface() // 인터페이스인 경우
         || clazz.isEnum() // Enum 타입인 경우
         || Modifier.isAbstract(clazz.getModifiers()) // 추상 클래스인 경우
-    ) {
+        ) {
       return false; // 이런 클래스를 객체를 생성할 수 없다.
     }
 

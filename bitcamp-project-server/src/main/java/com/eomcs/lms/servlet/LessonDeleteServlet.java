@@ -5,8 +5,9 @@ import java.util.Scanner;
 import com.eomcs.lms.service.LessonService;
 import com.eomcs.util.Component;
 import com.eomcs.util.Prompt;
+import com.eomcs.util.RequestMapping;
 
-@Component("/lesson/delete")
+@Component
 public class LessonDeleteServlet implements Servlet {
 
   LessonService lessonService;
@@ -16,6 +17,7 @@ public class LessonDeleteServlet implements Servlet {
   }
 
   @Override
+  @RequestMapping("/lesson/delete")
   public void service(Scanner in, PrintStream out) throws Exception {
     int no = Prompt.getInt(in, out, "번호? ");
 

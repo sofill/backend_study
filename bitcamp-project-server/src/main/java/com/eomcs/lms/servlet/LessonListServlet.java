@@ -6,8 +6,9 @@ import java.util.Scanner;
 import com.eomcs.lms.domain.Lesson;
 import com.eomcs.lms.service.LessonService;
 import com.eomcs.util.Component;
+import com.eomcs.util.RequestMapping;
 
-@Component("/lesson/list")
+@Component
 public class LessonListServlet implements Servlet {
 
   LessonService lessonService;
@@ -17,6 +18,7 @@ public class LessonListServlet implements Servlet {
   }
 
   @Override
+  @RequestMapping("/lesson/list")
   public void service(Scanner in, PrintStream out) throws Exception {
     List<Lesson> lessons = lessonService.list();
     for (Lesson l : lessons) {

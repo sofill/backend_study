@@ -7,8 +7,9 @@ import com.eomcs.lms.domain.Member;
 import com.eomcs.lms.service.MemberService;
 import com.eomcs.util.Component;
 import com.eomcs.util.Prompt;
+import com.eomcs.util.RequestMapping;
 
-@Component("/member/search")
+@Component
 public class MemberSearchServlet implements Servlet {
 
   MemberService memberService;
@@ -18,6 +19,7 @@ public class MemberSearchServlet implements Servlet {
   }
 
   @Override
+  @RequestMapping("/member/search")
   public void service(Scanner in, PrintStream out) throws Exception {
     String keyword = Prompt.getString(in, out, "검색어? ");
 

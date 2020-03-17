@@ -9,8 +9,9 @@ import com.eomcs.lms.service.LessonService;
 import com.eomcs.lms.service.PhotoBoardService;
 import com.eomcs.util.Component;
 import com.eomcs.util.Prompt;
+import com.eomcs.util.RequestMapping;
 
-@Component("/photoboard/list")
+@Component
 public class PhotoBoardListServlet implements Servlet {
 
   PhotoBoardService photoBoardService;
@@ -24,6 +25,7 @@ public class PhotoBoardListServlet implements Servlet {
   }
 
   @Override
+  @RequestMapping("/photoboard/list")
   public void service(Scanner in, PrintStream out) throws Exception {
 
     int lessonNo = Prompt.getInt(in, out, "수업번호? ");
@@ -45,7 +47,7 @@ public class PhotoBoardListServlet implements Servlet {
           photoBoard.getTitle(), //
           photoBoard.getCreatedDate(), //
           photoBoard.getViewCount() //
-      );
+          );
     }
   }
 }

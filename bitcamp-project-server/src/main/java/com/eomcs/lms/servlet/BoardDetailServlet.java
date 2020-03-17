@@ -6,8 +6,9 @@ import com.eomcs.lms.domain.Board;
 import com.eomcs.lms.service.BoardService;
 import com.eomcs.util.Component;
 import com.eomcs.util.Prompt;
+import com.eomcs.util.RequestMapping;
 
-@Component("/board/detail")
+@Component
 public class BoardDetailServlet implements Servlet {
 
   BoardService boardService;
@@ -17,6 +18,7 @@ public class BoardDetailServlet implements Servlet {
   }
 
   @Override
+  @RequestMapping("/board/detail")
   public void service(Scanner in, PrintStream out) throws Exception {
     int no = Prompt.getInt(in, out, "번호? ");
 
