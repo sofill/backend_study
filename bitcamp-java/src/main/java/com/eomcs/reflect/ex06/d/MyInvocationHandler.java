@@ -14,7 +14,7 @@ public class MyInvocationHandler implements InvocationHandler {
       case "m2":
         String name = (String) args[0];
         int age = (int) args[1];
-        return name + "님의 나이는 " + age + "살 입니다.";
+        return name + "님은 나이는 " + age + "살 입니다.";
     }
     return null;
   }

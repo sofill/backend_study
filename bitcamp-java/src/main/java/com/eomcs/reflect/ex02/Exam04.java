@@ -9,7 +9,7 @@ public class Exam04 {
       class D {} // local class
     }
     public void m2() {
-      Object obj = new Object() {}; // anonymous class 
+      Object obj = new Object() {}; // anonymous class
     }
     public static class E {}
     public class F {}
@@ -18,11 +18,12 @@ public class Exam04 {
   }
 
   public static void main(String[] args) throws Exception {
-    Class clazz = Class.forName("step18.ex2.Exam04$A");
+    Class<?> clazz = Class.forName("com.eomcs.reflect.ex02.Exam04$A");
 
     // 접근 범위에 상관 없이 모든 중첩 클래스 및 인터페이스 정보를 가져온다.
-    Class[] nestedList = clazz.getDeclaredClasses();
-    for (Class nested : nestedList) {
+    // => 메서드 안에 정의된 로컬 클래스는 그 대상이 아니다.
+    Class<?>[] nestedList = clazz.getDeclaredClasses();
+    for (Class<?> nested : nestedList) {
       System.out.println(nested.getName());
     }
 
