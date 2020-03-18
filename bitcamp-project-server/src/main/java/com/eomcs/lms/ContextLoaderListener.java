@@ -21,9 +21,8 @@ public class ContextLoaderListener implements ApplicationContextListener {
     try {
       // Spring IoC 컨테이너 준비
       ApplicationContext appCtx = new AnnotationConfigApplicationContext(
-          // Spring IoC의 컨테이너 정보를 담고 있는
-          AppConfig.class
-          );
+          // Spring IoC의 컨테이너 정보를 담고 있는 클래스 타입을 지정
+          AppConfig.class);
       printBeans(appCtx);
 
       // ServerApp이 사용할 수 있게 context 맵에 담아 둔다.

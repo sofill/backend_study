@@ -2,7 +2,6 @@ package com.eomcs.lms;
 
 import org.springframework.context.annotation.ComponentScan;
 
-// (어플리케이션을 설정하는 클래스라는 의미)
 // Spring IoC 컨테이너가 탐색할 패키지 설정
 // => 지정한 패키지 및 그 하위 패키지를 모두 뒤져서
 // @Component 애노테이션이 붙은 클래스를 찾아 객체를 생성한다.
@@ -11,13 +10,14 @@ import org.springframework.context.annotation.ComponentScan;
 public class AppConfig {
 
   public AppConfig() {
-    System.out.println("AppConfig 객체 생성!!");
+    System.out.println("AppConfig 객체 생성!");
   }
 
   // Spring IoC 컨테이너에 수동으로 객체를 등록하고 싶다면,
-  // 그 객체를 만들어 주 는 팩토리 메서드를 정의해야 한다.
-  // => 단, 메서드 선언부에 @Bean 애노테이션을 붙여야 한다.
+  // 그 객체를 만들어 주는 팩토리 메서드를 정의해야 한다.
+  // => 단 메서드 선언부에 @Bean 애노테이션을 붙여야 한다.
   // => 그래야만 Spring IoC 컨테이너는
-  //    이 메서드를 호출하고 그 리턴값을 보관한다.
-
+  // 이 메서드를 호출하고 그 리턴 값을 보관한다.
 }
+
+
