@@ -2,11 +2,18 @@
 package com.eomcs.reflect.ex02;
 
 public class Exam05 {
-  static interface A {}
-  static interface B {}
-  static interface C {}
 
-  static class D implements A, B, C {}
+  static interface A {
+  }
+
+  static interface B {
+  }
+
+  static interface C {
+  }
+
+  static class D implements A, B, C {
+  }
 
   public static void main(String[] args) throws Exception {
     Class<?> clazz = Class.forName("com.eomcs.reflect.ex02.Exam05$D");

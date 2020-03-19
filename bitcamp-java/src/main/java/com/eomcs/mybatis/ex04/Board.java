@@ -14,7 +14,6 @@ public class Board implements Serializable {
   int viewCount;
   List<AttachFile> files;
 
-
   @Override
   public String toString() {
     return "Board [no=" + no + ", title=" + title + ", content=" + content + ", registeredDate="

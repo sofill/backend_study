@@ -25,7 +25,7 @@
          방법:
          c:_인덱스번호="값"
     -->
-    <bean id="c4" class="com.eomcs.spring.ioc.ex03.Car" c:_0="티코" c:_1="890"/>
+    <bean id="c4" class="com.eomcs.spring.ioc.ex03.Car" c:_1="티코" c:_0="890"/>
 
 
 </beans>

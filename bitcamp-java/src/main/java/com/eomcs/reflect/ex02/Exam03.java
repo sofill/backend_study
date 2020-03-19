@@ -5,12 +5,15 @@ public class Exam03 {
 
   static class A {
 
-    static class B {} // static nested class
+    static class B {
+    } // static nested class
 
-    class C {} // non-static nested class == inner class
+    class C {
+    } // non-static nested class == inner class
 
     public void m() {
-      class D {} // local class
+      class D {
+      } // local class
     }
 
     public void m2() {
@@ -18,15 +21,12 @@ public class Exam03 {
     }
 
     public static class E {
-
     }
 
     public class F {
-
     }
 
     public interface X {
-
     }
   }
 
@@ -35,6 +35,7 @@ public class Exam03 {
 
     // public 으로 공개된 중첩 클래스 및 인터페이스 정보를 가져온다.
     Class<?>[] nestedList = clazz.getClasses();
+
     for (Class<?> nested : nestedList) {
       System.out.println(nested.getName());
     }

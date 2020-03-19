@@ -5,9 +5,13 @@ import java.lang.reflect.Method;
 
 public class Exam01 {
   public static void m1() {}
+
   public void m2() {}
+
   protected void m3() {}
+
   void m4() {}
+
   private void m5() {}
 
   public static void main(String[] args) {
