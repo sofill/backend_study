@@ -9,7 +9,7 @@
     <bean id="carFactory" class="com.eomcs.spring.ioc.ex06.c.CarFactory"/>
     
     <!-- 자바 코드:
-            CarFactory2 carFactory = new CarFactory2();
+            CarFactory carFactory = new CarFactory();
             Object obj = carFactory.create("SM5");
             objPool.put("c1", obj);
      -->
