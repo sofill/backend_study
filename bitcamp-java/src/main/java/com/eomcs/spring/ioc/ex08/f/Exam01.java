@@ -9,10 +9,10 @@ public class Exam01 {
 
   public static void main(String[] args) {
 
-    // 생산자를 통해 의존객체를 주입할 수 있다.
-    // => AutowiredAnnotationBeanPostProcessor 가 이것 또한 처리해 준다.
+    // 생성자를 통해 의존 객체를 주입할 수 있다.
+    // => AutowiredAnnotationBeanPostProcessor가 이것 또한 처리해준다.
     // => 해당 클래스에 기본 생성자가 없을 때,
-    //    파라미터를 받는 다른 생성자를 찾아 호출한다.
+    // 파라미터를 받는 다른 생성자를 찾아 호출한다.
     // => 물론 그 파라미터에 해당하는 객체가 존재해야 한다.
     //
     ApplicationContext iocContainer = new ClassPathXmlApplicationContext(//
