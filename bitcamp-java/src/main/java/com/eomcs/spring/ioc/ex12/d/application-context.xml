@@ -8,14 +8,25 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
     
-    <context:component-scan base-package="bitcamp.java106.step12.ex4"></context:component-scan>
+    <context:component-scan base-package="com.eomcs.spring.ioc.ex12.d"/>
 
     <bean id="sqlSessionFactory"
           class="org.mybatis.spring.SqlSessionFactoryBean">
       <property name="dataSource" ref="dataSource" />
       <property name="mapperLocations" 
-                value="classpath*:bitcamp/java106/step12/ex4/*Mapper.xml" />  
-      <property name="typeAliases" value="bitcamp.java106.step12.Board"/>   
+                value="classpath*:com/eomcs/spring/ioc/ex12/d/*Mapper.xml" />  
+      
+      <!-- 도메인 클래스의 패키지를 지정한다.
+           그러면 해당 패키지의 전체 클래스에 대해 별명이 부여된다. -->
+      <!--  
+      <property name="typeAliasesPackage" 
+                value="com.eomcs.spring.ioc.ex12"/>
+      -->
+      
+      <!-- 도메인 클래스를 낱개로 지정할 때는 
+          다음의 프로퍼티를 설정한다. -->   
+      <property name="typeAliases" 
+                value="com.eomcs.spring.ioc.ex12.Board"/>
     </bean>
     
 	<bean id="dataSource" 
@@ -28,16 +39,17 @@
 	</bean>
 	
     <context:property-placeholder 
-        location="bitcamp/java106/step12/jdbc.properties"/>	
+        location="com/eomcs/spring/ioc/ex12/jdbc.properties"/>	
         
 <!-- DAO 구현체를 자동으로 만들어 주는 객체를 준비
      => 개발자는 DAO를 직접 구현할 필요가 없다.
      => 단지 인터페이스만 선언하면 된다.
  -->
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <!-- DAO 인터페이스가 선언된 패키지를 지정한다. -->
-	    <property name="basePackage" value="bitcamp.java106.step12.ex4" />
-	</bean>    
+  <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+    <!-- DAO 인터페이스가 선언된 패키지를 지정한다. -->
+    <property name="basePackage" 
+              value="com.eomcs.spring.ioc.ex12.d" />
+  </bean>    
 </beans>
 
 

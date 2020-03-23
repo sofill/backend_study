@@ -13,11 +13,11 @@
              애노테이션이 붙은 것은 객체를 생성한다. -->
         <context:include-filter type="regex" 
             expression="com.eomcs.spring.ioc.ex09.p2.Service2"/>
-            
+        
         <!-- 특정 패키지의 특정 클래스를 객체 생성 대상에서 제외하기  -->
         <context:exclude-filter type="regex" 
             expression="com.eomcs.spring.ioc.ex09.p2.Service1"/>
-
+        
         <!-- 특정 애노테이션이 붙은 클래스는 객체 생성에서 제외시킨다. -->
         <context:exclude-filter type="annotation" 
             expression="org.springframework.stereotype.Controller"/>
