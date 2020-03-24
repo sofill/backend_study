@@ -1,3 +1,3 @@
-# bitcamp-study
+# backend-study
 
   
