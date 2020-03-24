@@ -1,4 +1,4 @@
-package com.eomcs.spring.ioc.ex13.ex3;
+package com.eomcs.spring.ioc.ex13.c;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -6,7 +6,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class Caller {
 
-  @Autowired X x;
+  @Autowired
+  X x;
 
   public void test() {
     System.out.println("test()..... 시작");
