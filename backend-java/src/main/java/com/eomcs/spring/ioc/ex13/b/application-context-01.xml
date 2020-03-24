@@ -13,9 +13,9 @@
     
     <context:component-scan base-package="com.eomcs.spring.ioc.ex13.b"/>
     
-    <!-- AOP 필터객체 생성 -->
+    <!-- AOP 필터 객체 생성 -->
     <bean id="myAdvice" 
-    		  class="com.eomcs.spring.ioc.ex13.b.MyAdvice"/> 
+          class="com.eomcs.spring.ioc.ex13.b.MyAdvice"/> 
     
     <!-- AOP 적용 -->
     <aop:config>

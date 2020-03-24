@@ -7,7 +7,7 @@ import com.eomcs.spring.ioc.SpringUtils;
 public class Exam01 {
 
   public static void main(String[] args) {
-    ClassPathXmlApplicationContext iocContainer = new ClassPathXmlApplicationContext(
+    ClassPathXmlApplicationContext iocContainer = new ClassPathXmlApplicationContext(//
         "com/eomcs/spring/ioc/ex13/a/application-context.xml");
 
     SpringUtils.printBeanList(iocContainer);
@@ -17,7 +17,7 @@ public class Exam01 {
 
     caller.test();
   }
-}
 
+}
 
 

@@ -25,7 +25,7 @@ public class Exam01 {
     ApplicationContext iocContainer = new ClassPathXmlApplicationContext(//
         "com/eomcs/spring/ioc/ex12/c/application-context.xml");
 
-    SpringUtils.printBeanList(iocContainer);
+    SpringUtils.printBeanNames(iocContainer);
 
     BoardDao boardDao = iocContainer.getBean(BoardDao.class);
 

@@ -6,14 +6,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class Caller {
 
-  @Autowired
-  X x;
-
-  @Autowired
-  Y y;
-
-  @Autowired
-  Z z;
+  @Autowired X x;
+  @Autowired Y y;
+  @Autowired Z z;
 
   public void test() {
     System.out.println("test()..... 시작");

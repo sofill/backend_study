@@ -1,4 +1,4 @@
-package com.eomcs.spring.ioc.ex08.c;
+package com.eomcs.spring.ioc.ex08.c1;
 
 import java.sql.Date;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +16,9 @@ public class Car {
     System.out.println("Car()");
   }
 
+  public void init() {
+    System.out.println("Car.init()");
+  }
 
   @Override
   public String toString() {
@@ -38,6 +41,7 @@ public class Car {
   }
 
   public void setAuto(boolean auto) {
+    System.out.println("Car.setAuto()");
     this.auto = auto;
   }
 
@@ -46,6 +50,7 @@ public class Car {
   }
 
   public void setCreatedDate(Date createdDate) {
+    System.out.println("Car.setCreatedDate()");
     this.createdDate = createdDate;
   }
 
@@ -54,6 +59,7 @@ public class Car {
   }
 
   public void setModel(String model) {
+    System.out.println("Car.setModel()");
     this.model = model;
   }
 
@@ -62,6 +68,7 @@ public class Car {
   }
 
   public void setMaker(String maker) {
+    System.out.println("Car.setMaker()");
     this.maker = maker;
   }
 
@@ -70,6 +77,7 @@ public class Car {
   }
 
   public void setCc(int cc) {
+    System.out.println("Car.setCc()");
     this.cc = cc;
   }
 

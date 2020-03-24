@@ -15,8 +15,7 @@
     
     <!-- AOP 필터 객체 생성 -->
     <bean id="myAdvice" class="com.eomcs.spring.ioc.ex13.b.MyAdvice"/> 
-    <bean id="myAdvice2" class="com.eomcs.spring.ioc.ex13.b.MyAdvice2"/> 
-    
+    <bean id="myAdvice2" class="com.eomcs.spring.ioc.ex13.b.MyAdvice2"/>
     
     <!-- AOP 적용 -->
     <aop:config>

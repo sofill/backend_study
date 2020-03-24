@@ -1,5 +1,5 @@
-// 의존 객체 주입 자동화하기 - BeanPostProcessor 응용
-package com.eomcs.spring.ioc.ex08.d;
+// BeanPostProcessor 사용법 - BeanPostProcessor 활용 예
+package com.eomcs.spring.ioc.ex08.c2;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -12,7 +12,7 @@ public class Exam01 {
     // => LogBeanPostProcessor 를 만들어 처리한다.
     //
     ApplicationContext iocContainer = new ClassPathXmlApplicationContext(//
-        "com/eomcs/spring/ioc/ex08/d/application-context.xml");
+        "com/eomcs/spring/ioc/ex08/c2/application-context.xml");
 
     // Spring IoC 컨테이너에 들어 있는 객체 출력
     SpringUtils.printBeanList(iocContainer);

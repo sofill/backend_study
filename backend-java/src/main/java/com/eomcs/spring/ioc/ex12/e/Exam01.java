@@ -29,7 +29,7 @@ public class Exam01 {
     // 여러 개의 값을 넣고 싶으면 Map에 담아 넘긴다.
     HashMap<String, Object> params = new HashMap<>();
     params.put("startIndex", 0);
-    params.put("pageSize[", 5);
+    params.put("pageSize", 5);
 
     List<Board> list = boardDao.selectList(params);
     for (Board b : list) {

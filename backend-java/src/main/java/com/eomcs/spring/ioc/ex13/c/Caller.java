@@ -6,8 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Caller {
 
-  @Autowired
-  X x;
+  @Autowired X x;
 
   public void test() {
     System.out.println("test()..... 시작");
