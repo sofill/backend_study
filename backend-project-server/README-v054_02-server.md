@@ -1,5 +1,4 @@
 # 54_2 - 출력 콘텐트에 HTML 형식 적용하기
-- 서버꺼
 
 ## 학습목표
 
@@ -7,10 +6,19 @@
 
 ## 실습 소스 및 결과
 
+- src/main/java/com/eomcs/lms/dao/LessonDao.java 변경
+- src/main/java/com/eomcs/lms/dao/MemberDao.java 변경
+- src/main/java/com/eomcs/lms/servlet/BoardAddFormServlet.java 추가
+- src/main/java/com/eomcs/lms/servlet/BoardUpdateFormServlet.java 추가
 - src/main/java/com/eomcs/lms/servlet/BoardXxxServlet.java 변경
+- src/main/java/com/eomcs/lms/servlet/MemberAddFormServlet.java 추가
 - src/main/java/com/eomcs/lms/servlet/MemberXxxServlet.java 변경
+- src/main/java/com/eomcs/lms/servlet/LessonAddFormServlet.java 추가
 - src/main/java/com/eomcs/lms/servlet/LessonXxxServlet.java 변경
+- src/main/java/com/eomcs/lms/servlet/PhotoBoardAddFormServlet.java 추가
 - src/main/java/com/eomcs/lms/servlet/PhotoBoardXxxServlet.java 변경
+- src/main/java/com/eomcs/lms/servlet/LoginFormServlet.java 추가
+- src/main/java/com/eomcs/lms/servlet/LoginServlet.java 변경
 - src/main/java/com/eomcs/lms/ServerApp.java 변경
 
 ## 실습  
@@ -72,10 +80,25 @@
   
 ### 훈련9: 회원 관리 서블릿을 모두 변경하기
 
+- com.eomcs.lms.dao.MemberDao 변경
+  - default 메서드를 추상 메서드로 전환한다.
+- com.eomcs.lms.servlet.MemberAddFormServlet 추가
+- com.eomcs.lms.servlet.MemberXxxServlet 변경
+- com.eomcs.lms.ServerApp 변경
+
 ### 훈련10: 수업 관리 서블릿을 모두 변경하기
+
+- com.eomcs.lms.dao.LessonDao 변경
+  - default 메서드를 추상 메서드로 전환한다.
+- com.eomcs.lms.servlet.LessonAddFormServlet 추가
+- com.eomcs.lms.servlet.LessonXxxServlet 변경
 
 ### 훈련11: 사진게시글 관리 서블릿을 모두 변경하기
 
+- com.eomcs.lms.servlet.PhotoBoardAddFormServlet 추가
+- com.eomcs.lms.servlet.PhotoBoardXxxServlet 변경
+
 ### 훈련12: 로그인 서블릿을 모두 변경하기
   
-  
+- com.eomcs.lms.servlet.LoginFormServlet 추가
+- com.eomcs.lms.servlet.LoginServlet 변경
